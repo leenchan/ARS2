@@ -1,0 +1,29 @@
+name: Update ImageBuilder Source
+
+on:
+  schedule:
+    - cron: '0 6,18 * * *'
+  workflow_dispatch:
+
+env:
+  GITHUB_REPOSITORY_EMAIL: ${{ secrets.REPO_EMAIL }}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Update Source
+      run: |
+        sh .github/update.sh || true
+
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 3
+
+#     - name: SSH Connection to Actions
+#       uses: P3TERX/ssh2actions@v1.0.0
