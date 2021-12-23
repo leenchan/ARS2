@@ -25,13 +25,13 @@ jobs:
       id: check
       with:
         script: |
-          const { owner, repo } = context.repo
+          const { owner, repo } = context.repo;
           if ("${{ env.UPDATED_SOURCE }}" == "true") {
             return 'continue';
           } else {
             console.log('Cancelling ...');
             const run_id = "${{ github.run_id }}";
-            await github.actions.cancelWorkflowRun({ owner, repo, run_id });
+            await github.rest.actions.cancelWorkflowRun({ owner, repo, run_id });
             return 'stop';
           }
         result-encoding: string
