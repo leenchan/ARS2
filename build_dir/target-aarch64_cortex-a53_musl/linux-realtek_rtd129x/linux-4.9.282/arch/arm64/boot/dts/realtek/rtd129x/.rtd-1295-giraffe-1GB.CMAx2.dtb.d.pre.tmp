@@ -1,0 +1,20 @@
+rtd-1295-giraffe-1GB.CMAx2.o: \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-1295-giraffe-1GB.CMAx2.dts \
+ arch/arm64/boot/dts/include/dt-bindings/soc/rtd129x,memory.h \
+ arch/arm64/boot/dts/include/dt-bindings/soc/../../soc/realtek/memory.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-ion-1GB-lm.dtsi \
+ arch/arm64/boot/dts/include/dt-bindings/soc/../../soc/realtek/../../../arch/arm/mach-rtd119x/include/mach/memory.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-1295.dtsi \
+ arch/arm64/boot/dts/include/dt-bindings/interrupt-controller/irq.h \
+ arch/arm64/boot/dts/include/dt-bindings/interrupt-controller/arm-gic.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-common.dtsi \
+ arch/arm64/boot/dts/include/dt-bindings/clock/rtk,clock-rtd129x.h \
+ arch/arm64/boot/dts/include/dt-bindings/reset/rtk,reset.h \
+ arch/arm64/boot/dts/include/dt-bindings/reset/rtk,reset-rtd129x.h \
+ arch/arm64/boot/dts/include/dt-bindings/power/rtk,power-rtd129x.h \
+ arch/arm64/boot/dts/include/dt-bindings/thermal/thermal.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-g2227-regulator.dtsi \
+ arch/arm64/boot/dts/include/dt-bindings/regulator/gmt,g22xx.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-gpu-dvfs.dtsi \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-cpu-dvfs.dtsi \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-1295-giraffe-common.dtsi

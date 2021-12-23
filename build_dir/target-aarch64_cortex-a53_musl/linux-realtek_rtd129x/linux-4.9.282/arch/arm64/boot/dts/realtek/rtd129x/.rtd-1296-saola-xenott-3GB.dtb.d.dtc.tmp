@@ -1,0 +1,1 @@
+arch/arm64/boot/dts/realtek/rtd129x/rtd-1296-saola-xenott-3GB.dtb: arch/arm64/boot/dts/realtek/rtd129x/.rtd-1296-saola-xenott-3GB.dtb.dts.tmp arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-usb.dtsi arch/arm64/boot/dts/realtek/rtd129x/rtd-1295-xen-pinctrl-domu.dtsi arch/arm64/boot/dts/realtek/rtd129x/rtd-1295-xen-irda.dtsi

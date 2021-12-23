@@ -1,0 +1,15 @@
+rtd-1296-saola-xenott.o: \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-1296-saola-xenott.dts \
+ arch/arm64/boot/dts/include/dt-bindings/soc/rtd129x,memory.h \
+ arch/arm64/boot/dts/include/dt-bindings/soc/../../soc/realtek/memory.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-ion-2GB-tee.dtsi \
+ arch/arm64/boot/dts/include/dt-bindings/soc/../../soc/realtek/../../../arch/arm/mach-rtd119x/include/mach/memory.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-xen-common-domu.dtsi \
+ arch/arm64/boot/dts/include/dt-bindings/clock/rtk,clock-rtd129x.h \
+ arch/arm64/boot/dts/include/dt-bindings/reset/rtk,reset.h \
+ arch/arm64/boot/dts/include/dt-bindings/reset/rtk,reset-rtd129x.h \
+ arch/arm64/boot/dts/include/dt-bindings/power/rtk,power-rtd129x.h \
+ arch/arm64/boot/dts/include/dt-bindings/thermal/thermal.h \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-129x-cpu-dvfs.dtsi \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-1295-xen-hdmirxEDID.dtsi \
+ arch/arm64/boot/dts/realtek/rtd129x/rtd-1296-xen-usb-domu.dtsi
