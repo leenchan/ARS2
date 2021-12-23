@@ -21,7 +21,7 @@ jobs:
         sh .github/update.sh || true
 
     - name: Finish
-    - uses: actions/github-script@main
+      uses: actions/github-script@main
       id: check
       with:
         script: |
