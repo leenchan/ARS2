@@ -20,18 +20,19 @@ jobs:
         git fetch
         sh .github/update.sh || true
 
+    - name: Finish
     - uses: actions/github-script@main
       id: check
       with:
         script: |
           const { owner, repo } = context.repo
           if ("${{ env.UPDATED_SOURCE }}" == "true") {
+            return 'continue';
+          } else {
             console.log('Cancelling ...');
             const run_id = "${{ github.run_id }}";
             await github.actions.cancelWorkflowRun({ owner, repo, run_id });
             return 'stop';
-          } else {
-            return 'build';
           }
         result-encoding: string
 

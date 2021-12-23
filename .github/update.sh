@@ -81,10 +81,12 @@ github_push() {
 }
 
 UPDATED_SOURCE="false"
-git branch -r | tr -d ' ' | sed -E 's/^origin\///' | while read BRANCH
+while read BRANCH
 do
 	git checkout "$BRANCH"
 	get_last_file "$BRANCH" && update_source && github_push && UPDATED_SOURCE="true"
-done
+done <<-EOF
+$(git branch -r | tr -d ' ' | sed -E 's/^origin\///')
+EOF
 
 echo "UPDATED_SOURCE=$UPDATED_SOURCE" >> $GITHUB_ENV
