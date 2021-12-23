@@ -1,0 +1,12 @@
+prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
+exec_prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
+libdir=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib
+includedir=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include
+
+Name: json-c
+Description: A JSON implementation in C
+Version: 0.15
+Requires:
+Libs.private: 
+Libs: -L${libdir} -ljson-c
+Cflags: -I${includedir} -I${includedir}/json-c
