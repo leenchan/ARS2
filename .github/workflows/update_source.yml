@@ -20,6 +20,12 @@ jobs:
         git fetch
         sh .github/update.sh || true
 
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 3
+
     - name: Finish
       uses: actions/github-script@main
       id: check
@@ -35,12 +41,6 @@ jobs:
             return 'stop';
           }
         result-encoding: string
-
-    # - name: Delete workflow runs
-    #   uses: GitRML/delete-workflow-runs@main
-    #   with:
-    #     retain_days: 1
-    #     keep_minimum_runs: 3
 
     # - name: SSH Connection to Actions
     #   uses: P3TERX/ssh2actions@v1.0.0
