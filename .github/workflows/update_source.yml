@@ -28,7 +28,9 @@ jobs:
           const { owner, repo, created_at } = context.repo;
           const { data: { workflow_runs=[] } } = await github.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
           const cleanRunsId = workflow_runs.filter(run => run.status != 'in_progress' && (new Date().valueOf() - new Date(run.created_at).valueOf()) > 1000 * 3600 * 24);
-          const res = await Promise.all(cleanRunsId.map(run_id => github.request('DELETE /repos/{owner}/{repo}/actions/runs/{run_id}', { owner, repo, run_id });));
+          const res = await Promise.all(
+            cleanRunsId.map(run_id => github.request('DELETE /repos/{owner}/{repo}/actions/runs/{run_id}', { owner, repo, run_id }))
+          );
           console.log(res);
 
     - name: Finish
