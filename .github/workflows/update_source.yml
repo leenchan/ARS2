@@ -29,7 +29,7 @@ jobs:
           const { data: { workflow_runs=[] } } = await github.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
           const deleteRuns = workflow_runs.filter(run => run.status != 'in_progress' && (new Date().valueOf() - new Date(run.created_at).valueOf()) > 1000 * 3600 * 24);
           await Promise.all(
-            deleteRuns.map(({run_id}) => github.request('DELETE /repos/{owner}/{repo}/actions/runs/{run_id}', { owner, repo, run_id }))
+            deleteRuns.map((run => github.request('DELETE /repos/{owner}/{repo}/actions/runs/{run_id}', { owner, repo, run_id: run.id }))
           );
 
     - name: Finish
