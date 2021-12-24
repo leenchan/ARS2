@@ -25,8 +25,9 @@ jobs:
       id: check
       with:
         script: |
-          console.log(context, github)
           const { owner, repo } = context.repo;
+          const runs = await octokit.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
+          console.log(runs);
           if ("${{ env.UPDATED_SOURCE }}" == "true") {
             return 'continue';
           } else {
