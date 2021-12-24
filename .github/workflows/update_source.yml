@@ -28,6 +28,10 @@ jobs:
           const { owner, repo, created_at } = context.repo;
           const { data: { workflow_runs=[] } } = await github.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
           const cleanRunsId = workflow_runs.map(run => (new Date().valueOf() - new Date(created_at).valueOf()) > 1000 * 3600 * 24);
+          console.log(1000 * 3600 * 24);
+          workflow_runs.forEach(run => {
+            console.log(new Date().valueOf() + '::::' + new Date(created_at).valueOf() + '::::' + new Date().valueOf() - new Date(created_at).valueOf())
+          });
           console.log(cleanRunsId.length + '/' + workflow_runs.length);
 
     - name: Finish
