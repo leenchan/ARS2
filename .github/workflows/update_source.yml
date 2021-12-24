@@ -15,22 +15,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
 
-    - name: Update Source
-      run: |
-        git fetch
-        sh .github/update.sh || true
-
-    - name: Delete workflow runs
-      uses: GitRML/delete-workflow-runs@main
-      with:
-        retain_days: 1
-        keep_minimum_runs: 3
+#     - name: Update Source
+#       run: |
+#         git fetch
+#         sh .github/update.sh || true
 
     - name: Finish
       uses: actions/github-script@main
       id: check
       with:
         script: |
+          console.log(context, github)
           const { owner, repo } = context.repo;
           if ("${{ env.UPDATED_SOURCE }}" == "true") {
             return 'continue';
