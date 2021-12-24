@@ -20,14 +20,21 @@ jobs:
 #         git fetch
 #         sh .github/update.sh || true
 
+    - name: Clean Runs
+      uses: actions/github-script@main
+      id: clean
+      with:
+        script: |
+          const { owner, repo } = context.repo;
+          const { data: { workflow_runs=[] } } = await github.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
+          console.log(workflow_runs);
+
     - name: Finish
       uses: actions/github-script@main
       id: check
       with:
         script: |
           const { owner, repo } = context.repo;
-          const runs = await github.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
-          console.log(runs);
           if ("${{ env.UPDATED_SOURCE }}" == "true") {
             return 'continue';
           } else {
