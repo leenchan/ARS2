@@ -27,11 +27,10 @@ jobs:
         script: |
           const { owner, repo, created_at } = context.repo;
           const { data: { workflow_runs=[] } } = await github.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
-          const deleteRunsId = workflow_runs.filter(run => run.status != 'in_progress' && (new Date().valueOf() - new Date(run.created_at).valueOf()) > 1000 * 3600 * 24);
-          const res = await Promise.all(
-            deleteRunsId.map(run_id => github.request('DELETE /repos/{owner}/{repo}/actions/runs/{run_id}', { owner, repo, run_id }))
+          const deleteRuns = workflow_runs.filter(run => run.status != 'in_progress' && (new Date().valueOf() - new Date(run.created_at).valueOf()) > 1000 * 3600 * 24);
+          await Promise.all(
+            deleteRuns.map(({run_id}) => github.request('DELETE /repos/{owner}/{repo}/actions/runs/{run_id}', { owner, repo, run_id }))
           );
-          console.log(res);
 
     - name: Finish
       uses: actions/github-script@v5
