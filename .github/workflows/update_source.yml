@@ -25,8 +25,10 @@ jobs:
       id: clean
       with:
         script: |
-          const { owner, repo } = context.repo;
+          const { owner, repo, created_at } = context.repo;
           const { data: { workflow_runs=[] } } = await github.request('GET /repos/{owner}/{repo}/actions/runs', { owner, repo });
+          const cleanRunsId = workflow_runs.map(run => new Date(run.created_at).valueOf()/1000 - new Date(created_at).valueOf()/1000 > 3600 * 24);
+          console.log(cleanRunsId.length + '/' + workflow_runs.length);
           console.log(workflow_runs);
 
     - name: Finish
