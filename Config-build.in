@@ -9190,6 +9190,10 @@ config PACKAGE_kmod-ipt-iprange
 	bool
 	default y
 
+config PACKAGE_kmod-ipt-ipsec
+	bool
+	default y
+
 config PACKAGE_kmod-ipt-ipset
 	bool
 	default y
@@ -9350,11 +9354,19 @@ config PACKAGE_kmod-ipsec4
 	bool
 	default y
 
+config PACKAGE_kmod-ipsec6
+	bool
+	default y
+
 config PACKAGE_kmod-iptunnel
 	bool
 	default y
 
 config PACKAGE_kmod-iptunnel4
+	bool
+	default y
+
+config PACKAGE_kmod-iptunnel6
 	bool
 	default y
 
@@ -9386,7 +9398,15 @@ config PACKAGE_kmod-pppoe
 	bool
 	default y
 
+config PACKAGE_kmod-pppol2tp
+	bool
+	default y
+
 config PACKAGE_kmod-pppox
+	bool
+	default y
+
+config PACKAGE_kmod-pptp
 	bool
 	default y
 
@@ -9496,7 +9516,7 @@ config KERNEL_IP_NF_IPTABLES
 
 config KERNEL_VLAN_8021Q
 	bool
-	default n
+	default y
 
 config KERNEL_RTL_IVL_SUPPORT
 	bool
@@ -11118,6 +11138,10 @@ config PACKAGE_luci-i18n-ddnsto-zh-cn
 	bool
 	default y
 
+config PACKAGE_luci-i18n-diskman-zh-cn
+	bool
+	default y
+
 config PACKAGE_luci-i18n-dockerman-zh-cn
 	bool
 	default y
@@ -11407,6 +11431,10 @@ config PACKAGE_iptables-mod-ipopt
 	default y
 
 config PACKAGE_iptables-mod-iprange
+	bool
+	default y
+
+config PACKAGE_iptables-mod-ipsec
 	bool
 	default y
 
@@ -11703,6 +11731,14 @@ config PACKAGE_ppp
 	default y
 
 config PACKAGE_ppp-mod-pppoe
+	bool
+	default y
+
+config PACKAGE_ppp-mod-pppol2tp
+	bool
+	default y
+
+config PACKAGE_ppp-mod-pptp
 	bool
 	default y
 

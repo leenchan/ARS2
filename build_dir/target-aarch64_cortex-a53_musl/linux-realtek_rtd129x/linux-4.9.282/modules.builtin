@@ -294,6 +294,10 @@ kernel/drivers/watchdog/rtk_wdt.ko
 kernel/net/802/p8022.ko
 kernel/net/802/psnap.ko
 kernel/net/802/stp.ko
+kernel/net/802/garp.ko
+kernel/net/802/mrp.ko
+kernel/net/8021q/vlan_core.ko
+kernel/net/8021q/8021q.ko
 kernel/net/appletalk/appletalk.ko
 kernel/net/bridge/bridge.ko
 kernel/net/ceph/libceph.ko
