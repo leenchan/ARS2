@@ -2034,21 +2034,6 @@ static inline unsigned char *__skb_put(struct sk_buff *skb, unsigned int len)
 	return tmp;
 }
 
-static inline void *skb_put_data(struct sk_buff *skb, const void *data,
-				 unsigned int len)
-{
-	void *tmp = (void *)skb_put(skb, len);
-
-	memcpy(tmp, data, len);
-
-	return tmp;
-}
-
-static inline void skb_put_u8(struct sk_buff *skb, u8 val)
-{
-	*(u8 *)skb_put(skb, 1) = val;
-}
-
 unsigned char *skb_push(struct sk_buff *skb, unsigned int len);
 static inline unsigned char *__skb_push(struct sk_buff *skb, unsigned int len)
 {

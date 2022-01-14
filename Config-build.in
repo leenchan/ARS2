@@ -378,7 +378,7 @@ config DEFAULT_netifd
 	bool
 	default y
 
-config DEFAULT_ntfs-3g-utils
+config DEFAULT_ntfs3-mount
 	bool
 	default y
 
@@ -8974,6 +8974,10 @@ config PACKAGE_kmod-fs-nfsd
 	bool
 	default y
 
+config PACKAGE_kmod-fs-ntfs3-oot
+	bool
+	default y
+
 config PACKAGE_kmod-fs-squashfs
 	bool
 	default y
@@ -9107,36 +9111,44 @@ config PACKAGE_kmod-nls-utf8
 	default y
 
 config PACKAGE_kmod-arptables
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-br-netfilter
 	bool
 	default y
 
 config PACKAGE_kmod-ebtables
-	tristate
-	default m
-
-config PACKAGE_kmod-ebtables-ipv4
-	tristate
-	default m
-
-config PACKAGE_kmod-ebtables-ipv6
-	tristate
-	default m
-
-config PACKAGE_kmod-ebtables-watchers
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-ip6tables
 	bool
 	default y
 
-config PACKAGE_kmod-ipt-compat-xtables
+config PACKAGE_kmod-ip6tables-extra
+	bool
+	default y
+
+config PACKAGE_kmod-ipt-account
 	tristate
 	default m
+
+config PACKAGE_kmod-ipt-checksum
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-cluster
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-clusterip
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-compat-xtables
+	bool
+	default y
 
 config PACKAGE_kmod-ipt-condition
 	tristate
@@ -9166,6 +9178,10 @@ config PACKAGE_kmod-ipt-dhcpmac
 	tristate
 	default m
 
+config PACKAGE_kmod-ipt-dnetmap
+	tristate
+	default m
+
 config PACKAGE_kmod-ipt-extra
 	bool
 	default y
@@ -9178,7 +9194,23 @@ config PACKAGE_kmod-ipt-fullconenat
 	bool
 	default y
 
+config PACKAGE_kmod-ipt-fuzzy
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-geoip
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-hashlimit
+	tristate
+	default m
+
 config PACKAGE_kmod-ipt-iface
+	bool
+	default y
+
+config PACKAGE_kmod-ipt-ipmark
 	bool
 	default y
 
@@ -9203,6 +9235,10 @@ config PACKAGE_kmod-ipt-led
 	default m
 
 config PACKAGE_kmod-ipt-length2
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-logmark
 	tristate
 	default m
 
@@ -9239,10 +9275,6 @@ config PACKAGE_kmod-ipt-raw6
 	default m
 
 config PACKAGE_kmod-ipt-sysrq
-	tristate
-	default m
-
-config PACKAGE_kmod-ipt-tee
 	tristate
 	default m
 
@@ -9386,6 +9418,10 @@ config PACKAGE_kmod-nat46
 	bool
 	default y
 
+config PACKAGE_kmod-netem
+	tristate
+	default m
+
 config PACKAGE_kmod-ppp
 	bool
 	default y
@@ -9475,6 +9511,10 @@ config PACKAGE_kmod-veth
 	default y
 
 config PACKAGE_kmod-vxlan
+	bool
+	default y
+
+config PACKAGE_kmod-wireguard
 	bool
 	default y
 
@@ -11022,6 +11062,10 @@ config PACKAGE_luci-app-vsftpd
 	tristate
 	default m
 
+config PACKAGE_luci-app-wireguard
+	tristate
+	default m
+
 config PACKAGE_luci-app-wol
 	bool
 	default y
@@ -11049,6 +11093,10 @@ config PACKAGE_luci-proto-ipv6
 config PACKAGE_luci-proto-ppp
 	bool
 	default y
+
+config PACKAGE_luci-proto-wireguard
+	tristate
+	default m
 
 config PACKAGE_luci-lib-dracula
 	bool
@@ -11234,6 +11282,10 @@ config PACKAGE_luci-i18n-vsftpd-zh-cn
 	tristate
 	default m
 
+config PACKAGE_luci-i18n-wireguard-zh-cn
+	tristate
+	default m
+
 config PACKAGE_luci-i18n-wol-zh-cn
 	bool
 	default y
@@ -11390,6 +11442,18 @@ config PACKAGE_ip6tables
 	bool
 	default y
 
+config PACKAGE_ip6tables-extra
+	bool
+	default y
+
+config PACKAGE_ip6tables-mod-fullconenat
+	bool
+	default y
+
+config PACKAGE_ip6tables-mod-nat
+	bool
+	default y
+
 config PACKAGE_iptables
 	bool
 	default y
@@ -11402,6 +11466,22 @@ config IPTABLES_NFTABLES
 	bool
 	default n
 
+config PACKAGE_iptables-mod-account
+	tristate
+	default m
+
+config PACKAGE_iptables-mod-checksum
+	tristate
+	default m
+
+config PACKAGE_iptables-mod-cluster
+	tristate
+	default m
+
+config PACKAGE_iptables-mod-clusterip
+	tristate
+	default m
+
 config PACKAGE_iptables-mod-condition
 	tristate
 	default m
@@ -11409,6 +11489,14 @@ config PACKAGE_iptables-mod-condition
 config PACKAGE_iptables-mod-conntrack-extra
 	bool
 	default y
+
+config PACKAGE_iptables-mod-dhcpmac
+	tristate
+	default m
+
+config PACKAGE_iptables-mod-dnetmap
+	tristate
+	default m
 
 config PACKAGE_iptables-mod-extra
 	bool
@@ -11422,7 +11510,23 @@ config PACKAGE_iptables-mod-fullconenat
 	bool
 	default y
 
+config PACKAGE_iptables-mod-fuzzy
+	tristate
+	default m
+
+config PACKAGE_iptables-mod-geoip
+	tristate
+	default m
+
+config PACKAGE_iptables-mod-hashlimit
+	tristate
+	default m
+
 config PACKAGE_iptables-mod-iface
+	bool
+	default y
+
+config PACKAGE_iptables-mod-ipmark
 	bool
 	default y
 
@@ -11442,13 +11546,17 @@ config PACKAGE_iptables-mod-led
 	tristate
 	default m
 
+config PACKAGE_iptables-mod-length2
+	tristate
+	default m
+
+config PACKAGE_iptables-mod-logmark
+	tristate
+	default m
+
 config PACKAGE_iptables-mod-nat-extra
 	bool
 	default y
-
-config PACKAGE_iptables-mod-nflog
-	tristate
-	default m
 
 config PACKAGE_iptables-mod-physdev
 	bool
@@ -11465,10 +11573,6 @@ config PACKAGE_iptables-mod-sysrq
 config PACKAGE_iptables-mod-tproxy
 	bool
 	default y
-
-config PACKAGE_iptables-mod-trace
-	tristate
-	default m
 
 config PACKAGE_miniupnpd
 	bool
@@ -11589,6 +11693,10 @@ config PACKAGE_relayd
 config PACKAGE_tc
 	bool
 	default y
+
+config PACKAGE_wireguard-tools
+	tristate
+	default m
 
 config BROOK_COMPRESS_GOPROXY
 	bool
@@ -11954,15 +12062,7 @@ config PACKAGE_nfs-utils-libs
 	bool
 	default y
 
-config PACKAGE_ntfs-3g
-	bool
-	default y
-
-config PACKAGE_NTFS-3G_HAS_PROBE
-	bool
-	default y
-
-config PACKAGE_ntfs-3g-utils
+config PACKAGE_ntfs3-mount
 	bool
 	default y
 
