@@ -4,7 +4,7 @@
 # Copyright (C) 2016 LEDE Project
 
 # Substituted by SDK, do not remove
-REVISION:=r11855-957660394d
+REVISION:=r11867-6c1122e731
 # SOURCE_DATE_EPOCH:=x
 
 PKG_CONFIG_DEPENDS += \
