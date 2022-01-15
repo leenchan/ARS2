@@ -382,6 +382,10 @@ config DEFAULT_ntfs3-mount
 	bool
 	default y
 
+config DEFAULT_ntfsprogs
+	bool
+	default y
+
 config DEFAULT_odhcp6c
 	bool
 	default y
@@ -12063,6 +12067,10 @@ config PACKAGE_nfs-utils-libs
 	default y
 
 config PACKAGE_ntfs3-mount
+	bool
+	default y
+
+config PACKAGE_ntfsprogs
 	bool
 	default y
 
