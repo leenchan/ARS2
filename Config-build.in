@@ -6148,7 +6148,7 @@ config BUSYBOX_CONFIG_FEATURE_DD_SIGNAL_HANDLING
 
 config BUSYBOX_CONFIG_FEATURE_DD_THIRD_STATUS_LINE
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_FEATURE_DD_IBS_OBS
 	bool
@@ -6156,7 +6156,7 @@ config BUSYBOX_CONFIG_FEATURE_DD_IBS_OBS
 
 config BUSYBOX_CONFIG_FEATURE_DD_STATUS
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_DF
 	bool
@@ -7000,15 +7000,35 @@ config BUSYBOX_CONFIG_REMOVE_SHELL
 
 config BUSYBOX_CONFIG_ADDGROUP
 	bool
-	default n
+	default y
+
+config BUSYBOX_CONFIG_FEATURE_ADDUSER_TO_GROUP
+	bool
+	default y
 
 config BUSYBOX_CONFIG_ADDUSER
 	bool
-	default n
+	default y
+
+config BUSYBOX_CONFIG_FEATURE_CHECK_NAMES
+	bool
+	default y
+
+config BUSYBOX_CONFIG_LAST_ID
+	int
+	default 0
+
+config BUSYBOX_CONFIG_FIRST_SYSTEM_ID
+	int
+	default 0
+
+config BUSYBOX_CONFIG_LAST_SYSTEM_ID
+	int
+	default 0
 
 config BUSYBOX_CONFIG_CHPASSWD
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_FEATURE_DEFAULT_PASSWD_ALGO
 	string
@@ -7016,19 +7036,23 @@ config BUSYBOX_CONFIG_FEATURE_DEFAULT_PASSWD_ALGO
 
 config BUSYBOX_CONFIG_CRYPTPW
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_MKPASSWD
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_DELUSER
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_DELGROUP
 	bool
-	default n
+	default y
+
+config BUSYBOX_CONFIG_FEATURE_DEL_USER_FROM_GROUP
+	bool
+	default y
 
 config BUSYBOX_CONFIG_GETTY
 	bool
@@ -7244,7 +7268,7 @@ config BUSYBOX_CONFIG_IPCS
 
 config BUSYBOX_CONFIG_LOSETUP
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_LSPCI
 	bool
@@ -7252,7 +7276,7 @@ config BUSYBOX_CONFIG_LSPCI
 
 config BUSYBOX_CONFIG_LSUSB
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_MDEV
 	bool
@@ -7584,29 +7608,45 @@ config BUSYBOX_CONFIG_FEATURE_LESS_MAXLINES
 
 config BUSYBOX_CONFIG_FEATURE_LESS_BRACKETS
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_FEATURE_LESS_FLAGS
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_FEATURE_LESS_TRUNCATE
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_FEATURE_LESS_MARKS
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_FEATURE_LESS_REGEXP
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_FEATURE_LESS_WINCH
+	bool
+	default y
+
+config BUSYBOX_CONFIG_FEATURE_LESS_ASK_TERMINAL
 	bool
 	default n
 
 config BUSYBOX_CONFIG_FEATURE_LESS_DASHCMD
+	bool
+	default y
+
+config BUSYBOX_CONFIG_FEATURE_LESS_LINENUMS
+	bool
+	default y
+
+config BUSYBOX_CONFIG_FEATURE_LESS_RAW
+	bool
+	default n
+
+config BUSYBOX_CONFIG_FEATURE_LESS_ENV
 	bool
 	default n
 
@@ -8044,7 +8084,7 @@ config BUSYBOX_CONFIG_FEATURE_TRACEROUTE_VERBOSE
 
 config BUSYBOX_CONFIG_FEATURE_TRACEROUTE_USE_ICMP
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_TUNCTL
 	bool
@@ -8855,6 +8895,10 @@ config PACKAGE_kmod-crypto-hash
 	default y
 
 config PACKAGE_kmod-crypto-hmac
+	bool
+	default y
+
+config PACKAGE_kmod-crypto-hw-rtk
 	bool
 	default y
 
@@ -9791,16 +9835,16 @@ config PACKAGE_kmod-usb3
 	default y
 
 config PACKAGE_kmod-usbip
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-usbip-client
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-usbip-server
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-usbmon
 	tristate
@@ -10166,10 +10210,6 @@ config SQLITE3_SESSION
 	bool
 	default n
 
-config PACKAGE_alsa-lib
-	bool
-	default y
-
 config PACKAGE_bind-libs
 	bool
 	default y
@@ -10384,7 +10424,7 @@ config LIBCURL_TFTP
 
 config LIBCURL_NGHTTP2
 	bool
-	default n
+	default y
 
 config LIBCURL_PROXY
 	bool
@@ -10420,7 +10460,7 @@ config LIBCURL_LIBCURL_OPTION
 
 config LIBCURL_VERBOSE
 	bool
-	default n
+	default y
 
 config PACKAGE_libdaemon
 	bool
@@ -10563,6 +10603,10 @@ config LIBNETTLE_MINI
 	default n
 
 config PACKAGE_libnfnetlink
+	bool
+	default y
+
+config PACKAGE_libnghttp2
 	bool
 	default y
 
@@ -11979,22 +12023,6 @@ config XRAY_PLUGIN_COMPRESS_GOPROXY
 	default n
 
 config XRAY_PLUGIN_COMPRESS_UPX
-	bool
-	default y
-
-config PACKAGE_fdk-aac
-	bool
-	default y
-
-config FDK-AAC_OPTIMIZE_SPEED
-	bool
-	default y
-
-config PACKAGE_lame-lib
-	bool
-	default y
-
-config LAME-LIB_OPTIMIZE_SPEED
 	bool
 	default y
 
