@@ -11054,6 +11054,10 @@ config PACKAGE_luci-app-qbittorrent
 	tristate
 	default m
 
+config PACKAGE_luci-app-quickstart
+	bool
+	default y
+
 config PACKAGE_luci-app-ramfree
 	bool
 	default y
@@ -11289,6 +11293,10 @@ config PACKAGE_luci-i18n-passwall-zh-cn
 config PACKAGE_luci-i18n-qbittorrent-zh-cn
 	tristate
 	default m
+
+config PACKAGE_luci-i18n-quickstart-zh-cn
+	bool
+	default y
 
 config PACKAGE_luci-i18n-ramfree-zh-cn
 	bool
@@ -11786,6 +11794,10 @@ config PACKAGE_pdnsd-alt
 	tristate
 	default m
 
+config PACKAGE_quickstart
+	bool
+	default y
+
 config PACKAGE_shadowsocks-libev-ss-local
 	tristate
 	default m
@@ -12229,6 +12241,22 @@ config PACKAGE_rtd129x_env
 config PACKAGE_runc
 	bool
 	default y
+
+config PACKAGE_shadow-common
+	bool
+	default y
+
+config PACKAGE_shadow-useradd
+	bool
+	default y
+
+config PACKAGE_shadow-utils
+	bool
+	default y
+
+config shadow-all
+	bool
+	default n
 
 config PACKAGE_shellsync
 	bool
