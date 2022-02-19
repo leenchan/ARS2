@@ -9850,6 +9850,50 @@ config PACKAGE_kmod-usbmon
 	tristate
 	default m
 
+config PACKAGE_kmod-w1
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-gpio-custom
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-master-ds2482
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-master-ds2490
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-master-gpio
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-slave-ds2413
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-slave-ds2431
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-slave-ds2433
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-slave-ds2760
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-slave-smem
+	tristate
+	default m
+
+config PACKAGE_kmod-w1-slave-therm
+	tristate
+	default m
+
 config GOLANG_EXTERNAL_BOOTSTRAP_ROOT
 	string
 	default ""
