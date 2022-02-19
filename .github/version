@@ -1,5 +1,5 @@
 FILE_NAME="openwrt-imagebuilder-19.07.8-realtek-rtd129x.Linux-x86_64.tar.xz"
 LINK="https://fw.koolcenter.com/binary/ars2/openwrt-imagebuilder-19.07.8-realtek-rtd129x.Linux-x86_64.tar.xz"
-UPDATE_AT="2022-02-12 00:27"
-MD5="9bc1c5511477882270f0a287b8d37453"
-SHA256="67348d25fe2b75849e11c22596fc93bc48fccedbbe3419d3df11c070a280ec7f"
+UPDATE_AT="2022-02-19 17:33"
+MD5="d84f531a3770e555c0d95c51eccf0180"
+SHA256="17e0571bf5dd081158a3add0021133157260c1828ca90583a427f594979f98b9"
