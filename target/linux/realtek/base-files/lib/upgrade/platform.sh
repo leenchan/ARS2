@@ -38,12 +38,17 @@ platform_do_upgrade() {
 
 	[ -n "$UPGRADE_BACKUP" ] && OPT="-o UPGR____ -r" || OPT="-r"
 
+	# avoid writing to spi
+	rm -f /dev/mtd* /dev/block/mtd*
+
 	cd /\
 		&& tar -C /tmp -xvf $1 install_a \
 		&& echo "/tmp/install_a $OPT $1" \
 		&& /tmp/install_a $OPT $1
 
 	echo "platform_do_upgrade end"
+
+	[ -f /tmp/install.log ] && echo "========= log =========" && cat /tmp/install.log && echo "========= end ========="
 }
 
 platform_copy_config() {
