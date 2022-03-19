@@ -12,7 +12,8 @@ HOST_SED="$(subst ${STAGING_DIR_HOST},$${STAGING_DIR_HOST},$(SED))"
 HOST_LN="$(subst ${STAGING_DIR_HOST},$${STAGING_DIR_HOST},$(LN))"
 
 [ -n "$${IPKG_INSTROOT}" ] && {
-	$${HOST_SED} '/\/targets\/realtek\/rtd129x\//d' "$${IPKG_INSTROOT}/etc/opkg/distfeeds.conf"
+	$${HOST_SED} '/^src\/gz openwrt_\(base\|luci\|packages\|routing\|telephony\) /!d' "$${IPKG_INSTROOT}/etc/opkg/distfeeds.conf"
+
 	$${HOST_SED} 's/"192.168.1.1"/"192.168.100.1"/' \
 		"$${IPKG_INSTROOT}/usr/lib/lua/luci/controller/admin/system.lua" \
 		"$${IPKG_INSTROOT}/etc/board.d/99-default_network"
@@ -26,6 +27,7 @@ HOST_LN="$(subst ${STAGING_DIR_HOST},$${STAGING_DIR_HOST},$(LN))"
 	$${HOST_LN} /usr/sbin/jffs2reset "$${IPKG_INSTROOT}/sbin/jffs2reset"
 
 	$${HOST_SED} '/<link rel="shortcut icon" href="<%=media%>\/favicon.ico">/a         <link rel="stylesheet" href="<%=resource%>/easepi/easeicon.css?t=1642756089463">' \
+		$${IPKG_INSTROOT}/usr/lib/lua/luci/view/themes/argon/header.htm \
 		$${IPKG_INSTROOT}/usr/lib/lua/luci/view/themes/argon_dark/header.htm \
 		$${IPKG_INSTROOT}/usr/lib/lua/luci/view/themes/argon_light/header.htm \
 		$${IPKG_INSTROOT}/usr/lib/lua/luci/view/themes/argon_dark_purple/header.htm \

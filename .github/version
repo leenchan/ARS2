@@ -1,5 +1,5 @@
 FILE_NAME="openwrt-sdk-19.07.8-realtek-rtd129x_gcc-7.5.0_musl.Linux-x86_64.tar.xz"
 LINK="https://fw.koolcenter.com/binary/ars2/openwrt-sdk-19.07.8-realtek-rtd129x_gcc-7.5.0_musl.Linux-x86_64.tar.xz"
-UPDATE_AT="2022-02-19 17:33"
-MD5="1197b38c34a233d8b070a19c73c89a41"
-SHA256="2676ad09ca1cb5c1ce56f04244ef82ea85dcb2e545a60e1aa70775ddba9e9610"
+UPDATE_AT="2022-03-18 22:38"
+MD5="65f0885bd9dc31f98c8acf3be52d9c46"
+SHA256="02e00a1fc10e680829b6378fe3767de1711301f8ce4d9701fb1d3e3b262c77bd"

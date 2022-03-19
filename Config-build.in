@@ -522,6 +522,10 @@ config TARGET_UBIFS_JOURNAL_SIZE
 	string
 	default ""
 
+config REALTEK_CUSTOMIZE_SETTINGS
+	bool
+	default y
+
 config JSON_OVERVIEW_IMAGE_INFO
 	bool
 	default n
@@ -9538,10 +9542,6 @@ config PACKAGE_kmod-slhc
 	bool
 	default y
 
-config PACKAGE_kmod-tcp-bbr
-	bool
-	default y
-
 config PACKAGE_kmod-tun
 	bool
 	default y
@@ -9927,6 +9927,10 @@ config PYTHON3_BLUETOOTH_SUPPORT
 	default n
 
 config PACKAGE_libbz2
+	bool
+	default y
+
+config PACKAGE_liblzma
 	bool
 	default y
 
@@ -11130,14 +11134,6 @@ config PACKAGE_luci-app-ttyd
 	bool
 	default y
 
-config PACKAGE_luci-app-turboacc
-	bool
-	default y
-
-config PACKAGE_TURBOACC_INCLUDE_BBR_CCA
-	bool
-	default y
-
 config PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go
 	bool
 	default y
@@ -11359,10 +11355,6 @@ config PACKAGE_luci-i18n-timecontrol-zh-cn
 	default y
 
 config PACKAGE_luci-i18n-ttyd-zh-cn
-	bool
-	default y
-
-config PACKAGE_luci-i18n-turboacc-zh-cn
 	bool
 	default y
 
@@ -12082,7 +12074,19 @@ config XRAY_PLUGIN_COMPRESS_UPX
 	bool
 	default y
 
+config PACKAGE_bzip2
+	bool
+	default y
+
 config PACKAGE_unzip
+	bool
+	default y
+
+config PACKAGE_xz-utils
+	bool
+	default y
+
+config PACKAGE_xz
 	bool
 	default y
 
@@ -12199,6 +12203,10 @@ config PACKAGE_coreutils-nohup
 	default y
 
 config PACKAGE_coreutils-sort
+	bool
+	default y
+
+config PACKAGE_coreutils-stat
 	bool
 	default y
 
@@ -12321,6 +12329,22 @@ config STRACE_LIBDW
 config STRACE_LIBUNWIND
 	bool
 	default n
+
+config PACKAGE_tar
+	bool
+	default y
+
+config PACKAGE_TAR_GZIP
+	bool
+	default y
+
+config PACKAGE_TAR_BZIP2
+	bool
+	default y
+
+config PACKAGE_TAR_XZ
+	bool
+	default y
 
 config PACKAGE_tini
 	bool
