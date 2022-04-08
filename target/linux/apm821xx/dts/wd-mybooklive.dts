@@ -1,10 +1,7 @@
+// SPDX-License-Identifier: GPL-2.0-only
 /*
  * Copyright 2008 DENX Software Engineering, Stefan Roese <sr@denx.de>
  * (c) Copyright 2010 Western Digital Technologies, Inc. All Rights Reserved.
- *
- * This file is licensed under the terms of the GNU General Public
- * License version 2.  This program is licensed "as is" without
- * any warranty of any kind, whether express or implied.
  */
 
 /dts-v1/;
@@ -122,27 +119,11 @@
 	usbpwr: usb-regulator {
 		compatible = "regulator-fixed";
 		regulator-name = "Power USB Core";
-		gpios = <&GPIO1 2 GPIO_ACTIVE_LOW>;
+		gpios = <&GPIO1 2 GPIO_ACTIVE_HIGH>;
 		regulator-min-microvolt = <5000000>;
 		regulator-max-microvolt = <5000000>;
-	};
-
-	sata1pwr: sata1-regulator {
-		compatible = "regulator-fixed";
-		regulator-name = "Power Drive Port 1";
-		gpios = <&GPIO1 3 GPIO_ACTIVE_LOW>;
-		regulator-min-microvolt = <12000000>;
-		regulator-max-microvolt = <12000000>;
-		regulator-always-on; /* needed to read OS from HDD */
-	};
-
-	sata0pwr: sata0-regulator {
-		compatible = "regulator-fixed";
-		regulator-name = "Power Drive Port 0";
-		gpios = <&GPIO1 7 GPIO_ACTIVE_LOW>;
-		regulator-min-microvolt = <12000000>;
-		regulator-max-microvolt = <12000000>;
-		regulator-always-on; /* needed to read OS from HDD */
+		regulator-boot-on; /* uboot sets this */
+		enable-active-high;
 	};
 };
 
@@ -179,10 +160,20 @@
 
 &SATA0 {
 	status = "okay";
+
+	drive0: sata-port@0 {
+		reg = <0>;
+		#thermal-sensor-cells = <0>;
+	};
 };
 
 &SATA1 {
 	status = "okay";
+
+	drive1: sata-port@0 {
+		reg = <0>;
+		#thermal-sensor-cells = <0>;
+	};
 };
 
 &UART0 {

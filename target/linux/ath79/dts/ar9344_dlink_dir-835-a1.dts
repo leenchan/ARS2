@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: GPL-2.0-or-later OR MIT
-/dts-v1/;
 
 #include "ar9344_dlink_dir-8x5.dtsi"
 
@@ -8,40 +7,38 @@
 	compatible = "dlink,dir-835-a1", "qca,ar9344";
 
 	aliases {
-		led-boot = &orange_power;
-		led-failsafe = &orange_power;
-		led-running = &green_power;
-		led-upgrade = &orange_power;
-		serial0 = &uart;
+		led-boot = &led_power_orange;
+		led-failsafe = &led_power_orange;
+		led-running = &led_power_green;
+		led-upgrade = &led_power_orange;
 	};
 
 	leds {
 		compatible = "gpio-leds";
 
-		green_power: green_power {
-			label = "d-link:green:power";
+		led_power_green: power_green {
+			label = "green:power";
 			gpios = <&gpio 22 GPIO_ACTIVE_LOW>;
 		};
 
-		green_wan {
-			label = "d-link:green:wan";
+		wan_green {
+			label = "green:wan";
 			gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
 		};
 
-		green_wps {
-			label = "d-link:green:wps";
+		wps {
+			label = "green:wps";
 			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
 		};
 
-		orange_power: orange_power {
-			label = "d-link:orange:power";
+		led_power_orange: power_orange {
+			label = "orange:power";
 			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
 		};
 
-		orange_wan {
-			label = "d-link:orange:wan";
+		wan_orange {
+			label = "orange:wan";
 			gpios = <&gpio 19 GPIO_ACTIVE_LOW>;
 		};
 	};
 };
-

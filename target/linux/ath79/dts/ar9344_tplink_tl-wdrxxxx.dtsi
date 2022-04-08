@@ -1,35 +1,35 @@
 // SPDX-License-Identifier: GPL-2.0-or-later OR MIT
 
+#include "ar9344.dtsi"
+
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
 
-#include "ar9344.dtsi"
-
 / {
 	aliases {
-		led-boot = &system;
-		led-failsafe = &system;
-		led-running = &system;
-		led-upgrade = &system;
+		led-boot = &led_system;
+		led-failsafe = &led_system;
+		led-running = &led_system;
+		led-upgrade = &led_system;
 	};
 
 	leds: leds {
 		compatible = "gpio-leds";
 
 		wlan2g {
-			label = "tp-link:green:wlan2g";
+			label = "green:wlan2g";
 			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "phy0tpt";
 		};
 
-		system: system {
-			label = "tp-link:green:system";
+		led_system: system {
+			label = "green:system";
 			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
 			default-state = "on";
 		};
 
 		qss {
-			label = "tp-link:green:qss";
+			label = "green:qss";
 			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -38,15 +38,14 @@
 		compatible = "gpio-leds";
 
 		wlan5g {
-			label = "tp-link:green:wlan5g";
+			label = "green:wlan5g";
 			gpios = <&ath9k 0 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "phy1tpt";
 		};
 	};
 
 	keys {
-		compatible = "gpio-keys-polled";
-		poll-interval = <20>;
+		compatible = "gpio-keys";
 
 		reset {
 			linux,code = <KEY_RESTART>;
@@ -67,19 +66,13 @@
 	clock-frequency = <40000000>;
 };
 
-&uart {
-	status = "okay";
-};
-
 &spi {
-	num-cs = <1>;
-
 	status = "okay";
 
 	flash@0 {
 		compatible = "jedec,spi-nor";
 		reg = <0>;
-		spi-max-frequency = <25000000>;
+		spi-max-frequency = <33000000>;
 
 		partitions {
 			compatible = "fixed-partitions";

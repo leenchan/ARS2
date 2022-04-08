@@ -1,14 +1,18 @@
 // SPDX-License-Identifier: GPL-2.0-or-later OR MIT
 
+#include "qca956x.dtsi"
+
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
 
-#include "qca956x.dtsi"
+/ {
+	aliases {
+		label-mac-device = &wmac;
+	};
+};
 
 &spi {
 	status = "okay";
-
-	num-cs = <1>;
 
 	flash@0 {
 		compatible = "jedec,spi-nor";
@@ -20,7 +24,7 @@
 			#address-cells = <1>;
 			#size-cells = <1>;
 
-			uboot:	partition@0 {
+			uboot: partition@0 {
 				label = "u-boot";
 				reg = <0x000000 0x020000>;
 				read-only;
@@ -39,10 +43,6 @@
 			};
 		};
 	};
-};
-
-&uart {
-	status = "okay";
 };
 
 &eth0 {

@@ -3,7 +3,7 @@
 #
 
 AWK=gawk
-DIR=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/share/et
+DIR=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/share/et
 
 if test "$1" = "--build-tree" ; then
     shift;

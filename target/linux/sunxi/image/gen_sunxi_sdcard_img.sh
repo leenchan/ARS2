@@ -1,10 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
+# SPDX-License-Identifier: GPL-2.0-only
 #
 # Copyright (C) 2013 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
 
 set -ex
 [ $# -eq 6 ] || {
@@ -22,7 +19,7 @@ UBOOT="$6"
 head=4
 sect=63
 
-set `ptgen -o $OUTPUT -h $head -s $sect -l 1024 -t c -p ${BOOTFSSIZE}M -t 83 -p ${ROOTFSSIZE}M`
+set $(ptgen -o $OUTPUT -h $head -s $sect -l 1024 -t c -p ${BOOTFSSIZE}M -t 83 -p ${ROOTFSSIZE}M)
 
 BOOTOFFSET="$(($1 / 512))"
 BOOTSIZE="$(($2 / 512))"

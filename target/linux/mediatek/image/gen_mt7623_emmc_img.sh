@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # This script is used only to create the "legacy" image for UniElec U7623,
 # suitable for upgrading from the vendor OpenWrt or from OpenWrt 19.07.

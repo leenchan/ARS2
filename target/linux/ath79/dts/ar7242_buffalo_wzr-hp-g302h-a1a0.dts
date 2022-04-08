@@ -1,19 +1,18 @@
 // SPDX-License-Identifier: GPL-2.0-or-later OR MIT
-/dts-v1/;
+
+#include "ar7242.dtsi"
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
-
-#include "ar7242.dtsi"
 
 / {
 	compatible = "buffalo,wzr-hp-g302h-a1a0", "qca,ar7242";
 	model = "Buffalo WZR-HP-G302H A1A0";
 
 	aliases {
-		led-boot = &diag;
-		led-failsafe = &diag;
-		led-upgrade = &diag;
+		led-boot = &led_diag;
+		led-failsafe = &led_diag;
+		led-upgrade = &led_diag;
 	};
 
 	extosc: ref {
@@ -23,8 +22,7 @@
 	};
 
 	keys {
-		compatible = "gpio-keys-polled";
-		poll-interval = <20>;
+		compatible = "gpio-keys";
 
 		reset {
 			label = "reset";
@@ -33,7 +31,7 @@
 			debounce-interval = <60>;
 		};
 
-		button_usb {
+		usb {
 			label = "usb";
 			linux,code = <BTN_2>;
 			gpios = <&gpio 7 GPIO_ACTIVE_LOW>;
@@ -67,8 +65,8 @@
 	leds {
 		compatible = "gpio-leds";
 
-		diag: diag {
-			label = "buffalo:red:diag";
+		led_diag: diag {
+			label = "red:diag";
 			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -77,35 +75,35 @@
 		compatible = "gpio-leds";
 
 		usb {
-			label = "buffalo:blue:usb";
+			label = "blue:usb";
 			gpios = <&ath9k 4 GPIO_ACTIVE_LOW>;
 			trigger-sources = <&hub_port>;
 			linux,default-trigger = "usbport";
 		};
 
 		wireless {
-			label = "buffalo:green:wireless";
+			label = "green:wireless";
 			gpios = <&ath9k 5 GPIO_ACTIVE_LOW>;
 			linux,default-trigger = "phy0tpt";
 		};
 
 		security {
-			label = "buffalo:orange:security";
+			label = "orange:security";
 			gpios = <&ath9k 6 GPIO_ACTIVE_LOW>;
 		};
 
 		router {
-			label = "buffalo:green:router";
+			label = "green:router";
 			gpios = <&ath9k 7 GPIO_ACTIVE_LOW>;
 		};
 
 		movie_engine_on {
-			label = "buffalo:blue:movie_engine_on";
+			label = "blue:movie_engine_on";
 			gpios = <&ath9k 8 GPIO_ACTIVE_LOW>;
 		};
 
 		movie_engine_off {
-			label = "buffalo:blue:movie_engine_off";
+			label = "blue:movie_engine_off";
 			gpios = <&ath9k 9 GPIO_ACTIVE_LOW>;
 		};
 	};
@@ -164,8 +162,8 @@
 
 &spi {
 	status = "okay";
+
 	cs-gpios = <0>, <0>;
-	num-cs = <2>;
 
 	flash0: flash@0 {
 		compatible = "jedec,spi-nor";
@@ -217,10 +215,6 @@
 
 &pll {
 	clocks = <&extosc>;
-};
-
-&uart {
-	status = "okay";
 };
 
 &usb_phy {

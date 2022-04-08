@@ -1,9 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0-only
 #
 # Copyright (C) 2013 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
+
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/image.mk
 
@@ -35,7 +33,7 @@ define Build/boot-overlay
 
 	$(STAGING_DIR_HOST)/bin/mkfs.ubifs \
 		--space-fixup --compr=zlib --squash-uids \
-		$(MKUBIFS_OPTS) -c 8124 \
+		$(MKUBIFS_OPTS) -c 16248 \
 		-o $@.boot.ubifs -d $@.boot
 
 	$(TAR) -C $@.boot -cf $@.boot.tar .
@@ -131,7 +129,9 @@ define Device/Default
 endef
 
 define Device/ventana
-  DEVICE_TITLE := Gateworks Ventana family (normal NAND flash)
+  DEVICE_VENDOR := Gateworks
+  DEVICE_MODEL := Ventana family
+  DEVICE_VARIANT := normal NAND flash
   DEVICE_DTS:= \
 	imx6dl-gw51xx \
 	imx6dl-gw52xx \
@@ -141,6 +141,10 @@ define Device/ventana
 	imx6dl-gw552x \
 	imx6dl-gw553x \
 	imx6dl-gw5904 \
+	imx6dl-gw5907 \
+	imx6dl-gw5910 \
+	imx6dl-gw5912 \
+	imx6dl-gw5913 \
 	imx6q-gw51xx \
 	imx6q-gw52xx \
 	imx6q-gw53xx \
@@ -149,19 +153,24 @@ define Device/ventana
 	imx6q-gw551x \
 	imx6q-gw552x \
 	imx6q-gw553x \
-	imx6q-gw5904
+	imx6q-gw5904 \
+	imx6q-gw5907 \
+	imx6q-gw5910 \
+	imx6q-gw5912 \
+	imx6q-gw5913
   DEVICE_PACKAGES := kmod-sky2 kmod-sound-core kmod-sound-soc-imx kmod-sound-soc-imx-sgtl5000 \
 	kmod-can kmod-can-flexcan kmod-can-raw \
 	kmod-hwmon-gsc \
 	kmod-leds-gpio kmod-pps-gpio \
 	kobs-ng
   KERNEL += | boot-overlay
-  IMAGES := nand.ubi bootfs.tar.gz
+  IMAGES := nand.ubi bootfs.tar.gz dtb
   IMAGE_NAME = $$(IMAGE_PREFIX)-$$(1).$$(2)
   UBINIZE_PARTS = boot=$$(KDIR_KERNEL_IMAGE).boot.ubifs=15
   BOOT_SCRIPT := bootscript-ventana
   IMAGE/nand.ubi := append-ubi
-  IMAGE/bootfs.tar.gz := bootfs.tar.gz | install-dtb
+  IMAGE/bootfs.tar.gz := bootfs.tar.gz
+  IMAGE/dtb := install-dtb
   IMAGE_NAME = $$(IMAGE_PREFIX)-$$(1)-$$(2)
   PAGESIZE := 2048
   BLOCKSIZE := 128k
@@ -171,8 +180,10 @@ TARGET_DEVICES += ventana
 
 define Device/ventana-large
   $(Device/ventana)
+  DEVICE_VENDOR := Gateworks
+  DEVICE_MODEL := Ventana family
+  DEVICE_VARIANT := large NAND flash
   DEVICE_NAME := ventana
-  DEVICE_TITLE := Gateworks Ventana family (large NAND flash)
   IMAGES := nand.ubi
   PAGESIZE := 4096
   BLOCKSIZE := 256k
@@ -181,27 +192,31 @@ endef
 TARGET_DEVICES += ventana-large
 
 define Device/wandboard
-  DEVICE_TITLE := Wandboard Dual
+  DEVICE_VENDOR := Wandboard
+  DEVICE_MODEL := Dual
   DEVICE_DTS := imx6dl-wandboard
 endef
 TARGET_DEVICES += wandboard
 
 define Device/cubox-i
-  KERNEL := kernel-bin | install-dtb
+  DEVICE_VENDOR := SolidRun
+  DEVICE_MODEL := CuBox-i
+  KERNEL := kernel-bin
   UBOOT := mx6cuboxi
   BOOT_SCRIPT = bootscript-cubox
   DEVICE_NAME := cubox
-  DEVICE_TITLE := SolidRun CuBox-i
   DEVICE_PACKAGES := kmod-drm-imx kmod-drm-imx-hdmi kmod-usb-hid
   DEVICE_DTS := imx6q-cubox-i imx6dl-cubox-i imx6q-hummingboard imx6dl-hummingboard
-  IMAGES := combined.bin
+  IMAGES := combined.bin dtb
   FILESYSTEMS := squashfs
   IMAGE/combined.bin := append-rootfs | pad-extra 128k | imx6-sdcard
+  IMAGE/dtb := install-dtb
 endef
 TARGET_DEVICES += cubox-i
 
 define Device/apalis
-  DEVICE_TITLE := Toradex Apalis family
+  DEVICE_VENDOR := Toradex
+  DEVICE_MODEL := Apalis family
   SUPPORTED_DEVICES := apalis,ixora apalis,eval
   DEVICE_DTS := \
 	  imx6q-apalis-eval \

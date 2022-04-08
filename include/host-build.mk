@@ -129,7 +129,6 @@ define Host/Exports/Default
   $(1) : export STAGING_PREFIX=$$(HOST_BUILD_PREFIX)
   $(1) : export PKG_CONFIG_PATH=$$(STAGING_DIR_HOST)/lib/pkgconfig:$$(HOST_BUILD_PREFIX)/lib/pkgconfig
   $(1) : export PKG_CONFIG_LIBDIR=$$(HOST_BUILD_PREFIX)/lib/pkgconfig
-  $(if $(CONFIG_CCACHE),$(1) : export CCACHE_DIR:=$(STAGING_DIR_HOST)/ccache)
   $(if $(HOST_CONFIG_SITE),$(1) : export CONFIG_SITE:=$(HOST_CONFIG_SITE))
   $(if $(IS_PACKAGE_BUILD),$(1) : export PATH=$$(TARGET_PATH_PKG))
 endef
@@ -190,11 +189,11 @@ ifndef DUMP
   host-install: host-compile
 
   host-clean-build: FORCE
+	$(call Host/Uninstall)
 	rm -rf $(HOST_BUILD_DIR) $(HOST_STAMP_BUILT)
 
   host-clean: host-clean-build
 	$(call Host/Clean)
-	$(call Host/Uninstall)
 	rm -rf $(HOST_STAMP_INSTALLED)
 
     ifneq ($(CONFIG_AUTOREMOVE),)

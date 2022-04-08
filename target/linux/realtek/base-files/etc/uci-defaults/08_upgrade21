@@ -1,0 +1,95 @@
+#!/bin/sh
+
+nonconf_files_of_pkg() {
+    local pkgname="$1"
+    if [ -s /overlay/upper/usr/lib/opkg/info/${pkgname}.conffiles ]; then
+        grep -hvxFf /overlay/upper/usr/lib/opkg/info/${pkgname}.conffiles \
+            /overlay/upper/usr/lib/opkg/info/${pkgname}.list
+    else
+        cat /overlay/upper/usr/lib/opkg/info/${pkgname}.list
+    fi
+}
+
+reset_pkg() {
+    local pkgname="$1"
+    local line
+    local dep
+    local deps
+    if [ -e /overlay/upper/usr/lib/opkg/info/${pkgname}.control ]; then
+        if [ -f /overlay/upper/usr/lib/opkg/info/${pkgname}.list ]; then
+            nonconf_files_of_pkg "${pkgname}" | while read; do
+		        line="$REPLY"
+                rm -f "/overlay/upper/${line}"
+            done
+            rm -f /overlay/upper/usr/lib/opkg/info/${pkgname}.list
+        fi
+        if [ -f /overlay/upper/usr/lib/opkg/info/${pkgname}.control ]; then
+            deps=`grep '^Depends: ' /overlay/upper/usr/lib/opkg/info/${pkgname}.control | dd bs=1 skip=8 2>/dev/null | sed 's/,/ /g'`
+            mv /overlay/upper/usr/lib/opkg/info/${pkgname}.control /overlay/upper/usr/lib/opkg/info/${pkgname}.delcontrol
+            for dep in $deps ; do
+                reset_pkg "$dep"
+            done
+        fi
+        rm -f /overlay/upper/usr/lib/opkg/info/${pkgname}.*
+    fi
+}
+
+if [ -e /dev/console ]; then
+    exec >> /dev/console
+    exec 2>&1
+fi
+
+if ! [ -f /etc/uci-defaults/09_realtek ]; then
+    if [ -f /etc/config/dockerd -a -f /etc/config/dockerman ]; then
+        local docker_root=`uci get dockerman.local.daemon_data_root`
+        if [ -n "$docker_root" ]; then
+            uci set "dockerd.globals.data_root=$docker_root"
+        fi
+        uci del_list dockerd.firewall.blocked_interfaces=wan
+        uci commit dockerd
+        local docker_ea=`uci get dockerman.local.daemon_ea`
+        if [ -n "$docker_ea" ] && [ "$docker_ea" = "true" -o  "$docker_ea" = "1" ]; then
+            /etc/init.d/dockerd enable
+        fi
+        rm -f /overlay/upper/etc/init.d/dockerman
+    fi
+    uci -q batch <<-EOF >/dev/null
+        del_list ucitrack.@network[0].affects=wan_drop
+        commit ucitrack
+EOF
+    rm -f /overlay/upper/usr/lib/lua/luci/view/cbi/dynlist.htm
+
+    for pkg in luci-app-ttyd luci-i18n-ttyd-zh-cn luci-app-argon-config luci-i18n-argon-config-zh-cn \
+            luci-theme-argon luci-theme-argon-18.06 luci-base uhttpd iptables firewall ip-full dnsmasq-full \
+            netifd odhcp6c ppp wireguard-tools luci-proto-ppp luci-proto-ipv6 luci-proto-wireguard ; do
+        reset_pkg "$pkg"
+    done
+    uci -q batch <<-EOF >/dev/null
+        set luci.themes.Argon=/luci-static/argon
+        commit luci
+EOF
+
+fi
+
+rm -f /overlay/upper/usr/lib/lua/luci/dispatcher.lua
+
+uci get luci.apply >/dev/null 2>&1 || uci -q batch <<-EOF >/dev/null
+    add luci internal
+    rename luci.@internal[-1]=apply
+    set luci.apply.timeout=5
+    set luci.apply.display=1.5
+    commit luci
+EOF
+
+uci -q batch <<-EOF >/dev/null
+    set luci.apply.rollback=30
+    set luci.apply.holdoff=2
+    commit luci
+EOF
+
+uci -q batch <<-EOF >/dev/null
+    set argon.@global[0].mode=light
+    commit argon
+EOF
+
+exit 0

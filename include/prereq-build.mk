@@ -11,8 +11,8 @@ PKG_NAME:=Build dependency
 
 # Required for the toolchain
 $(eval $(call TestHostCommand,working-make, \
-	Please install GNU make v3.81 or later. (This version has bugs), \
-	$(MAKE) -v | grep -E 'Make (3\.8[1-9]|3\.9[0-9]|[4-9]\.)'))
+	Please install GNU make v3.82 or later. (This version has bugs), \
+	$(MAKE) -v | grep -E 'Make (3\.8[2-9]|3\.9[0-9]|[4-9]\.)'))
 
 $(eval $(call TestHostCommand,case-sensitive-fs, \
 	OpenWrt can only be built on a case-sensitive filesystem, \
@@ -93,6 +93,11 @@ $(eval $(call SetupHostCommand,find,Please install GNU 'find', \
 $(eval $(call SetupHostCommand,bash,Please install GNU 'bash', \
 	bash --version 2>&1 | grep GNU))
 
+$(eval $(call SetupHostCommand,xargs, \
+	Please install 'xargs' that supports '-r/--no-run-if-empty', \
+	gxargs -r --version, \
+	xargs -r --version))
+
 $(eval $(call SetupHostCommand,patch,Please install GNU 'patch', \
 	gpatch --version 2>&1 | grep 'Free Software Foundation', \
 	patch --version 2>&1 | grep 'Free Software Foundation'))
@@ -105,9 +110,9 @@ $(eval $(call SetupHostCommand,cp,Please install GNU fileutils, \
 	gcp --help 2>&1 | grep 'Copy SOURCE', \
 	cp --help 2>&1 | grep 'Copy SOURCE'))
 
-$(eval $(call SetupHostCommand,seq,, \
+$(eval $(call SetupHostCommand,seq,Please install seq, \
 	gseq --version, \
-	seq --version))
+	seq --version 2>&1 | grep seq))
 
 $(eval $(call SetupHostCommand,awk,Please install GNU 'awk', \
 	gawk --version 2>&1 | grep GNU, \
@@ -117,11 +122,15 @@ $(eval $(call SetupHostCommand,grep,Please install GNU 'grep', \
 	ggrep --version 2>&1 | grep GNU, \
 	grep --version 2>&1 | grep GNU))
 
+$(eval $(call SetupHostCommand,egrep,Please install GNU 'grep', \
+	gegrep --version 2>&1 | grep GNU, \
+	egrep --version 2>&1 | grep GNU))
+
 $(eval $(call SetupHostCommand,getopt, \
 	Please install an extended getopt version that supports --long, \
 	gnugetopt -o t --long test -- --test | grep '^ *--test *--', \
-	/usr/local/bin/getopt -o t --long test -- --test | grep '^ *--test *--', \
-	getopt -o t --long test -- --test | grep '^ *--test *--'))
+	getopt -o t --long test -- --test | grep '^ *--test *--', \
+	/usr/local/opt/gnu-getopt/bin/getopt -o t --long test -- --test | grep '^ *--test *--'))
 
 $(eval $(call SetupHostCommand,stat,Cannot find a file stat utility, \
 	gnustat -c%s $(TOPDIR)/Makefile, \
@@ -141,18 +150,43 @@ $(eval $(call SetupHostCommand,wget,Please install GNU 'wget', \
 $(eval $(call SetupHostCommand,perl,Please install Perl 5.x, \
 	perl --version | grep "perl.*v5"))
 
-$(eval $(call CleanupPython3))
+$(eval $(call CleanupPython2))
 
-$(eval $(call SetupHostCommand,python,Please install Python 2.x, \
-	python2.7 -V 2>&1 | grep 'Python 2.7', \
-	python2 -V 2>&1 | grep 'Python 2', \
-	python -V 2>&1 | grep 'Python 2'))
+$(eval $(call SetupHostCommand,python,Please install Python >= 3.5, \
+	python3.10 -V 2>&1 | grep 'Python 3', \
+	python3.9 -V 2>&1 | grep 'Python 3', \
+	python3.8 -V 2>&1 | grep 'Python 3', \
+	python3.7 -V 2>&1 | grep 'Python 3', \
+	python3.6 -V 2>&1 | grep 'Python 3', \
+	python3.5 -V 2>&1 | grep 'Python 3', \
+	python3 -V 2>&1 | grep -E 'Python 3\.([5-9]|10)\.?'))
+
+$(eval $(call SetupHostCommand,python3,Please install Python >= 3.5, \
+	python3.10 -V 2>&1 | grep 'Python 3', \
+	python3.9 -V 2>&1 | grep 'Python 3', \
+	python3.8 -V 2>&1 | grep 'Python 3', \
+	python3.7 -V 2>&1 | grep 'Python 3', \
+	python3.6 -V 2>&1 | grep 'Python 3', \
+	python3.5 -V 2>&1 | grep 'Python 3', \
+	python3 -V 2>&1 | grep -E 'Python 3\.([5-9]|10)\.?'))
+
+$(eval $(call TestHostCommand,python3-distutils, \
+	Please install the Python3 distutils module, \
+	$(STAGING_DIR_HOST)/bin/python3 -c 'import distutils'))
 
 $(eval $(call SetupHostCommand,git,Please install Git (git-core) >= 1.7.12.2, \
 	git --exec-path | xargs -I % -- grep -q -- --recursive %/git-submodule))
 
 $(eval $(call SetupHostCommand,file,Please install the 'file' package, \
 	file --version 2>&1 | grep file))
+
+$(eval $(call SetupHostCommand,rsync,Please install 'rsync', \
+	rsync --version </dev/null))
+
+$(eval $(call SetupHostCommand,which,Please install 'which', \
+	/usr/bin/which which, \
+	/bin/which which, \
+	which which))
 
 $(STAGING_DIR_HOST)/bin/mkhash: $(SCRIPT_DIR)/mkhash.c
 	mkdir -p $(dir $@)

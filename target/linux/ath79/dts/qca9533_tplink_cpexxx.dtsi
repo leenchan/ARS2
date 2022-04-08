@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later OR MIT
-/dts-v1/;
+
+#include "qca953x.dtsi"
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
-
-#include "qca953x.dtsi"
 
 / {
 	aliases {
@@ -12,37 +11,37 @@
 		led-failsafe = &led_link4;
 		led-running = &led_link4;
 		led-upgrade = &led_link4;
+		label-mac-device = &wmac;
 	};
 
 	leds: leds {
 		compatible = "gpio-leds";
 
 		link1 {
-			label = "tp-link:green:link1";
+			label = "green:link1";
 			gpios = <&gpio 13 GPIO_ACTIVE_LOW>;
 		};
 
 		link2 {
-			label = "tp-link:green:link2";
+			label = "green:link2";
 			gpios = <&gpio 14 GPIO_ACTIVE_LOW>;
 		};
 
 		link3 {
-			label = "tp-link:green:link3";
+			label = "green:link3";
 			gpios = <&gpio 15 GPIO_ACTIVE_LOW>;
 		};
 
 		led_link4: link4 {
-			label = "tp-link:green:link4";
+			label = "green:link4";
 			gpios = <&gpio 16 GPIO_ACTIVE_LOW>;
 		};
 	};
 
 	keys {
-		compatible = "gpio-keys-polled";
-		poll-interval = <100>;
+		compatible = "gpio-keys";
 
-		reset_button {
+		reset {
 			label = "Reset button";
 			linux,code = <KEY_RESTART>;
 			gpios = <&gpio 17 GPIO_ACTIVE_LOW>;
@@ -50,14 +49,8 @@
 	};
 };
 
-&uart {
-	status = "okay";
-};
-
 &spi {
 	status = "okay";
-
-	num-cs = <1>;
 
 	flash@0 {
 		#address-cells = <1>;
@@ -110,17 +103,17 @@
 	};
 };
 
-&wmac {
-	status = "okay";
-
-	mtd-cal-data = <&art 0x1000>;
-	mtd-mac-address = <&info 0x8>;
-};
-
 &eth0 {
 	status = "okay";
 
 	phy-handle = <&swphy4>;
 
+	mtd-mac-address = <&info 0x8>;
+};
+
+&wmac {
+	status = "okay";
+
+	mtd-cal-data = <&art 0x1000>;
 	mtd-mac-address = <&info 0x8>;
 };

@@ -10,6 +10,10 @@ platform_check_image() {
 
 platform_do_upgrade() {
 	case "$(board_name)" in
+	asrock,g10)
+		asrock_upgrade_prepare
+		nand_do_upgrade "$1"
+		;;
 	buffalo,wxr-2533dhp)
 		buffalo_upgrade_prepare_ubi
 		CI_ROOTPART="ubi_rootfs"
@@ -21,13 +25,25 @@ platform_do_upgrade() {
 	netgear,r7500v2 |\
 	netgear,r7800 |\
 	qcom,ipq8064-ap148 |\
-	qcom,ipq8064-ap161 |\
-	zyxel,nbg6817)
+	qcom,ipq8064-ap161)
 		nand_do_upgrade "$1"
 		;;
+	edgecore,ecw5410)
+		part="$(awk -F 'ubi.mtd=' '{printf $2}' /proc/cmdline | sed -e 's/ .*$//')"
+		if [ "$part" = "rootfs1" ]; then
+			fw_setenv active 2 || exit 1
+			CI_UBIPART="rootfs2"
+		else
+			fw_setenv active 1 || exit 1
+			CI_UBIPART="rootfs1"
+		fi
+		nand_do_upgrade "$1"
+		;;
+	linksys,ea7500-v1 |\
 	linksys,ea8500)
 		platform_do_upgrade_linksys "$1"
 		;;
+	tplink,ad7200 |\
 	tplink,c2600)
 		PART_NAME="os-image:rootfs"
 		MTD_CONFIG_ARGS="-s 0x200000"
@@ -38,17 +54,11 @@ platform_do_upgrade() {
 		MTD_CONFIG_ARGS="-s 0x200000"
 		default_do_upgrade "$1"
 		;;
-	nec,wg2600hp |\
-	*)
-		default_do_upgrade "$1"
-		;;
-	esac
-}
-
-platform_nand_pre_upgrade() {
-	case "$(board_name)" in
 	zyxel,nbg6817)
 		zyxel_do_upgrade "$1"
+		;;
+	*)
+		default_do_upgrade "$1"
 		;;
 	esac
 }
