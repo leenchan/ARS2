@@ -1,4 +1,4 @@
-cmd_scripts/unifdef := gcc -Wp,-MD,scripts/.unifdef.d -O2 -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include -I./tools/include  -o scripts/unifdef scripts/unifdef.c -L/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib 
+cmd_scripts/unifdef := gcc -Wp,-MD,scripts/.unifdef.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include -I./tools/include  -o scripts/unifdef scripts/unifdef.c -L/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib 
 
 source_scripts/unifdef := scripts/unifdef.c
 
@@ -19,8 +19,8 @@ deps_scripts/unifdef := \
   /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/endian.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/byteswap.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/endian.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/byteswap.h \
   /usr/include/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/endian.h \

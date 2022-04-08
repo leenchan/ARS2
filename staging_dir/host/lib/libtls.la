@@ -17,15 +17,15 @@ old_library='libtls.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib/libssl.la /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib/libcrypto.la -lresolv -lpthread'
+dependency_libs=' -L/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib -lresolv -lpthread'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
 
 # Version information for libtls.
-current=19
+current=20
 age=0
-revision=6
+revision=1
 
 # Is this an already installed library?
 installed=yes
@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib'
+libdir='/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib'

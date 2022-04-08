@@ -34,7 +34,7 @@ snap_size_mb=256
 fstrim=0
 reap=0
 e2fsck_opts=""
-conffile="/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/etc/e2scrub.conf"
+conffile="/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/etc/e2scrub.conf"
 
 test -f "${conffile}" && . "${conffile}"
 
@@ -49,7 +49,7 @@ print_help() {
 }
 
 print_version() {
-	echo "e2scrub 1.45.4 (23-Sep-2019)"
+	echo "e2scrub 1.45.6 (20-Mar-2020)"
 }
 
 exitcode() {
@@ -66,7 +66,7 @@ exitcode() {
 	# for capturing all the log messages if the scrub fails, because the
 	# fail service uses the service name to gather log messages for the
 	# error report.
-	if [ -n "${SERVICE_MODE}" ]; then
+	if [ -n "${SERVICE_MODE}" -a "${ret}" -ne 0 ]; then
 		test "${ret}" -ne 0 && ret=1
 		sleep 2
 	fi
@@ -187,21 +187,21 @@ check() {
 	# non-zero status (errors fixed or remaining) then this fs is bad.
 	E2FSCK_FIXES_ONLY=1
 	export E2FSCK_FIXES_ONLY
-	${DBG} "/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/e2fsck" -E journal_only -p ${e2fsck_opts} "${snap_dev}" || return $?
-	${DBG} "/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/e2fsck" -f -y ${e2fsck_opts} "${snap_dev}"
+	${DBG} "/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/e2fsck" -E journal_only -p ${e2fsck_opts} "${snap_dev}" || return $?
+	${DBG} "/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/e2fsck" -f -y ${e2fsck_opts} "${snap_dev}"
 }
 
 mark_clean() {
-	${DBG} "/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/tune2fs" -C 0 -T "${start_time}" "${dev}"
+	${DBG} "/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/tune2fs" -C 0 -T "${start_time}" "${dev}"
 }
 
 mark_corrupt() {
-	${DBG} "/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/tune2fs" -E force_fsck "${dev}"
+	${DBG} "/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/tune2fs" -E force_fsck "${dev}"
 }
 
 setup() {
 	# Try to remove snapshot for 30s, bail out if we can't remove it.
-	lveremove_deadline="$(( $(date "+%s") + 30))"
+	lvremove_deadline="$(( $(date "+%s") + 30))"
 	${DBG} lvremove -f "${LVM2_VG_NAME}/${snap}" 2>/dev/null
 	while [ -e "${snap_dev}" ] && [ "$?" -eq "5" ] &&
 	      [ "$(date "+%s")" -lt "${lvremove_deadline}" ]; do

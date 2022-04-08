@@ -81,9 +81,6 @@ struct pppol2tp_ioc_stats {
 /*
  * Ioctl definitions.
  */
-#ifdef CONFIG_RTL_819X
-#define RTLPPPIOCGFLAGS _IOR('t', 91, int)	/* get configuration flags */
-#endif
 
 #define	PPPIOCGFLAGS	_IOR('t', 90, int)	/* get configuration flags */
 #define	PPPIOCSFLAGS	_IOW('t', 89, int)	/* set configuration flags */

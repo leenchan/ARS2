@@ -1,11 +1,11 @@
-prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-exec_prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
+prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+exec_prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
 Name: uuid
 Description: Universally unique id library
-Version: 1.45.4
+Version: 1.45.6
 Requires: 
 Cflags: -I${includedir}/uuid -I${includedir}
 Libs: -L${libdir} -luuid

@@ -23,9 +23,6 @@
 #ifndef _LINUX_IF_ARP_H
 #define _LINUX_IF_ARP_H
 
-#ifndef __UAPI_DEF_INCLUDE_LINUX_IF_ARP_H
-#include <net/if_arp.h>
-#else
 #include <linux/netdevice.h>
 
 /* ARP protocol HARDWARE identifiers. */
@@ -160,5 +157,5 @@ struct arphdr {
 
 };
 
-#endif /* __UAPI_DEF_INCLUDE_LINUX_IF_ARP_H */
+
 #endif /* _LINUX_IF_ARP_H */

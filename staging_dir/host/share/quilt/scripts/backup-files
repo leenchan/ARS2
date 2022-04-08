@@ -56,7 +56,7 @@ usage ()
 if test -n "$STAGING_DIR_HOST"; then
 	: ${QUILT_DIR="$STAGING_DIR_HOST/share/quilt"}
 else
-	: ${QUILT_DIR=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/share/quilt}
+	: ${QUILT_DIR=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/share/quilt}
 fi
 
 . $QUILT_DIR/scripts/utilfns

@@ -31,10 +31,11 @@ enum blobmsg_type {
 	BLOBMSG_TYPE_INT32,
 	BLOBMSG_TYPE_INT16,
 	BLOBMSG_TYPE_INT8,
+	BLOBMSG_TYPE_BOOL = BLOBMSG_TYPE_INT8,
 	BLOBMSG_TYPE_DOUBLE,
 	__BLOBMSG_TYPE_LAST,
 	BLOBMSG_TYPE_LAST = __BLOBMSG_TYPE_LAST - 1,
-	BLOBMSG_TYPE_BOOL = BLOBMSG_TYPE_INT8,
+	BLOBMSG_CAST_INT64 = __BLOBMSG_TYPE_LAST,
 };
 
 struct blobmsg_hdr {
@@ -288,6 +289,38 @@ static inline uint64_t blobmsg_get_u64(struct blob_attr *attr)
 	return tmp;
 }
 
+static inline uint64_t blobmsg_cast_u64(struct blob_attr *attr)
+{
+	uint64_t tmp = 0;
+
+	if (blobmsg_type(attr) == BLOBMSG_TYPE_INT64)
+		tmp = blobmsg_get_u64(attr);
+	else if (blobmsg_type(attr) == BLOBMSG_TYPE_INT32)
+		tmp = blobmsg_get_u32(attr);
+	else if (blobmsg_type(attr) == BLOBMSG_TYPE_INT16)
+		tmp = blobmsg_get_u16(attr);
+	else if (blobmsg_type(attr) == BLOBMSG_TYPE_INT8)
+		tmp = blobmsg_get_u8(attr);
+
+	return tmp;
+}
+
+static inline int64_t blobmsg_cast_s64(struct blob_attr *attr)
+{
+	int64_t tmp = 0;
+
+	if (blobmsg_type(attr) == BLOBMSG_TYPE_INT64)
+		tmp = blobmsg_get_u64(attr);
+	else if (blobmsg_type(attr) == BLOBMSG_TYPE_INT32)
+		tmp = (int32_t)blobmsg_get_u32(attr);
+	else if (blobmsg_type(attr) == BLOBMSG_TYPE_INT16)
+		tmp = (int16_t)blobmsg_get_u16(attr);
+	else if (blobmsg_type(attr) == BLOBMSG_TYPE_INT8)
+		tmp = (int8_t)blobmsg_get_u8(attr);
+
+	return tmp;
+}
+
 static inline double blobmsg_get_double(struct blob_attr *attr)
 {
 	union {
@@ -313,9 +346,6 @@ void blobmsg_add_string_buffer(struct blob_buf *buf);
 int blobmsg_vprintf(struct blob_buf *buf, const char *name, const char *format, va_list arg);
 int blobmsg_printf(struct blob_buf *buf, const char *name, const char *format, ...)
      __attribute__((format(printf, 3, 4)));
-
-
-/* blobmsg to json formatting */
 
 #define blobmsg_for_each_attr(pos, attr, rem) \
 	for (rem = attr ? blobmsg_data_len(attr) : 0, \

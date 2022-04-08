@@ -54,10 +54,10 @@
 #include <linux/types.h>
 
 /* AUDIO CODECS SUPPORTED */
-#define MAX_NUM_CODECS 32
-#define MAX_NUM_CODEC_DESCRIPTORS 32
-#define MAX_NUM_BITRATES 32
-#define MAX_NUM_SAMPLE_RATES 32
+#define MAX_NUM_CODECS 10
+#define MAX_NUM_CODEC_DESCRIPTORS 2
+#define MAX_NUM_BITRATES 10
+#define MAX_NUM_SAMPLE_RATES 10
 
 /* Codecs are listed linearly to allow for extensibility */
 #define SND_AUDIOCODEC_PCM                   ((__u32) 0x00000001)
@@ -73,11 +73,18 @@
 #define SND_AUDIOCODEC_IEC61937              ((__u32) 0x0000000B)
 #define SND_AUDIOCODEC_G723_1                ((__u32) 0x0000000C)
 #define SND_AUDIOCODEC_G729                  ((__u32) 0x0000000D)
-#define SND_AUDIOCODEC_EAC3                  ((__u32) 0x0000000E)
-#define SND_AUDIOCODEC_DTS                   ((__u32) 0x0000000F)
-#define SND_AUDIOCODEC_DTS_HD                ((__u32) 0x00000010)
-#define SND_AUDIOCODEC_TRUEHD                ((__u32) 0x00000011)
-#define SND_AUDIOCODEC_AC3                   ((__u32) 0x00000012)
+/*
+ * SND_AUDIOCODEC_BESPOKE is not used for kernel 4.1
+ * Just to keep in sync with the definition in kernel 4.9
+ */
+#define SND_AUDIOCODEC_BESPOKE               ((__u32) 0x0000000E)
+/* Rtk begin */
+#define SND_AUDIOCODEC_EAC3                  ((__u32) 0x0000000F)
+#define SND_AUDIOCODEC_DTS                   ((__u32) 0x00000010)
+#define SND_AUDIOCODEC_DTS_HD                ((__u32) 0x00000011)
+#define SND_AUDIOCODEC_TRUEHD                ((__u32) 0x00000012)
+#define SND_AUDIOCODEC_AC3                   ((__u32) 0x00000013)
+/* Rtk end */
 #define SND_AUDIOCODEC_MAX                   SND_AUDIOCODEC_AC3
 /*
  * Profile and modes are listed with bit masks. This allows for a
@@ -316,7 +323,7 @@ struct snd_enc_flac {
 
 struct snd_enc_generic {
 	__u32 bw;	/* encoder bandwidth */
-	__s32 reserved[15];
+	__s32 reserved[15];	/* Can be used for SND_AUDIOCODEC_BESPOKE */
 } __attribute__((packed, aligned(4)));
 
 union snd_codec_options {

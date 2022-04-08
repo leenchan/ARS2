@@ -1,4 +1,4 @@
-cmd_scripts/kconfig/conf.o := gcc -Wp,-MD,scripts/kconfig/.conf.o.d -O2 -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include -I/usr/include/ncursesw -DCURSES_LOC="<curses.h>"  -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/conf.o scripts/kconfig/conf.c
+cmd_scripts/kconfig/conf.o := gcc -Wp,-MD,scripts/kconfig/.conf.o.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include -I/usr/include/ncursesw -DCURSES_LOC="<curses.h>"  -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/conf.o scripts/kconfig/conf.c
 
 source_scripts/kconfig/conf.o := scripts/kconfig/conf.c
 
@@ -21,8 +21,8 @@ deps_scripts/kconfig/conf.o := \
   /usr/include/ctype.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/endian.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/byteswap.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/endian.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/byteswap.h \
   /usr/include/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/endian.h \

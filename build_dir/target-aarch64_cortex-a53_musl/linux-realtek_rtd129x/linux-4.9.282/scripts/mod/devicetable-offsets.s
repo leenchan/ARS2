@@ -1,24 +1,27 @@
 	.arch armv8-a
 	.file	"devicetable-offsets.c"
-// GNU C89 (OpenWrt GCC 7.5.0 r0-42f5b70) version 7.5.0 (aarch64-openwrt-linux-musl)
-//	compiled by GNU C version 8.3.0, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0, isl version none
+// GNU C89 (OpenWrt GCC 7.5.0 r16744-794b3d6440) version 7.5.0 (aarch64-openwrt-linux-musl)
+//	compiled by GNU C version 8.3.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
 // GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-// options passed:  -nostdinc -I ./arch/arm64/include
-// -I ./arch/arm64/include/generated/uapi -I ./arch/arm64/include/generated
-// -I ./include -I ./arch/arm64/include/uapi -I ./include/uapi
+// options passed:  -fdiagnostics-color=always -nostdinc
+// -I ./arch/arm64/include -I ./arch/arm64/include/generated/uapi
+// -I ./arch/arm64/include/generated -I ./include
+// -I ./arch/arm64/include/uapi -I ./include/uapi
 // -I ./include/generated/uapi
-// -idirafter /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/target-aarch64_cortex-a53_musl/usr/include
+// -idirafter /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/target-aarch64_cortex-a53_musl/usr/include
 // -D __KERNEL__ -D JPU_FRAGMENT_FRAME_BITSTREAM -D CONFIG_AS_LSE=1
 // -D CC_HAVE_ASM_GOTO -D KBUILD_BASENAME="devicetable_offsets"
 // -D KBUILD_MODNAME="devicetable_offsets"
-// -isystem /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/toolchain-aarch64_cortex-a53_gcc-7.5.0_musl/lib/gcc/aarch64-openwrt-linux-musl/7.5.0/include
-// -include ./include/linux/kconfig.h scripts/mod/devicetable-offsets.c
-// -mlittle-endian -mgeneral-regs-only -mpc-relative-literal-loads
-// -mabi=lp64 -auxbase-strip scripts/mod/devicetable-offsets.s -g -O2 -Wall
-// -Wundef -Wstrict-prototypes -Wno-trigraphs
-// -Werror=implicit-function-declaration -Wno-format-security
-// -Wno-frame-address -Wformat-truncation=0 -Wformat-overflow=0
-// -Wno-int-in-bool-context -Wframe-larger-than=1024
+// -iremap /home/build/1296/rtd1296-openwrt-21.02.2/build_dir/target-aarch64_cortex-a53_musl:target-aarch64_cortex-a53_musl
+// -isystem ../rtd1296-openwrt-21.02.2/staging_dir/toolchain-aarch64_cortex-a53_gcc-7.5.0_musl/lib/gcc/aarch64-openwrt-linux-musl/7.5.0/include
+// -include ./include/linux/kconfig.h
+// -MD scripts/mod/.devicetable-offsets.s.d
+// scripts/mod/devicetable-offsets.c -mlittle-endian -mgeneral-regs-only
+// -mpc-relative-literal-loads -mabi=lp64
+// -auxbase-strip scripts/mod/devicetable-offsets.s -g -O2 -Wall -Wundef
+// -Wstrict-prototypes -Wno-trigraphs -Werror=implicit-function-declaration
+// -Wno-format-security -Wno-frame-address -Wformat-truncation=0
+// -Wformat-overflow=0 -Wno-int-in-bool-context -Wframe-larger-than=1024
 // -Wno-unused-but-set-variable -Wunused-const-variable=0
 // -Wdeclaration-after-statement -Wno-pointer-sign -Wno-array-bounds
 // -Wstringop-overflow=0 -Wno-restrict -Wno-maybe-uninitialized
@@ -1314,6 +1317,8 @@ main:
 	.string	"unsigned char"
 .LASF16:
 	.string	"main"
+.LASF15:
+	.string	"/home/build/1296/rtd1296-linux-4.9-2"
 .LASF8:
 	.string	"long unsigned int"
 .LASF6:
@@ -1339,11 +1344,9 @@ main:
 	.string	"short unsigned int"
 .LASF0:
 	.string	"signed char"
-.LASF15:
-	.string	"/home/build/1296/rtd1296-linux-4.9"
 .LASF14:
 	.string	"scripts/mod/devicetable-offsets.c"
 .LASF12:
 	.string	"uuid_be_index"
-	.ident	"GCC: (OpenWrt GCC 7.5.0 r0-42f5b70) 7.5.0"
+	.ident	"GCC: (OpenWrt GCC 7.5.0 r16744-794b3d6440) 7.5.0"
 	.section	.note.GNU-stack,"",@progbits

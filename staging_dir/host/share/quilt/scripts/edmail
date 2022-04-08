@@ -31,7 +31,7 @@ BEGIN {
 }
 
 setlocale(LC_MESSAGES, "");
-bindtextdomain("quilt", $ENV{'STAGING_DIR_HOST'} ? $ENV{'STAGING_DIR_HOST'} . '/share/locale' : "/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/share/locale");
+bindtextdomain("quilt", $ENV{'STAGING_DIR_HOST'} ? $ENV{'STAGING_DIR_HOST'} . '/share/locale' : "/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/share/locale");
 textdomain("quilt");
 
 sub _($) {

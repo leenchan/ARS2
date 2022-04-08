@@ -5,15 +5,15 @@
 # You can do whatever you want with this file.
 #
 
-prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-exec_prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-libdir=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib
-includedir=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include
+prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+exec_prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+libdir=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib
+includedir=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include
 
 Name: liblzma
 Description: General purpose data compression library
 URL: https://tukaani.org/xz/
-Version: 5.2.4
+Version: 5.2.5
 Cflags: -I${includedir}
 Libs: -L${libdir} -llzma
-Libs.private: -pthread 
+Libs.private: -pthread -lpthread

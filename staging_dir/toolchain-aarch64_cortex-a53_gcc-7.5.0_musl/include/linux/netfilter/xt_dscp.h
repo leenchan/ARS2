@@ -28,11 +28,4 @@ struct xt_tos_match_info {
 	__u8 invert;
 };
 
-#if defined(CONFIG_RTL_819X)
-struct ipt_tos_info {
-    __u8 tos;
-    __u8 invert;
-};
-#endif
-
 #endif /* _XT_DSCP_H */

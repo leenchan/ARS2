@@ -1,4 +1,4 @@
-cmd_scripts/basic/bin2c := gcc -Wp,-MD,scripts/basic/.bin2c.d -O2 -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include  -o scripts/basic/bin2c scripts/basic/bin2c.c -L/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib 
+cmd_scripts/basic/bin2c := gcc -Wp,-MD,scripts/basic/.bin2c.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -o scripts/basic/bin2c scripts/basic/bin2c.c -L/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib 
 
 source_scripts/basic/bin2c := scripts/basic/bin2c.c
 

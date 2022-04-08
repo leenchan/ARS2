@@ -1,5 +1,5 @@
-prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-exec_prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
+prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+exec_prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
 libdir=${prefix}/lib
 sharedlibdir=${prefix}/lib
 includedir=${prefix}/include

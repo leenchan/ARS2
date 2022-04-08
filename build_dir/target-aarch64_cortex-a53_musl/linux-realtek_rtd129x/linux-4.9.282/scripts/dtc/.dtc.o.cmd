@@ -1,4 +1,4 @@
-cmd_scripts/dtc/dtc.o := gcc -Wp,-MD,scripts/dtc/.dtc.o.d -O2 -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include -I./tools/include -Iscripts/dtc -Iscripts/dtc/libfdt -c -o scripts/dtc/dtc.o scripts/dtc/dtc.c
+cmd_scripts/dtc/dtc.o := gcc -Wp,-MD,scripts/dtc/.dtc.o.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include -I./tools/include -Iscripts/dtc -Iscripts/dtc/libfdt -c -o scripts/dtc/dtc.o scripts/dtc/dtc.c
 
 source_scripts/dtc/dtc.o := scripts/dtc/dtc.c
 
@@ -44,8 +44,8 @@ deps_scripts/dtc/dtc.o := \
   /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/endian.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/byteswap.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/endian.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/byteswap.h \
   /usr/include/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/endian.h \

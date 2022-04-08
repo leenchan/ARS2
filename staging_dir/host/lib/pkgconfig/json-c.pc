@@ -1,7 +1,7 @@
-prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-exec_prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-libdir=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/lib
-includedir=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include
+prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+exec_prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+libdir=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib
+includedir=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include
 
 Name: json-c
 Description: A JSON implementation in C

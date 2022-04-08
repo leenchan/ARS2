@@ -1,10 +1,10 @@
-prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-exec_prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
+prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+exec_prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
 Name: expat
-Version: 2.2.9
+Version: 2.2.10
 Description: expat XML parser
 URL: http://www.libexpat.org
 Libs: -L${libdir} -lexpat

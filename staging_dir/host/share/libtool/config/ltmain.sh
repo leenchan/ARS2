@@ -147,10 +147,10 @@ if test -n "$STAGING_DIR"; then
 	: ${GREP="$STAGING_DIR/../host/bin/grep"}
 	: ${SED="$STAGING_DIR/../host/bin/sed"}
 else
-	: ${EGREP="/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/grep -E"}
-	: ${FGREP="/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/grep -F"}
-	: ${GREP="/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/grep"}
-	: ${SED="/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/bin/sed"}
+	: ${EGREP="/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/grep -E"}
+	: ${FGREP="/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/grep -F"}
+	: ${GREP="/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/grep"}
+	: ${SED="/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/bin/sed"}
 fi
 : ${SHELL="${CONFIG_SHELL-/bin/sh}"}
 : ${Xsed="$SED -e 1s/^X//"}

@@ -1,11 +1,11 @@
 #openssl pkg-config source file
 
-prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
-exec_prefix=/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host
+prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
+exec_prefix=/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
 Name: LibreSSL
 Description: Secure Sockets Layer and cryptography libraries and tools
-Version: 2.9.2
+Version: 3.3.1
 Requires: libssl libcrypto

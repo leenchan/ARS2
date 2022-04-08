@@ -22,10 +22,6 @@ config TARGET_DEVICE_realtek_rtd129x_DEVICE_ars2
 	bool
 	default y
 
-config TARGET_DEVICE_realtek_rtd129x_DEVICE_bpi-w2
-	bool
-	default y
-
 config HAS_SUBTARGETS
 	bool
 	default y
@@ -86,23 +82,7 @@ config DEFAULT_curl
 	bool
 	default y
 
-config DEFAULT_ddns-scripts-cloudflare
-	bool
-	default y
-
-config DEFAULT_ddns-scripts_aliyun
-	bool
-	default y
-
-config DEFAULT_ddns-scripts_dnspod
-	bool
-	default y
-
-config DEFAULT_default-settings
-	bool
-	default y
-
-config DEFAULT_dnsmasq-full
+config DEFAULT_dnsmasq
 	bool
 	default y
 
@@ -166,6 +146,10 @@ config DEFAULT_kmod-input-gpio-keys-polled
 	bool
 	default y
 
+config DEFAULT_kmod-ipt-offload
+	bool
+	default y
+
 config DEFAULT_kmod-leds-gpio
 	bool
 	default y
@@ -202,11 +186,11 @@ config DEFAULT_libustream-openssl
 	bool
 	default y
 
-config DEFAULT_logd
+config DEFAULT_libustream-wolfssl
 	bool
 	default y
 
-config DEFAULT_luci
+config DEFAULT_logd
 	bool
 	default y
 
@@ -218,23 +202,7 @@ config DEFAULT_luci-app-cifs-mount
 	bool
 	default y
 
-config DEFAULT_luci-app-control-timewol
-	bool
-	default y
-
-config DEFAULT_luci-app-control-webrestriction
-	bool
-	default y
-
-config DEFAULT_luci-app-control-weburl
-	bool
-	default y
-
 config DEFAULT_luci-app-cpufreq
-	bool
-	default y
-
-config DEFAULT_luci-app-ddns
 	bool
 	default y
 
@@ -254,10 +222,6 @@ config DEFAULT_luci-app-hd-idle
 	bool
 	default y
 
-config DEFAULT_luci-app-ramfree
-	bool
-	default y
-
 config DEFAULT_luci-app-samba4
 	bool
 	default y
@@ -266,27 +230,11 @@ config DEFAULT_luci-app-sqm
 	bool
 	default y
 
-config DEFAULT_luci-app-timecontrol
-	bool
-	default y
-
 config DEFAULT_luci-app-ttyd
 	bool
 	default y
 
-config DEFAULT_luci-app-upnp
-	bool
-	default y
-
-config DEFAULT_luci-app-vlmcsd
-	bool
-	default y
-
-config DEFAULT_luci-app-wol
-	bool
-	default y
-
-config DEFAULT_luci-compat
+config DEFAULT_luci-i18n-alias
 	bool
 	default y
 
@@ -414,6 +362,10 @@ config DEFAULT_ppp-mod-pppoe
 	bool
 	default y
 
+config DEFAULT_procd
+	bool
+	default y
+
 config DEFAULT_resize2fs
 	bool
 	default y
@@ -443,10 +395,6 @@ config DEFAULT_urandom-seed
 	default y
 
 config DEFAULT_urngd
-	bool
-	default y
-
-config DEFAULT_wget-ssl
 	bool
 	default y
 
@@ -526,6 +474,10 @@ config REALTEK_CUSTOMIZE_SETTINGS
 	bool
 	default y
 
+config EXPERIMENTAL
+	bool
+	default n
+
 config JSON_OVERVIEW_IMAGE_INFO
 	bool
 	default n
@@ -578,6 +530,10 @@ config INCLUDE_CONFIG
 	bool
 	default n
 
+config REPRODUCIBLE_DEBUG_INFO
+	bool
+	default n
+
 config COLLECT_KERNEL_DEBUG
 	bool
 	default n
@@ -602,6 +558,10 @@ config KERNEL_SWAP
 	bool
 	default y
 
+config KERNEL_PROC_STRIPPED
+	bool
+	default n
+
 config KERNEL_DEBUG_FS
 	bool
 	default y
@@ -615,6 +575,18 @@ config KERNEL_PERF_EVENTS
 	default y
 
 config KERNEL_PROFILING
+	bool
+	default n
+
+config KERNEL_UBSAN
+	bool
+	default n
+
+config KERNEL_KASAN
+	bool
+	default n
+
+config KERNEL_KCOV
 	bool
 	default n
 
@@ -662,6 +634,26 @@ config KERNEL_BLK_DEV_BSG
 	bool
 	default n
 
+config KERNEL_TRANSPARENT_HUGEPAGE
+	bool
+	default y
+
+config KERNEL_TRANSPARENT_HUGEPAGE_ALWAYS
+	bool
+	default y
+
+config KERNEL_TRANSPARENT_HUGEPAGE_MADVISE
+	bool
+	default n
+
+config KERNEL_HUGETLBFS
+	bool
+	default y
+
+config KERNEL_HUGETLB_PAGE
+	bool
+	default y
+
 config KERNEL_MAGIC_SYSRQ
 	bool
 	default y
@@ -679,6 +671,26 @@ config KERNEL_ELF_CORE
 	default n
 
 config KERNEL_PROVE_LOCKING
+	bool
+	default n
+
+config KERNEL_SOFTLOCKUP_DETECTOR
+	bool
+	default n
+
+config KERNEL_DETECT_HUNG_TASK
+	bool
+	default n
+
+config KERNEL_WQ_WATCHDOG
+	bool
+	default n
+
+config KERNEL_DEBUG_ATOMIC_SLEEP
+	bool
+	default n
+
+config KERNEL_DEBUG_VM
 	bool
 	default n
 
@@ -726,11 +738,11 @@ config KERNEL_PERSISTENT_KEYRINGS
 	bool
 	default n
 
-config KERNEL_BIG_KEYS
+config KERNEL_KEYS_REQUEST_CACHE
 	bool
 	default n
 
-config KERNEL_ENCRYPTED_KEYS
+config KERNEL_BIG_KEYS
 	bool
 	default n
 
@@ -754,7 +766,19 @@ config KERNEL_CGROUP_DEVICE
 	bool
 	default y
 
+config KERNEL_CGROUP_HUGETLB
+	bool
+	default y
+
 config KERNEL_CGROUP_PIDS
+	bool
+	default y
+
+config KERNEL_CGROUP_RDMA
+	bool
+	default y
+
+config KERNEL_CGROUP_BPF
 	bool
 	default y
 
@@ -838,7 +862,11 @@ config KERNEL_NET_CLS_CGROUP
 	bool
 	default y
 
-config KERNEL_NETPRIO_CGROUP
+config KERNEL_CGROUP_NET_CLASSID
+	bool
+	default n
+
+config KERNEL_CGROUP_NET_PRIO
 	bool
 	default y
 
@@ -863,10 +891,6 @@ config KERNEL_PID_NS
 	default y
 
 config KERNEL_NET_NS
-	bool
-	default y
-
-config KERNEL_LXC_MISC
 	bool
 	default y
 
@@ -907,6 +931,14 @@ config KERNEL_IPV6_MROUTE
 	default y
 
 config KERNEL_IPV6_PIMSM_V2
+	bool
+	default n
+
+config KERNEL_IPV6_SEG6_LWTUNNEL
+	bool
+	default y
+
+config KERNEL_LWTUNNEL_BPF
 	bool
 	default n
 
@@ -994,11 +1026,47 @@ config KERNEL_SQUASHFS_FRAGMENT_CACHE_SIZE
 	int
 	default 3
 
+config KERNEL_SQUASHFS_XATTR
+	bool
+	default n
+
 config KERNEL_CC_OPTIMIZE_FOR_PERFORMANCE
 	bool
 	default y
 
 config KERNEL_CC_OPTIMIZE_FOR_SIZE
+	bool
+	default n
+
+config KERNEL_AUDIT
+	bool
+	default n
+
+config KERNEL_SECURITY
+	bool
+	default n
+
+config KERNEL_SECURITY_NETWORK
+	bool
+	default n
+
+config KERNEL_SECURITY_SELINUX
+	bool
+	default n
+
+config KERNEL_EXT4_FS_SECURITY
+	bool
+	default n
+
+config KERNEL_F2FS_FS_SECURITY
+	bool
+	default n
+
+config KERNEL_UBIFS_FS_SECURITY
+	bool
+	default n
+
+config KERNEL_JFFS2_FS_SECURITY
 	bool
 	default n
 
@@ -1022,6 +1090,10 @@ config USE_SSTRIP
 	bool
 	default y
 
+config SSTRIP_ARGS
+	string
+	default "-z"
+
 config STRIP_KERNEL_EXPORTS
 	bool
 	default n
@@ -1042,7 +1114,15 @@ config PKG_CHECK_FORMAT_SECURITY
 	bool
 	default y
 
-config PKG_ASLR_PIE
+config PKG_ASLR_PIE_NONE
+	bool
+	default n
+
+config PKG_ASLR_PIE_REGULAR
+	bool
+	default y
+
+config PKG_ASLR_PIE_ALL
 	bool
 	default n
 
@@ -1053,6 +1133,10 @@ config PKG_CC_STACKPROTECTOR_NONE
 config PKG_CC_STACKPROTECTOR_REGULAR
 	bool
 	default y
+
+config PKG_CC_STACKPROTECTOR_STRONG
+	bool
+	default n
 
 config KERNEL_CC_STACKPROTECTOR_NONE
 	bool
@@ -1098,6 +1182,10 @@ config PKG_RELRO_FULL
 	bool
 	default y
 
+config SELINUX
+	bool
+	default n
+
 config DEVEL
 	bool
 	default y
@@ -1138,9 +1226,13 @@ config CCACHE
 	bool
 	default y
 
+config CCACHE_DIR
+	string
+	default ""
+
 config EXTERNAL_KERNEL_TREE
 	string
-	default "/home/build/1296/rtd1296-linux-4.9"
+	default "/home/build/1296/rtd1296-linux-4.9-2"
 
 config KERNEL_GIT_CLONE_URI
 	string
@@ -1149,6 +1241,10 @@ config KERNEL_GIT_CLONE_URI
 config BUILD_LOG
 	bool
 	default n
+
+config BUILD_LOG_DIR
+	string
+	default ""
 
 config SRC_TREE_OVERRIDE
 	bool
@@ -1172,15 +1268,47 @@ config NEED_TOOLCHAIN
 
 config TOOLCHAINOPTS
 	bool
-	default n
+	default y
 
 config EXTRA_TARGET_ARCH
+	bool
+	default n
+
+config BINUTILS_USE_VERSION_2_32
+	bool
+	default n
+
+config BINUTILS_USE_VERSION_2_34
+	bool
+	default y
+
+config BINUTILS_USE_VERSION_2_35_1
 	bool
 	default n
 
 config EXTRA_BINUTILS_CONFIG_OPTIONS
 	string
 	default ""
+
+config GCC_USE_VERSION_7
+	bool
+	default y
+
+config GCC_USE_VERSION_8
+	bool
+	default n
+
+config GCC_USE_VERSION_9
+	bool
+	default n
+
+config GCC_USE_VERSION_10
+	bool
+	default n
+
+config GCC_USE_GRAPHITE
+	bool
+	default n
 
 config EXTRA_GCC_CONFIG_OPTIONS
 	string
@@ -1202,6 +1330,18 @@ config INSTALL_GFORTRAN
 	bool
 	default n
 
+config LIBC_USE_GLIBC
+	bool
+	default n
+
+config LIBC_USE_MUSL
+	bool
+	default y
+
+config MUSL_DISABLE_CRYPT_SIZE_HACK
+	bool
+	default y
+
 config GDB
 	bool
 	default y
@@ -1214,21 +1354,25 @@ config SSP_SUPPORT
 	bool
 	default y
 
-config BINUTILS_VERSION_2_31_1
+config BINUTILS_VERSION_2_34
 	bool
 	default y
 
 config BINUTILS_VERSION
 	string
-	default "2.31.1"
+	default "2.34"
 
-config GCC_USE_EMBEDDED_PATH_REMAP
+config GCC_VERSION_7
 	bool
-	default n
+	default y
 
 config GCC_VERSION
 	string
 	default "7.5.0"
+
+config GCC_USE_IREMAP
+	bool
+	default y
 
 config LIBC
 	string
@@ -1316,7 +1460,7 @@ config VERSION_DIST
 
 config VERSION_NUMBER
 	string
-	default "19.07.8"
+	default "21.02.2"
 
 config VERSION_CODE
 	string
@@ -1324,7 +1468,7 @@ config VERSION_CODE
 
 config VERSION_REPO
 	string
-	default "https://downloads.openwrt.org/releases/19.07.8"
+	default "https://downloads.openwrt.org/releases/21.02.2"
 
 config VERSION_HOME_URL
 	string
@@ -1382,37 +1526,37 @@ config FEED_telephony
 	bool
 	default y
 
-config FEED_lienol
-	bool
-	default n
-
-config FEED_freifunk
+config FEED_nas
 	bool
 	default y
 
-config FEED_diy1
-	bool
-	default n
-
-config FEED_nas
-	bool
-	default n
-
 config FEED_nas_luci
 	bool
-	default n
+	default y
 
 config FEED_meta
 	bool
-	default n
+	default y
 
 config FEED_store
 	bool
-	default n
+	default y
 
 config FEED_jjm2473
 	bool
-	default n
+	default y
+
+config FEED_lienol
+	bool
+	default y
+
+config FEED_opp
+	bool
+	default y
+
+config FEED_opl
+	bool
+	default y
 
 config PACKAGE_base-files
 	bool
@@ -1464,7 +1608,7 @@ config BUSYBOX_DEFAULT_FEATURE_VERBOSE_USAGE
 
 config BUSYBOX_DEFAULT_FEATURE_COMPRESS_USAGE
 	bool
-	default y
+	default n
 
 config BUSYBOX_DEFAULT_LFS
 	bool
@@ -1512,7 +1656,7 @@ config BUSYBOX_DEFAULT_INSTALL_NO_USR
 
 config BUSYBOX_DEFAULT_FEATURE_SUID
 	bool
-	default y
+	default n
 
 config BUSYBOX_DEFAULT_FEATURE_SUID_CONFIG
 	bool
@@ -1538,11 +1682,11 @@ config BUSYBOX_DEFAULT_FEATURE_CLEAN_UP
 	bool
 	default n
 
-config BUSYBOX_DEFAULT_FEATURE_SYSLOG
+config BUSYBOX_DEFAULT_FEATURE_SYSLOG_INFO
 	bool
-	default y
+	default n
 
-config BUSYBOX_DEFAULT_PLATFORM_LINUX
+config BUSYBOX_DEFAULT_FEATURE_SYSLOG
 	bool
 	default y
 
@@ -1602,6 +1746,10 @@ config BUSYBOX_DEFAULT_STACK_OPTIMIZATION_386
 	bool
 	default n
 
+config BUSYBOX_DEFAULT_STATIC_LIBGCC
+	bool
+	default n
+
 config BUSYBOX_DEFAULT_INSTALL_APPLET_SYMLINKS
 	bool
 	default y
@@ -1651,6 +1799,10 @@ config BUSYBOX_DEFAULT_UNIT_TEST
 	default n
 
 config BUSYBOX_DEFAULT_WERROR
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_WARN_SIMPLE_MSG
 	bool
 	default n
 
@@ -1832,7 +1984,7 @@ config BUSYBOX_DEFAULT_FEATURE_SKIP_ROOTFS
 
 config BUSYBOX_DEFAULT_MONOTONIC_SYSCALL
 	bool
-	default n
+	default y
 
 config BUSYBOX_DEFAULT_IOCTL_HEX2STR_ERROR
 	bool
@@ -2234,10 +2386,6 @@ config BUSYBOX_DEFAULT_FOLD
 	bool
 	default n
 
-config BUSYBOX_DEFAULT_FSYNC
-	bool
-	default y
-
 config BUSYBOX_DEFAULT_HEAD
 	bool
 	default y
@@ -2486,6 +2634,10 @@ config BUSYBOX_DEFAULT_FEATURE_SYNC_FANCY
 	bool
 	default n
 
+config BUSYBOX_DEFAULT_FSYNC
+	bool
+	default y
+
 config BUSYBOX_DEFAULT_TAC
 	bool
 	default n
@@ -2587,6 +2739,10 @@ config BUSYBOX_DEFAULT_USLEEP
 	default n
 
 config BUSYBOX_DEFAULT_UUDECODE
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_BASE32
 	bool
 	default n
 
@@ -2900,7 +3056,7 @@ config BUSYBOX_DEFAULT_FEATURE_FIND_MTIME
 
 config BUSYBOX_DEFAULT_FEATURE_FIND_MMIN
 	bool
-	default n
+	default y
 
 config BUSYBOX_DEFAULT_FEATURE_FIND_PERM
 	bool
@@ -2971,6 +3127,10 @@ config BUSYBOX_DEFAULT_FEATURE_FIND_QUIT
 	default n
 
 config BUSYBOX_DEFAULT_FEATURE_FIND_DELETE
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_FIND_EMPTY
 	bool
 	default n
 
@@ -3514,10 +3674,6 @@ config BUSYBOX_DEFAULT_HEXDUMP
 	bool
 	default y
 
-config BUSYBOX_DEFAULT_FEATURE_HEXDUMP_REVERSE
-	bool
-	default n
-
 config BUSYBOX_DEFAULT_HD
 	bool
 	default n
@@ -3587,6 +3743,10 @@ config BUSYBOX_DEFAULT_FEATURE_MDEV_EXEC
 	default n
 
 config BUSYBOX_DEFAULT_FEATURE_MDEV_LOAD_FIRMWARE
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_MDEV_DAEMON
 	bool
 	default n
 
@@ -3794,6 +3954,10 @@ config BUSYBOX_DEFAULT_FEATURE_TASKSET_FANCY
 	bool
 	default n
 
+config BUSYBOX_DEFAULT_FEATURE_TASKSET_CPULIST
+	bool
+	default n
+
 config BUSYBOX_DEFAULT_UEVENT
 	bool
 	default n
@@ -3839,6 +4003,10 @@ config BUSYBOX_DEFAULT_FEATURE_VOLUMEID_BTRFS
 	default n
 
 config BUSYBOX_DEFAULT_FEATURE_VOLUMEID_CRAMFS
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_VOLUMEID_EROFS
 	bool
 	default n
 
@@ -4130,6 +4298,10 @@ config BUSYBOX_DEFAULT_I2CDETECT
 	bool
 	default n
 
+config BUSYBOX_DEFAULT_I2CTRANSFER
+	bool
+	default n
+
 config BUSYBOX_DEFAULT_INOTIFYD
 	bool
 	default n
@@ -4214,6 +4386,10 @@ config BUSYBOX_DEFAULT_MICROCOM
 	bool
 	default n
 
+config BUSYBOX_DEFAULT_MIM
+	bool
+	default n
+
 config BUSYBOX_DEFAULT_MT
 	bool
 	default n
@@ -4266,6 +4442,10 @@ config BUSYBOX_DEFAULT_TIME
 	bool
 	default y
 
+config BUSYBOX_DEFAULT_TS
+	bool
+	default n
+
 config BUSYBOX_DEFAULT_TTYSIZE
 	bool
 	default n
@@ -4316,7 +4496,7 @@ config BUSYBOX_DEFAULT_FEATURE_UNIX_LOCAL
 
 config BUSYBOX_DEFAULT_FEATURE_PREFER_IPV4_ADDRESS
 	bool
-	default y
+	default n
 
 config BUSYBOX_DEFAULT_VERBOSE_RESOLUTION_ERRORS
 	bool
@@ -4435,6 +4615,22 @@ config BUSYBOX_DEFAULT_FEATURE_HTTPD_PROXY
 	default n
 
 config BUSYBOX_DEFAULT_FEATURE_HTTPD_GZIP
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_HTTPD_ETAG
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_HTTPD_LAST_MODIFIED
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_HTTPD_DATE
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_HTTPD_ACL_IP
 	bool
 	default n
 
@@ -4767,6 +4963,10 @@ config BUSYBOX_DEFAULT_TFTP
 	default n
 
 config BUSYBOX_DEFAULT_FEATURE_TFTP_PROGRESS_BAR
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_TFTP_HPA_COMPAT
 	bool
 	default n
 
@@ -5266,6 +5466,10 @@ config BUSYBOX_DEFAULT_BASH_IS_NONE
 	bool
 	default y
 
+config BUSYBOX_DEFAULT_SHELL_ASH
+	bool
+	default y
+
 config BUSYBOX_DEFAULT_ASH
 	bool
 	default y
@@ -5343,6 +5547,10 @@ config BUSYBOX_DEFAULT_CTTYHACK
 	default n
 
 config BUSYBOX_DEFAULT_HUSH
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_SHELL_HUSH
 	bool
 	default n
 
@@ -5494,6 +5702,10 @@ config BUSYBOX_DEFAULT_FEATURE_SH_MATH_64
 	bool
 	default y
 
+config BUSYBOX_DEFAULT_FEATURE_SH_MATH_BASE
+	bool
+	default n
+
 config BUSYBOX_DEFAULT_FEATURE_SH_EXTRA_QUIET
 	bool
 	default n
@@ -5555,6 +5767,10 @@ config BUSYBOX_DEFAULT_FEATURE_SYSLOGD_DUP
 	default n
 
 config BUSYBOX_DEFAULT_FEATURE_SYSLOGD_CFG
+	bool
+	default n
+
+config BUSYBOX_DEFAULT_FEATURE_SYSLOGD_PRECISE_TIMESTAMPS
 	bool
 	default n
 
@@ -5666,11 +5882,11 @@ config BUSYBOX_CONFIG_FEATURE_CLEAN_UP
 	bool
 	default n
 
-config BUSYBOX_CONFIG_FEATURE_SYSLOG
+config BUSYBOX_CONFIG_FEATURE_SYSLOG_INFO
 	bool
-	default y
+	default n
 
-config BUSYBOX_CONFIG_PLATFORM_LINUX
+config BUSYBOX_CONFIG_FEATURE_SYSLOG
 	bool
 	default y
 
@@ -5714,6 +5930,10 @@ config BUSYBOX_CONFIG_STACK_OPTIMIZATION_386
 	bool
 	default n
 
+config BUSYBOX_CONFIG_STATIC_LIBGCC
+	bool
+	default n
+
 config BUSYBOX_CONFIG_INSTALL_APPLET_SYMLINKS
 	bool
 	default y
@@ -5747,6 +5967,10 @@ config BUSYBOX_CONFIG_UNIT_TEST
 	default n
 
 config BUSYBOX_CONFIG_WERROR
+	bool
+	default n
+
+config BUSYBOX_CONFIG_WARN_SIMPLE_MSG
 	bool
 	default n
 
@@ -6160,7 +6384,7 @@ config BUSYBOX_CONFIG_FEATURE_DD_IBS_OBS
 
 config BUSYBOX_CONFIG_FEATURE_DD_STATUS
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_DF
 	bool
@@ -6229,10 +6453,6 @@ config BUSYBOX_CONFIG_FALSE
 config BUSYBOX_CONFIG_FOLD
 	bool
 	default n
-
-config BUSYBOX_CONFIG_FSYNC
-	bool
-	default y
 
 config BUSYBOX_CONFIG_HEAD
 	bool
@@ -6466,6 +6686,10 @@ config BUSYBOX_CONFIG_FEATURE_SYNC_FANCY
 	bool
 	default n
 
+config BUSYBOX_CONFIG_FSYNC
+	bool
+	default y
+
 config BUSYBOX_CONFIG_TAC
 	bool
 	default n
@@ -6567,6 +6791,10 @@ config BUSYBOX_CONFIG_USLEEP
 	default n
 
 config BUSYBOX_CONFIG_UUDECODE
+	bool
+	default n
+
+config BUSYBOX_CONFIG_BASE32
 	bool
 	default n
 
@@ -6890,6 +7118,10 @@ config BUSYBOX_CONFIG_FEATURE_FIND_DELETE
 	bool
 	default n
 
+config BUSYBOX_CONFIG_FEATURE_FIND_EMPTY
+	bool
+	default n
+
 config BUSYBOX_CONFIG_FEATURE_FIND_PATH
 	bool
 	default y
@@ -7004,35 +7236,15 @@ config BUSYBOX_CONFIG_REMOVE_SHELL
 
 config BUSYBOX_CONFIG_ADDGROUP
 	bool
-	default y
-
-config BUSYBOX_CONFIG_FEATURE_ADDUSER_TO_GROUP
-	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_ADDUSER
 	bool
-	default y
-
-config BUSYBOX_CONFIG_FEATURE_CHECK_NAMES
-	bool
-	default y
-
-config BUSYBOX_CONFIG_LAST_ID
-	int
-	default 0
-
-config BUSYBOX_CONFIG_FIRST_SYSTEM_ID
-	int
-	default 0
-
-config BUSYBOX_CONFIG_LAST_SYSTEM_ID
-	int
-	default 0
+	default n
 
 config BUSYBOX_CONFIG_CHPASSWD
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_FEATURE_DEFAULT_PASSWD_ALGO
 	string
@@ -7040,23 +7252,19 @@ config BUSYBOX_CONFIG_FEATURE_DEFAULT_PASSWD_ALGO
 
 config BUSYBOX_CONFIG_CRYPTPW
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_MKPASSWD
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_DELUSER
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_DELGROUP
 	bool
-	default y
-
-config BUSYBOX_CONFIG_FEATURE_DEL_USER_FROM_GROUP
-	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_GETTY
 	bool
@@ -7238,10 +7446,6 @@ config BUSYBOX_CONFIG_HEXDUMP
 	bool
 	default y
 
-config BUSYBOX_CONFIG_FEATURE_HEXDUMP_REVERSE
-	bool
-	default n
-
 config BUSYBOX_CONFIG_HD
 	bool
 	default n
@@ -7272,7 +7476,7 @@ config BUSYBOX_CONFIG_IPCS
 
 config BUSYBOX_CONFIG_LOSETUP
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_LSPCI
 	bool
@@ -7280,7 +7484,7 @@ config BUSYBOX_CONFIG_LSPCI
 
 config BUSYBOX_CONFIG_LSUSB
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_MDEV
 	bool
@@ -7598,6 +7802,10 @@ config BUSYBOX_CONFIG_I2CDETECT
 	bool
 	default n
 
+config BUSYBOX_CONFIG_I2CTRANSFER
+	bool
+	default n
+
 config BUSYBOX_CONFIG_INOTIFYD
 	bool
 	default n
@@ -7612,45 +7820,29 @@ config BUSYBOX_CONFIG_FEATURE_LESS_MAXLINES
 
 config BUSYBOX_CONFIG_FEATURE_LESS_BRACKETS
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_FEATURE_LESS_FLAGS
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_FEATURE_LESS_TRUNCATE
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_FEATURE_LESS_MARKS
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_FEATURE_LESS_REGEXP
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_FEATURE_LESS_WINCH
-	bool
-	default y
-
-config BUSYBOX_CONFIG_FEATURE_LESS_ASK_TERMINAL
 	bool
 	default n
 
 config BUSYBOX_CONFIG_FEATURE_LESS_DASHCMD
-	bool
-	default y
-
-config BUSYBOX_CONFIG_FEATURE_LESS_LINENUMS
-	bool
-	default y
-
-config BUSYBOX_CONFIG_FEATURE_LESS_RAW
-	bool
-	default n
-
-config BUSYBOX_CONFIG_FEATURE_LESS_ENV
 	bool
 	default n
 
@@ -7721,6 +7913,10 @@ config BUSYBOX_CONFIG_STRINGS
 config BUSYBOX_CONFIG_TIME
 	bool
 	default y
+
+config BUSYBOX_CONFIG_TS
+	bool
+	default n
 
 config BUSYBOX_CONFIG_TTYSIZE
 	bool
@@ -8088,7 +8284,7 @@ config BUSYBOX_CONFIG_FEATURE_TRACEROUTE_VERBOSE
 
 config BUSYBOX_CONFIG_FEATURE_TRACEROUTE_USE_ICMP
 	bool
-	default y
+	default n
 
 config BUSYBOX_CONFIG_TUNCTL
 	bool
@@ -8394,6 +8590,10 @@ config BUSYBOX_CONFIG_BASH_IS_NONE
 	bool
 	default y
 
+config BUSYBOX_CONFIG_SHELL_ASH
+	bool
+	default y
+
 config BUSYBOX_CONFIG_ASH
 	bool
 	default y
@@ -8474,6 +8674,10 @@ config BUSYBOX_CONFIG_HUSH
 	bool
 	default n
 
+config BUSYBOX_CONFIG_SHELL_HUSH
+	bool
+	default n
+
 config BUSYBOX_CONFIG_FEATURE_SH_MATH
 	bool
 	default y
@@ -8481,6 +8685,10 @@ config BUSYBOX_CONFIG_FEATURE_SH_MATH
 config BUSYBOX_CONFIG_FEATURE_SH_MATH_64
 	bool
 	default y
+
+config BUSYBOX_CONFIG_FEATURE_SH_MATH_BASE
+	bool
+	default n
 
 config BUSYBOX_CONFIG_FEATURE_SH_EXTRA_QUIET
 	bool
@@ -8578,6 +8786,14 @@ config DROPBEAR_ECC
 	bool
 	default n
 
+config DROPBEAR_ED25519
+	bool
+	default y
+
+config DROPBEAR_CHACHA20POLY1305
+	bool
+	default y
+
 config DROPBEAR_ZLIB
 	bool
 	default n
@@ -8585,6 +8801,14 @@ config DROPBEAR_ZLIB
 config DROPBEAR_DBCLIENT
 	bool
 	default y
+
+config DROPBEAR_SCP
+	bool
+	default y
+
+config DROPBEAR_ASKPASS
+	bool
+	default n
 
 config PACKAGE_firewall
 	bool
@@ -8664,7 +8888,7 @@ config PACKAGE_procd
 
 config PROCD_SHOW_BOOT
 	bool
-	default n
+	default y
 
 config PROCD_ZRAM_TMPFS
 	bool
@@ -8675,6 +8899,14 @@ config PACKAGE_resolveip
 	default y
 
 config PACKAGE_rpcd
+	bool
+	default y
+
+config PACKAGE_rpcd-mod-file
+	bool
+	default y
+
+config PACKAGE_rpcd-mod-iwinfo
 	bool
 	default y
 
@@ -8730,6 +8962,22 @@ config ZABBIX_POSTGRESQL
 	bool
 	default y
 
+config SCHROOT_BTRFS
+	bool
+	default n
+
+config SCHROOT_LOOPBACK
+	bool
+	default n
+
+config SCHROOT_LVM
+	bool
+	default n
+
+config SCHROOT_UUID
+	bool
+	default n
+
 config PACKAGE_rtk-init
 	bool
 	default y
@@ -8742,15 +8990,11 @@ config PACKAGE_u-boot-rtd1296
 	bool
 	default y
 
-config PACKAGE_luci-compat
-	bool
-	default y
+config PACKAGE_transmission-daemon-openssl
+	tristate
+	default m
 
-config PACKAGE_luci-lib-ipkg
-	bool
-	default y
-
-config PACKAGE_luci-lib-iptparser
+config PACKAGE_libiwinfo-data
 	bool
 	default y
 
@@ -8758,11 +9002,11 @@ config PACKAGE_kmod-aoe
 	tristate
 	default m
 
-config PACKAGE_kmod-ata-core
+config PACKAGE_kmod-ata-ahci
 	bool
 	default y
 
-config PACKAGE_kmod-ata-ahci
+config PACKAGE_kmod-ata-core
 	bool
 	default y
 
@@ -8829,6 +9073,10 @@ config PACKAGE_kmod-scsi-generic
 config PACKAGE_kmod-scsi-tape
 	tristate
 	default m
+
+config PACKAGE_kmod-crypto-acompress
+	bool
+	default y
 
 config PACKAGE_kmod-crypto-aead
 	bool
@@ -8902,11 +9150,27 @@ config PACKAGE_kmod-crypto-hmac
 	bool
 	default y
 
-config PACKAGE_kmod-crypto-hw-rtk
+config PACKAGE_kmod-crypto-kpp
 	bool
 	default y
 
-config PACKAGE_kmod-crypto-iv
+config PACKAGE_kmod-crypto-lib-blake2s
+	bool
+	default y
+
+config PACKAGE_kmod-crypto-lib-chacha20
+	bool
+	default y
+
+config PACKAGE_kmod-crypto-lib-chacha20poly1305
+	bool
+	default y
+
+config PACKAGE_kmod-crypto-lib-curve25519
+	bool
+	default y
+
+config PACKAGE_kmod-crypto-lib-poly1305
 	bool
 	default y
 
@@ -8947,6 +9211,10 @@ config PACKAGE_kmod-crypto-sha256
 	default y
 
 config PACKAGE_kmod-crypto-sha512
+	bool
+	default y
+
+config PACKAGE_kmod-crypto-user
 	bool
 	default y
 
@@ -9078,23 +9346,11 @@ config PACKAGE_kmod-leds-gpio
 	bool
 	default y
 
-config PACKAGE_kmod-ledtrig-default-on
-	bool
-	default y
-
 config PACKAGE_kmod-ledtrig-gpio
 	bool
 	default y
 
-config PACKAGE_kmod-ledtrig-heartbeat
-	bool
-	default y
-
-config PACKAGE_kmod-ledtrig-netdev
-	bool
-	default y
-
-config PACKAGE_kmod-ledtrig-timer
+config PACKAGE_kmod-asn1-decoder
 	bool
 	default y
 
@@ -9134,6 +9390,10 @@ config PACKAGE_kmod-lib-zlib-inflate
 	bool
 	default y
 
+config PACKAGE_kmod-lib-zstd
+	bool
+	default y
+
 config PACKAGE_kmod-nls-base
 	bool
 	default y
@@ -9162,15 +9422,7 @@ config PACKAGE_kmod-nls-utf8
 	bool
 	default y
 
-config PACKAGE_kmod-arptables
-	bool
-	default y
-
 config PACKAGE_kmod-br-netfilter
-	bool
-	default y
-
-config PACKAGE_kmod-ebtables
 	bool
 	default y
 
@@ -9181,22 +9433,6 @@ config PACKAGE_kmod-ip6tables
 config PACKAGE_kmod-ip6tables-extra
 	bool
 	default y
-
-config PACKAGE_kmod-ipt-account
-	tristate
-	default m
-
-config PACKAGE_kmod-ipt-checksum
-	tristate
-	default m
-
-config PACKAGE_kmod-ipt-cluster
-	tristate
-	default m
-
-config PACKAGE_kmod-ipt-clusterip
-	tristate
-	default m
 
 config PACKAGE_kmod-ipt-compat-xtables
 	bool
@@ -9223,14 +9459,6 @@ config PACKAGE_kmod-ipt-core
 	default y
 
 config PACKAGE_kmod-ipt-debug
-	tristate
-	default m
-
-config PACKAGE_kmod-ipt-dhcpmac
-	tristate
-	default m
-
-config PACKAGE_kmod-ipt-dnetmap
 	tristate
 	default m
 
@@ -9270,6 +9498,10 @@ config PACKAGE_kmod-ipt-ipopt
 	bool
 	default y
 
+config PACKAGE_kmod-ipt-ipp2p
+	tristate
+	default m
+
 config PACKAGE_kmod-ipt-iprange
 	bool
 	default y
@@ -9287,10 +9519,14 @@ config PACKAGE_kmod-ipt-led
 	default m
 
 config PACKAGE_kmod-ipt-length2
+	bool
+	default y
+
+config PACKAGE_kmod-ipt-logmark
 	tristate
 	default m
 
-config PACKAGE_kmod-ipt-logmark
+config PACKAGE_kmod-ipt-lscan
 	tristate
 	default m
 
@@ -9306,7 +9542,15 @@ config PACKAGE_kmod-ipt-nat6
 	bool
 	default y
 
+config PACKAGE_kmod-ipt-nathelper-rtsp
+	bool
+	default y
+
 config PACKAGE_kmod-ipt-nflog
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-nfqueue
 	tristate
 	default m
 
@@ -9326,13 +9570,37 @@ config PACKAGE_kmod-ipt-raw6
 	tristate
 	default m
 
+config PACKAGE_kmod-ipt-rpfilter
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-rtpengine
+	tristate
+	default m
+
 config PACKAGE_kmod-ipt-sysrq
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-tarpit
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-tee
 	tristate
 	default m
 
 config PACKAGE_kmod-ipt-tproxy
 	bool
 	default y
+
+config PACKAGE_kmod-ipt-u32
+	tristate
+	default m
+
+config PACKAGE_kmod-ipt-ulog
+	tristate
+	default m
 
 config PACKAGE_kmod-netatop
 	tristate
@@ -9366,6 +9634,10 @@ config PACKAGE_kmod-nf-ipvs-ftp
 	bool
 	default y
 
+config PACKAGE_kmod-nf-ipvs-sip
+	tristate
+	default m
+
 config PACKAGE_kmod-nf-nat
 	bool
 	default y
@@ -9398,6 +9670,10 @@ config PACKAGE_kmod-nfnetlink-log
 	tristate
 	default m
 
+config PACKAGE_kmod-nfnetlink-queue
+	tristate
+	default m
+
 config PACKAGE_kmod-dummy
 	bool
 	default y
@@ -9427,6 +9703,14 @@ config PACKAGE_kmod-dnsresolver
 	default y
 
 config PACKAGE_kmod-gre
+	bool
+	default y
+
+config PACKAGE_kmod-inet-diag
+	bool
+	default y
+
+config PACKAGE_kmod-ip6-tunnel
 	bool
 	default y
 
@@ -9474,6 +9758,10 @@ config PACKAGE_kmod-netem
 	tristate
 	default m
 
+config PACKAGE_kmod-netlink-diag
+	bool
+	default y
+
 config PACKAGE_kmod-ppp
 	bool
 	default y
@@ -9502,7 +9790,11 @@ config PACKAGE_kmod-sched
 	bool
 	default y
 
-config PACKAGE_kmod-sched-cake-oot
+config PACKAGE_kmod-sched-bpf
+	bool
+	default y
+
+config PACKAGE_kmod-sched-cake
 	bool
 	default y
 
@@ -9541,6 +9833,10 @@ config PACKAGE_kmod-sit
 config PACKAGE_kmod-slhc
 	bool
 	default y
+
+config PACKAGE_kmod-tcp-bbr
+	tristate
+	default m
 
 config PACKAGE_kmod-tun
 	bool
@@ -9835,62 +10131,18 @@ config PACKAGE_kmod-usb3
 	default y
 
 config PACKAGE_kmod-usbip
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_kmod-usbip-client
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_kmod-usbip-server
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_kmod-usbmon
-	tristate
-	default m
-
-config PACKAGE_kmod-w1
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-gpio-custom
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-master-ds2482
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-master-ds2490
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-master-gpio
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-slave-ds2413
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-slave-ds2431
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-slave-ds2433
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-slave-ds2760
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-slave-smem
-	tristate
-	default m
-
-config PACKAGE_kmod-w1-slave-therm
 	tristate
 	default m
 
@@ -9914,15 +10166,19 @@ config PACKAGE_lua
 	bool
 	default y
 
+config PACKAGE_luabitop
+	bool
+	default y
+
 config PACKAGE_luci-lib-fs
 	bool
 	default y
 
-config PYTHON_BLUETOOTH_SUPPORT
+config PYTHON3_BLUETOOTH_SUPPORT
 	bool
 	default n
 
-config PYTHON3_BLUETOOTH_SUPPORT
+config PYTHON3_HOST_PIP_CACHE_WORLD_READABLE
 	bool
 	default n
 
@@ -9941,6 +10197,38 @@ config PACKAGE_libzstd
 config ZSTD_OPTIMIZE_O3
 	bool
 	default y
+
+config PACKAGE_libsqlite3
+	bool
+	default y
+
+config SQLITE3_DYNAMIC_EXTENSIONS
+	bool
+	default y
+
+config SQLITE3_FTS3
+	bool
+	default y
+
+config SQLITE3_FTS4
+	bool
+	default y
+
+config SQLITE3_FTS5
+	bool
+	default y
+
+config SQLITE3_JSON1
+	bool
+	default y
+
+config SQLITE3_RTREE
+	bool
+	default y
+
+config SQLITE3_SESSION
+	bool
+	default n
 
 config PACKAGE_libattr
 	bool
@@ -9962,21 +10250,9 @@ config PACKAGE_libxtables
 	bool
 	default y
 
-config PACKAGE_qt5-core
-	tristate
-	default m
-
-config PACKAGE_qt5-network
-	tristate
-	default m
-
-config PACKAGE_qt5-xml
-	tristate
-	default m
-
-config QT5_INCLUDE_ATOMIC
+config PACKAGE_libxtables-nft
 	bool
-	default n
+	default y
 
 config PACKAGE_libgnutls
 	bool
@@ -10027,10 +10303,14 @@ config GNUTLS_EXT_LIBTASN1
 	default n
 
 config PACKAGE_libmbedtls
-	bool
-	default y
+	tristate
+	default m
 
 config LIBMBEDTLS_DEBUG_C
+	bool
+	default n
+
+config LIBMBEDTLS_HKDF_C
 	bool
 	default n
 
@@ -10142,129 +10422,21 @@ config OPENSSL_ENGINE_BUILTIN
 	bool
 	default n
 
+config OPENSSL_WITH_GOST
+	bool
+	default n
+
 config PACKAGE_libopenssl-conf
 	bool
 	default y
-
-config PACKAGE_libopenssl-devcrypto
-	bool
-	default y
-
-config PACKAGE_libwolfssl
-	bool
-	default y
-
-config WOLFSSL_HAS_AES_CCM
-	bool
-	default y
-
-config WOLFSSL_HAS_CHACHA_POLY
-	bool
-	default y
-
-config WOLFSSL_HAS_DH
-	bool
-	default y
-
-config WOLFSSL_HAS_ARC4
-	bool
-	default y
-
-config WOLFSSL_HAS_CERTGEN
-	bool
-	default y
-
-config WOLFSSL_HAS_TLSV10
-	bool
-	default y
-
-config WOLFSSL_HAS_TLSV13
-	bool
-	default y
-
-config WOLFSSL_HAS_SESSION_TICKET
-	bool
-	default y
-
-config WOLFSSL_HAS_DTLS
-	bool
-	default n
-
-config WOLFSSL_HAS_OCSP
-	bool
-	default y
-
-config WOLFSSL_HAS_WPAS
-	bool
-	default y
-
-config WOLFSSL_HAS_ECC25519
-	bool
-	default y
-
-config WOLFSSL_HAS_OPENVPN
-	bool
-	default n
-
-config WOLFSSL_HAS_NO_HW
-	bool
-	default y
-
-config WOLFSSL_HAS_AFALG
-	bool
-	default n
-
-config WOLFSSL_HAS_DEVCRYPTO_CBC
-	bool
-	default n
-
-config WOLFSSL_HAS_DEVCRYPTO_AES
-	bool
-	default n
-
-config WOLFSSL_HAS_DEVCRYPTO_FULL
-	bool
-	default n
-
-config PACKAGE_libsqlite3
-	bool
-	default y
-
-config SQLITE3_DYNAMIC_EXTENSIONS
-	bool
-	default y
-
-config SQLITE3_FTS3
-	bool
-	default y
-
-config SQLITE3_FTS4
-	bool
-	default y
-
-config SQLITE3_FTS5
-	bool
-	default y
-
-config SQLITE3_JSON1
-	bool
-	default y
-
-config SQLITE3_RTREE
-	bool
-	default y
-
-config SQLITE3_SESSION
-	bool
-	default n
 
 config PACKAGE_bind-libs
 	bool
 	default y
 
 config PACKAGE_boost
-	bool
-	default y
+	tristate
+	default m
 
 config boost-context-exclude
 	bool
@@ -10335,20 +10507,20 @@ config boost-graph-parallel
 	default n
 
 config PACKAGE_boost-chrono
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_boost-program_options
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_boost-random
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_boost-system
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_icu
 	bool
@@ -10452,11 +10624,11 @@ config LIBCURL_RTSP
 
 config LIBCURL_SSH2
 	bool
-	default n
+	default y
 
-config LIBCURL_NO_SMB
-	string
-	default "!"
+config LIBCURL_SMB
+	bool
+	default y
 
 config LIBCURL_SMTP
 	bool
@@ -10468,7 +10640,7 @@ config LIBCURL_TELNET
 
 config LIBCURL_TFTP
 	bool
-	default n
+	default y
 
 config LIBCURL_NGHTTP2
 	bool
@@ -10480,7 +10652,7 @@ config LIBCURL_PROXY
 
 config LIBCURL_CRYPTO_AUTH
 	bool
-	default n
+	default y
 
 config LIBCURL_TLS_SRP
 	bool
@@ -10496,17 +10668,25 @@ config LIBCURL_THREADED_RESOLVER
 
 config LIBCURL_ZLIB
 	bool
-	default n
+	default y
+
+config LIBCURL_ZSTD
+	bool
+	default y
 
 config LIBCURL_UNIX_SOCKETS
 	bool
-	default n
+	default y
 
 config LIBCURL_LIBCURL_OPTION
 	bool
 	default n
 
 config LIBCURL_VERBOSE
+	bool
+	default n
+
+config LIBCURL_NTLM
 	bool
 	default y
 
@@ -10519,10 +10699,6 @@ config PACKAGE_libdbus
 	default y
 
 config PACKAGE_libdevmapper
-	bool
-	default y
-
-config PACKAGE_libdouble-conversion
 	bool
 	default y
 
@@ -10554,10 +10730,6 @@ config PACKAGE_libf2fs
 	bool
 	default y
 
-config PACKAGE_libflac
-	bool
-	default y
-
 config PACKAGE_libgcrypt
 	bool
 	default y
@@ -10574,10 +10746,6 @@ config PACKAGE_libgpg-error
 	bool
 	default y
 
-config PACKAGE_libid3tag
-	bool
-	default y
-
 config PACKAGE_libintl-full
 	bool
 	default y
@@ -10586,7 +10754,7 @@ config PACKAGE_libiwinfo
 	bool
 	default y
 
-config PACKAGE_libjpeg
+config PACKAGE_libjpeg-turbo
 	bool
 	default y
 
@@ -10607,6 +10775,14 @@ config PACKAGE_liblua
 	default y
 
 config PACKAGE_liblua5.3
+	bool
+	default y
+
+config PACKAGE_liblucihttp
+	bool
+	default y
+
+config PACKAGE_liblucihttp-lua
 	bool
 	default y
 
@@ -10654,6 +10830,10 @@ config PACKAGE_libnfnetlink
 	bool
 	default y
 
+config PACKAGE_libnftnl
+	bool
+	default y
+
 config PACKAGE_libnghttp2
 	bool
 	default y
@@ -10670,19 +10850,7 @@ config PACKAGE_libnl-tiny
 	bool
 	default y
 
-config PACKAGE_libogg
-	bool
-	default y
-
-config PACKAGE_libopus
-	bool
-	default y
-
 config PACKAGE_libpcre
-	bool
-	default y
-
-config PACKAGE_libpcre2-16
 	bool
 	default y
 
@@ -10713,6 +10881,18 @@ config LIBSODIUM_MINIMAL
 config PACKAGE_libss
 	bool
 	default y
+
+config PACKAGE_libssh2
+	bool
+	default y
+
+config LIBSSH2_OPENSSL
+	bool
+	default y
+
+config LIBSSH2_MBEDTLS
+	bool
+	default n
 
 config PACKAGE_libtasn1
 	bool
@@ -10762,10 +10942,6 @@ config PACKAGE_libuv
 	bool
 	default y
 
-config PACKAGE_libvorbis
-	bool
-	default y
-
 config PACKAGE_libwebsockets-full
 	bool
 	default y
@@ -10774,17 +10950,13 @@ config PACKAGE_libwrap
 	bool
 	default y
 
-config PACKAGE_rblibtorrent
-	tristate
-	default m
-
-config RE2_SHARED
+config PACKAGE_libxml2
 	bool
 	default y
 
-config RE2_STATIC
+config PACKAGE_rpcd-mod-luci
 	bool
-	default n
+	default y
 
 config PACKAGE_rpcd-mod-rrdns
 	bool
@@ -10804,7 +10976,7 @@ config PACKAGE_zlib
 
 config ZLIB_OPTIMIZE_SPEED
 	bool
-	default n
+	default y
 
 config PACKAGE_luci
 	bool
@@ -10830,11 +11002,27 @@ config LUCI_CSSTIDY
 	bool
 	default n
 
+config LUCI_LANG_ar
+	bool
+	default n
+
+config LUCI_LANG_bg
+	bool
+	default n
+
+config LUCI_LANG_bn_BD
+	bool
+	default n
+
 config LUCI_LANG_ca
 	bool
 	default n
 
 config LUCI_LANG_cs
+	bool
+	default n
+
+config LUCI_LANG_da
 	bool
 	default n
 
@@ -10854,11 +11042,19 @@ config LUCI_LANG_es
 	bool
 	default n
 
+config LUCI_LANG_fi
+	bool
+	default n
+
 config LUCI_LANG_fr
 	bool
 	default n
 
 config LUCI_LANG_he
+	bool
+	default n
+
+config LUCI_LANG_hi
 	bool
 	default n
 
@@ -10878,11 +11074,19 @@ config LUCI_LANG_ko
 	bool
 	default n
 
+config LUCI_LANG_mr
+	bool
+	default n
+
 config LUCI_LANG_ms
 	bool
 	default n
 
-config LUCI_LANG_no
+config LUCI_LANG_nb_NO
+	bool
+	default n
+
+config LUCI_LANG_nl
 	bool
 	default n
 
@@ -10894,7 +11098,7 @@ config LUCI_LANG_pt
 	bool
 	default n
 
-config LUCI_LANG_pt-br
+config LUCI_LANG_pt_BR
 	bool
 	default n
 
@@ -10926,6 +11130,22 @@ config LUCI_LANG_vi
 	bool
 	default n
 
+config LUCI_LANG_zh_Hans
+	bool
+	default y
+
+config LUCI_LANG_zh_Hant
+	bool
+	default n
+
+config PACKAGE_luci-compat
+	bool
+	default y
+
+config PACKAGE_luci-i18n-alias
+	bool
+	default y
+
 config LUCI_LANG_zh-cn
 	bool
 	default y
@@ -10934,7 +11154,35 @@ config LUCI_LANG_zh-tw
 	bool
 	default n
 
+config LUCI_LANG_pt-br
+	bool
+	default n
+
+config LUCI_LANG_no
+	bool
+	default n
+
+config LUCI_LANG_bn
+	bool
+	default n
+
 config PACKAGE_luci-mod-admin-full
+	bool
+	default y
+
+config PACKAGE_luci-mod-network
+	bool
+	default y
+
+config PACKAGE_luci-mod-rpc
+	bool
+	default y
+
+config PACKAGE_luci-mod-status
+	bool
+	default y
+
+config PACKAGE_luci-mod-system
 	bool
 	default y
 
@@ -10942,13 +11190,17 @@ config PACKAGE_luci-app-adblock
 	tristate
 	default m
 
+config PACKAGE_luci-app-argon-config
+	bool
+	default y
+
 config PACKAGE_luci-app-aria2
 	bool
 	default y
 
-config PACKAGE_luci-app-arpbind
-	bool
-	default y
+config PACKAGE_luci-app-baidupcs-web
+	tristate
+	default m
 
 config PACKAGE_luci-app-cifs-mount
 	bool
@@ -10990,25 +11242,13 @@ config PACKAGE_luci-app-diskman_INCLUDE_lsblk
 	bool
 	default y
 
-config PACKAGE_luci-app-diskman_INCLUDE_mdadm
-	bool
-	default y
-
-config PACKAGE_luci-app-diskman_INCLUDE_kmod_md_raid456
-	bool
-	default y
-
-config PACKAGE_luci-app-diskman_INCLUDE_kmod_md_linear
-	bool
-	default y
-
 config PACKAGE_luci-app-dockerman
 	bool
 	default y
 
-config PACKAGE_luci-app-eqos
-	tristate
-	default m
+config PACKAGE_luci-app-fileassistant
+	bool
+	default y
 
 config PACKAGE_luci-app-filetransfer
 	bool
@@ -11030,15 +11270,15 @@ config PACKAGE_luci-app-hd-idle
 	bool
 	default y
 
-config PACKAGE_luci-app-homebox
-	tristate
-	default m
-
 config PACKAGE_luci-app-linkease
 	bool
 	default y
 
 config PACKAGE_luci-app-nfs
+	bool
+	default y
+
+config PACKAGE_luci-app-opkg
 	bool
 	default y
 
@@ -11049,6 +11289,10 @@ config PACKAGE_luci-app-ota
 config PACKAGE_luci-app-passwall
 	tristate
 	default m
+
+config PACKAGE_luci-app-passwall_Transparent_Proxy
+	bool
+	default y
 
 config PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG
 	bool
@@ -11062,23 +11306,11 @@ config PACKAGE_luci-app-passwall_INCLUDE_PDNSD
 	bool
 	default y
 
-config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client
-	bool
-	default y
-
-config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server
-	bool
-	default y
-
 config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client
 	bool
 	default y
 
 config PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client
-	bool
-	default y
-
-config PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs
 	bool
 	default y
 
@@ -11090,23 +11322,11 @@ config PACKAGE_luci-app-passwall_INCLUDE_V2ray
 	bool
 	default y
 
-config PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin
-	bool
-	default y
-
 config PACKAGE_luci-app-passwall_INCLUDE_Xray
 	bool
 	default y
 
-config PACKAGE_luci-app-qbittorrent
-	tristate
-	default m
-
 config PACKAGE_luci-app-quickstart
-	bool
-	default y
-
-config PACKAGE_luci-app-ramfree
 	bool
 	default y
 
@@ -11130,11 +11350,11 @@ config PACKAGE_luci-app-timecontrol
 	bool
 	default y
 
-config PACKAGE_luci-app-ttyd
+config PACKAGE_luci-app-tn-netports
 	bool
 	default y
 
-config PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go
+config PACKAGE_luci-app-ttyd
 	bool
 	default y
 
@@ -11142,17 +11362,9 @@ config PACKAGE_luci-app-upnp
 	bool
 	default y
 
-config PACKAGE_luci-app-usb-printer
-	tristate
-	default m
-
 config PACKAGE_luci-app-vlmcsd
 	bool
 	default y
-
-config PACKAGE_luci-app-vsftpd
-	tristate
-	default m
 
 config PACKAGE_luci-app-wireguard
 	tristate
@@ -11162,11 +11374,7 @@ config PACKAGE_luci-app-wol
 	bool
 	default y
 
-config PACKAGE_luci-theme-argon-dark-mod
-	bool
-	default y
-
-config PACKAGE_luci-theme-argon-light-mod
+config PACKAGE_luci-theme-argon
 	bool
 	default y
 
@@ -11178,7 +11386,27 @@ config PACKAGE_luci-theme-material
 	bool
 	default y
 
+config PACKAGE_luci-theme-openwrt-2020
+	bool
+	default y
+
+config PACKAGE_luci-proto-bonding
+	bool
+	default y
+
+config PACKAGE_luci-proto-hnet
+	bool
+	default y
+
 config PACKAGE_luci-proto-ipv6
+	bool
+	default y
+
+config PACKAGE_luci-proto-openconnect
+	bool
+	default y
+
+config PACKAGE_luci-proto-openfortivpn
 	bool
 	default y
 
@@ -11186,11 +11414,31 @@ config PACKAGE_luci-proto-ppp
 	bool
 	default y
 
-config PACKAGE_luci-proto-wireguard
-	tristate
-	default m
+config PACKAGE_luci-proto-pppossh
+	bool
+	default y
 
-config PACKAGE_luci-lib-dracula
+config PACKAGE_luci-proto-relay
+	bool
+	default y
+
+config PACKAGE_luci-proto-sstp
+	bool
+	default y
+
+config PACKAGE_luci-proto-vpnc
+	bool
+	default y
+
+config PACKAGE_luci-proto-vxlan
+	bool
+	default y
+
+config PACKAGE_luci-proto-wireguard
+	bool
+	default y
+
+config PACKAGE_luci-lib-base
 	bool
 	default y
 
@@ -11206,6 +11454,14 @@ config PACKAGE_luci-lib-ip
 	bool
 	default y
 
+config PACKAGE_luci-lib-ipkg
+	bool
+	default y
+
+config PACKAGE_luci-lib-iptparser
+	bool
+	default y
+
 config PACKAGE_luci-lib-jquery-1-4
 	bool
 	default y
@@ -11218,10 +11474,6 @@ config PACKAGE_luci-lib-jsonc
 	bool
 	default y
 
-config PACKAGE_luci-lib-luaneightbl
-	bool
-	default y
-
 config PACKAGE_luci-lib-nixio
 	bool
 	default y
@@ -11230,19 +11482,15 @@ config PACKAGE_luci-lib-nixio_notls
 	bool
 	default y
 
-config PACKAGE_default-settings
-	bool
-	default y
-
 config PACKAGE_luci-i18n-adblock-zh-cn
 	tristate
 	default m
 
-config PACKAGE_luci-i18n-aria2-zh-cn
+config PACKAGE_luci-i18n-argon-config-zh-cn
 	bool
 	default y
 
-config PACKAGE_luci-i18n-arpbind-zh-cn
+config PACKAGE_luci-i18n-aria2-zh-cn
 	bool
 	default y
 
@@ -11286,10 +11534,6 @@ config PACKAGE_luci-i18n-dockerman-zh-cn
 	bool
 	default y
 
-config PACKAGE_luci-i18n-eqos-zh-cn
-	tristate
-	default m
-
 config PACKAGE_luci-i18n-filetransfer-zh-cn
 	bool
 	default y
@@ -11310,15 +11554,15 @@ config PACKAGE_luci-i18n-hd-idle-zh-cn
 	bool
 	default y
 
-config PACKAGE_luci-i18n-homebox-zh-cn
-	tristate
-	default m
-
 config PACKAGE_luci-i18n-linkease-zh-cn
 	bool
 	default y
 
 config PACKAGE_luci-i18n-nfs-zh-cn
+	bool
+	default y
+
+config PACKAGE_luci-i18n-opkg-zh-cn
 	bool
 	default y
 
@@ -11330,15 +11574,7 @@ config PACKAGE_luci-i18n-passwall-zh-cn
 	tristate
 	default m
 
-config PACKAGE_luci-i18n-qbittorrent-zh-cn
-	tristate
-	default m
-
 config PACKAGE_luci-i18n-quickstart-zh-cn
-	bool
-	default y
-
-config PACKAGE_luci-i18n-ramfree-zh-cn
 	bool
 	default y
 
@@ -11350,7 +11586,15 @@ config PACKAGE_luci-i18n-smartdns-zh-cn
 	tristate
 	default m
 
+config PACKAGE_luci-i18n-sqm-zh-cn
+	bool
+	default y
+
 config PACKAGE_luci-i18n-timecontrol-zh-cn
+	bool
+	default y
+
+config PACKAGE_luci-i18n-tn-netports-zh-cn
 	bool
 	default y
 
@@ -11362,17 +11606,9 @@ config PACKAGE_luci-i18n-upnp-zh-cn
 	bool
 	default y
 
-config PACKAGE_luci-i18n-usb-printer-zh-cn
-	tristate
-	default m
-
 config PACKAGE_luci-i18n-vlmcsd-zh-cn
 	bool
 	default y
-
-config PACKAGE_luci-i18n-vsftpd-zh-cn
-	tristate
-	default m
 
 config PACKAGE_luci-i18n-wireguard-zh-cn
 	tristate
@@ -11438,15 +11674,7 @@ config PACKAGE_rtk-supplicant
 	bool
 	default y
 
-config UNBLOCKNETEASEMUSIC_GO_COMPRESS_GOPROXY
-	bool
-	default n
-
-config UNBLOCKNETEASEMUSIC_GO_COMPRESS_UPX
-	bool
-	default y
-
-config PACKAGE_qBittorrent-static
+config PACKAGE_transmission-daemon
 	tristate
 	default m
 
@@ -11502,14 +11730,6 @@ config PACKAGE_curl
 	bool
 	default y
 
-config PACKAGE_vsftpd-alt
-	tristate
-	default m
-
-config VSFTPD_USE_UCI_SCRIPTS
-	bool
-	default y
-
 config PACKAGE_wget-ssl
 	bool
 	default y
@@ -11538,10 +11758,6 @@ config PACKAGE_ip6tables-extra
 	bool
 	default y
 
-config PACKAGE_ip6tables-mod-fullconenat
-	bool
-	default y
-
 config PACKAGE_ip6tables-mod-nat
 	bool
 	default y
@@ -11558,22 +11774,6 @@ config IPTABLES_NFTABLES
 	bool
 	default n
 
-config PACKAGE_iptables-mod-account
-	tristate
-	default m
-
-config PACKAGE_iptables-mod-checksum
-	tristate
-	default m
-
-config PACKAGE_iptables-mod-cluster
-	tristate
-	default m
-
-config PACKAGE_iptables-mod-clusterip
-	tristate
-	default m
-
 config PACKAGE_iptables-mod-condition
 	tristate
 	default m
@@ -11581,14 +11781,6 @@ config PACKAGE_iptables-mod-condition
 config PACKAGE_iptables-mod-conntrack-extra
 	bool
 	default y
-
-config PACKAGE_iptables-mod-dhcpmac
-	tristate
-	default m
-
-config PACKAGE_iptables-mod-dnetmap
-	tristate
-	default m
 
 config PACKAGE_iptables-mod-extra
 	bool
@@ -11601,18 +11793,6 @@ config PACKAGE_iptables-mod-filter
 config PACKAGE_iptables-mod-fullconenat
 	bool
 	default y
-
-config PACKAGE_iptables-mod-fuzzy
-	tristate
-	default m
-
-config PACKAGE_iptables-mod-geoip
-	tristate
-	default m
-
-config PACKAGE_iptables-mod-hashlimit
-	tristate
-	default m
 
 config PACKAGE_iptables-mod-iface
 	bool
@@ -11639,16 +11819,16 @@ config PACKAGE_iptables-mod-led
 	default m
 
 config PACKAGE_iptables-mod-length2
-	tristate
-	default m
-
-config PACKAGE_iptables-mod-logmark
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_iptables-mod-nat-extra
 	bool
 	default y
+
+config PACKAGE_iptables-mod-nflog
+	tristate
+	default m
 
 config PACKAGE_iptables-mod-physdev
 	bool
@@ -11666,6 +11846,10 @@ config PACKAGE_iptables-mod-tproxy
 	bool
 	default y
 
+config PACKAGE_iptables-mod-trace
+	tristate
+	default m
+
 config PACKAGE_miniupnpd
 	bool
 	default y
@@ -11681,6 +11865,10 @@ config PACKAGE_avahi-utils
 config PACKAGE_bind-client
 	bool
 	default y
+
+config PACKAGE_chinadns-ng
+	tristate
+	default m
 
 config PACKAGE_ddns-scripts
 	bool
@@ -11718,10 +11906,6 @@ config PACKAGE_ddns-scripts-nsupdate
 	bool
 	default y
 
-config PACKAGE_ddns-scripts-pdns
-	bool
-	default y
-
 config PACKAGE_ddns-scripts-route53
 	bool
 	default y
@@ -11734,13 +11918,13 @@ config PACKAGE_ddns-scripts_aliyun
 	bool
 	default y
 
-config PACKAGE_ddns-scripts_dnspod
-	bool
-	default y
-
 config PACKAGE_dns2socks
-	bool
-	default y
+	tristate
+	default m
+
+config PACKAGE_pdnsd-alt
+	tristate
+	default m
 
 config PACKAGE_wsdd2
 	bool
@@ -11774,10 +11958,6 @@ config PACKAGE_ip-full
 	bool
 	default y
 
-config PACKAGE_ip-tiny
-	bool
-	default y
-
 config PACKAGE_relayd
 	bool
 	default y
@@ -11786,15 +11966,59 @@ config PACKAGE_tc
 	bool
 	default y
 
+config PACKAGE_openconnect
+	bool
+	default y
+
+config OPENCONNECT_GNUTLS
+	bool
+	default y
+
+config OPENCONNECT_OPENSSL
+	bool
+	default n
+
+config OPENCONNECT_STOKEN
+	bool
+	default n
+
+config PACKAGE_openfortivpn
+	bool
+	default y
+
+config PACKAGE_sstp-client
+	bool
+	default y
+
+config PACKAGE_vpnc
+	bool
+	default y
+
+config VPNC_GNUTLS
+	bool
+	default y
+
+config VPNC_OPENSSL
+	bool
+	default n
+
+config PACKAGE_vpnc-scripts
+	bool
+	default y
+
 config PACKAGE_wireguard-tools
-	tristate
-	default m
+	bool
+	default y
 
 config BROOK_COMPRESS_GOPROXY
 	bool
 	default n
 
 config BROOK_COMPRESS_UPX
+	bool
+	default n
+
+config PACKAGE_cgi-io
 	bool
 	default y
 
@@ -11814,10 +12038,6 @@ config PACKAGE_haproxy
 	bool
 	default y
 
-config PACKAGE_homebox
-	tristate
-	default m
-
 config PACKAGE_linkease
 	bool
 	default y
@@ -11826,13 +12046,13 @@ config PACKAGE_microsocks
 	tristate
 	default m
 
-config PACKAGE_pdnsd-alt
-	tristate
-	default m
-
 config PACKAGE_quickstart
 	bool
 	default y
+
+config PACKAGE_shadowsocks-libev-config
+	tristate
+	default m
 
 config PACKAGE_shadowsocks-libev-ss-local
 	tristate
@@ -11858,23 +12078,63 @@ config PACKAGE_shadowsocksr-libev-ssr-redir
 	tristate
 	default m
 
+config TROJAN_GO_COMPRESS_GOPROXY
+	bool
+	default n
+
+config TROJAN_GO_COMPRESS_UPX
+	bool
+	default n
+
 config PACKAGE_uhttpd
 	bool
 	default y
 
-config PACKAGE_adblock
-	tristate
-	default m
-
-config BAIDUPCS_WEB_COMPRESS_GOPROXY
-	bool
-	default n
-
-config BAIDUPCS_WEB_COMPRESS_UPX
+config PACKAGE_uhttpd-mod-ubus
 	bool
 	default y
 
-config PACKAGE_chinadns-ng
+config V2RAY_PLUGIN_INCLUDE_GOPROXY
+	bool
+	default n
+
+config V2RAY_PLUGIN_COMPRESS_UPX
+	bool
+	default n
+
+config XRAY_PLUGIN_COMPRESS_GOPROXY
+	bool
+	default n
+
+config XRAY_PLUGIN_COMPRESS_UPX
+	bool
+	default n
+
+config WPA_WOLFSSL
+	bool
+	default n
+
+config DRIVER_WEXT_SUPPORT
+	bool
+	default n
+
+config DRIVER_11N_SUPPORT
+	bool
+	default n
+
+config DRIVER_11AC_SUPPORT
+	bool
+	default n
+
+config DRIVER_11AX_SUPPORT
+	bool
+	default n
+
+config WPA_ENABLE_WEP
+	bool
+	default n
+
+config PACKAGE_adblock
 	tristate
 	default m
 
@@ -11890,6 +12150,14 @@ config ETHTOOL_PRETTY_DUMP
 	bool
 	default n
 
+config HYSTERIA_COMPRESS_GOPROXY
+	bool
+	default n
+
+config HYSTERIA_COMPRESS_UPX
+	bool
+	default n
+
 config PACKAGE_iperf3
 	bool
 	default y
@@ -11898,19 +12166,7 @@ config PACKAGE_ipset
 	bool
 	default y
 
-config PACKAGE_ipt2socks
-	tristate
-	default m
-
 config PACKAGE_libipset
-	bool
-	default y
-
-config NPC_COMPRESS_UPX
-	bool
-	default y
-
-config NPS_COMPRESS_UPX
 	bool
 	default y
 
@@ -11943,6 +12199,14 @@ config PACKAGE_ppp-mod-pppol2tp
 	default y
 
 config PACKAGE_ppp-mod-pptp
+	bool
+	default y
+
+config PACKAGE_pppossh
+	bool
+	default y
+
+config PACKAGE_proto-bonding
 	bool
 	default y
 
@@ -11990,14 +12254,6 @@ config SAMBA4_SERVER_AD_DC
 	bool
 	default n
 
-config PACKAGE_simple-obfs
-	tristate
-	default m
-
-config SIMPLE_OBFS_STATIC_LINK
-	bool
-	default n
-
 config PACKAGE_smartdns
 	tristate
 	default m
@@ -12024,55 +12280,19 @@ config V2RAY_CORE_COMPRESS_GOPROXY
 
 config V2RAY_CORE_COMPRESS_UPX
 	bool
-	default y
-
-config PACKAGE_v2ray-plugin
-	tristate
-	default m
-
-config v2ray-plugin_INCLUDE_GOPROXY
-	bool
 	default n
 
 config PACKAGE_vlmcsd
 	bool
 	default y
 
-config WPA_WOLFSSL
+config PACKAGE_vxlan
 	bool
-	default n
-
-config DRIVER_WEXT_SUPPORT
-	bool
-	default n
-
-config DRIVER_11N_SUPPORT
-	bool
-	default n
-
-config DRIVER_11AC_SUPPORT
-	bool
-	default n
-
-config DRIVER_11W_SUPPORT
-	bool
-	default n
+	default y
 
 config PACKAGE_xray-core
 	tristate
 	default m
-
-config XRAY_PLUGIN_PROVIDE_V2RAY_PLUGIN
-	bool
-	default n
-
-config XRAY_PLUGIN_COMPRESS_GOPROXY
-	bool
-	default n
-
-config XRAY_PLUGIN_COMPRESS_UPX
-	bool
-	default y
 
 config PACKAGE_bzip2
 	bool
@@ -12109,6 +12329,14 @@ config PACKAGE_mdadm
 config PACKAGE_parted
 	bool
 	default y
+
+config PARTED_READLINE
+	bool
+	default y
+
+config PARTED_LVM2
+	bool
+	default n
 
 config PACKAGE_partx-utils
 	bool
@@ -12222,18 +12450,6 @@ config PACKAGE_dockerd
 	bool
 	default y
 
-config DOCKER_KERNEL_OPTIONS
-	bool
-	default y
-
-config DOCKER_SECCOMP
-	bool
-	default y
-
-config DOCKER_RES_SHAPE
-	bool
-	default y
-
 config DOCKER_CGROUP_OPTIONS
 	bool
 	default y
@@ -12294,11 +12510,139 @@ config PACKAGE_runc
 	bool
 	default y
 
+config PACKAGE_shadow
+	bool
+	default y
+
+config PACKAGE_shadow-chage
+	bool
+	default y
+
+config PACKAGE_shadow-chfn
+	bool
+	default y
+
+config PACKAGE_shadow-chgpasswd
+	bool
+	default y
+
+config PACKAGE_shadow-chpasswd
+	bool
+	default y
+
+config PACKAGE_shadow-chsh
+	bool
+	default y
+
 config PACKAGE_shadow-common
 	bool
 	default y
 
+config PACKAGE_shadow-expiry
+	bool
+	default y
+
+config PACKAGE_shadow-faillog
+	bool
+	default y
+
+config PACKAGE_shadow-gpasswd
+	bool
+	default y
+
+config PACKAGE_shadow-groupadd
+	bool
+	default y
+
+config PACKAGE_shadow-groupdel
+	bool
+	default y
+
+config PACKAGE_shadow-groupmems
+	bool
+	default y
+
+config PACKAGE_shadow-groupmod
+	bool
+	default y
+
+config PACKAGE_shadow-groups
+	bool
+	default y
+
+config PACKAGE_shadow-grpck
+	bool
+	default y
+
+config PACKAGE_shadow-grpconv
+	bool
+	default y
+
+config PACKAGE_shadow-grpunconv
+	bool
+	default y
+
+config PACKAGE_shadow-lastlog
+	bool
+	default y
+
+config PACKAGE_shadow-login
+	bool
+	default y
+
+config PACKAGE_shadow-logoutd
+	bool
+	default y
+
+config PACKAGE_shadow-newgidmap
+	bool
+	default y
+
+config PACKAGE_shadow-newgrp
+	bool
+	default y
+
+config PACKAGE_shadow-newuidmap
+	bool
+	default y
+
+config PACKAGE_shadow-newusers
+	bool
+	default y
+
+config PACKAGE_shadow-nologin
+	bool
+	default y
+
+config PACKAGE_shadow-passwd
+	bool
+	default y
+
+config PACKAGE_shadow-pwck
+	bool
+	default y
+
+config PACKAGE_shadow-pwconv
+	bool
+	default y
+
+config PACKAGE_shadow-pwunconv
+	bool
+	default y
+
+config PACKAGE_shadow-su
+	bool
+	default y
+
 config PACKAGE_shadow-useradd
+	bool
+	default y
+
+config PACKAGE_shadow-userdel
+	bool
+	default y
+
+config PACKAGE_shadow-usermod
 	bool
 	default y
 
@@ -12308,7 +12652,11 @@ config PACKAGE_shadow-utils
 
 config shadow-all
 	bool
-	default n
+	default y
+
+config PACKAGE_shadow-vipw
+	bool
+	default y
 
 config PACKAGE_shellsync
 	bool
@@ -12334,15 +12682,19 @@ config PACKAGE_tar
 	bool
 	default y
 
-config PACKAGE_TAR_GZIP
-	bool
-	default y
-
 config PACKAGE_TAR_BZIP2
 	bool
 	default y
 
+config PACKAGE_TAR_GZIP
+	bool
+	default y
+
 config PACKAGE_TAR_XZ
+	bool
+	default y
+
+config PACKAGE_TAR_ZSTD
 	bool
 	default y
 

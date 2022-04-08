@@ -1,4 +1,4 @@
-cmd_scripts/mod/sumversion.o := gcc -Wp,-MD,scripts/mod/.sumversion.o.d -O2 -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include -I./tools/include  -c -o scripts/mod/sumversion.o scripts/mod/sumversion.c
+cmd_scripts/mod/sumversion.o := gcc -Wp,-MD,scripts/mod/.sumversion.o.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include -I./tools/include  -c -o scripts/mod/sumversion.o scripts/mod/sumversion.c
 
 source_scripts/mod/sumversion.o := scripts/mod/sumversion.c
 
@@ -24,8 +24,8 @@ deps_scripts/mod/sumversion.o := \
   /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/endian.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/byteswap.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/endian.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/byteswap.h \
   /usr/include/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/endian.h \
@@ -105,7 +105,7 @@ deps_scripts/mod/sumversion.o := \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/include/elf.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/elf.h \
   scripts/mod/elfconfig.h \
 
 scripts/mod/sumversion.o: $(deps_scripts/mod/sumversion.o)

@@ -19,8 +19,8 @@ import gdb
 import os
 import os.path
 
-pythondir = '/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/toolchain-aarch64_cortex-a53_gcc-7.5.0_musl/share/gcc-7.5.0/python'
-libdir = '/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/toolchain-aarch64_cortex-a53_gcc-7.5.0_musl/aarch64-openwrt-linux-musl/lib'
+pythondir = '/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/toolchain-aarch64_cortex-a53_gcc-7.5.0_musl/share/gcc-7.5.0/python'
+libdir = '/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/toolchain-aarch64_cortex-a53_gcc-7.5.0_musl/aarch64-openwrt-linux-musl/lib'
 
 # This file might be loaded when there is no current objfile.  This
 # can happen if the user loads it manually.  In this case we don't

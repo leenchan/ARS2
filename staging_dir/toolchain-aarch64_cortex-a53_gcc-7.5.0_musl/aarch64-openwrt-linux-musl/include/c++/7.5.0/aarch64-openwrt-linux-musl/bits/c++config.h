@@ -236,7 +236,7 @@ namespace std
 #endif
 }
 
-# define _GLIBCXX_USE_DUAL_ABI 1
+# define _GLIBCXX_USE_DUAL_ABI 0
 
 #if ! _GLIBCXX_USE_DUAL_ABI
 // Ignore any pre-defined value of _GLIBCXX_USE_CXX11_ABI
@@ -244,7 +244,7 @@ namespace std
 #endif
 
 #ifndef _GLIBCXX_USE_CXX11_ABI
-# define _GLIBCXX_USE_CXX11_ABI 1
+# define _GLIBCXX_USE_CXX11_ABI 0
 #endif
 
 #if _GLIBCXX_USE_CXX11_ABI

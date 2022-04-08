@@ -32,7 +32,7 @@ our $PACKAGE = 'automake';
 our $PACKAGE_BUGREPORT = 'bug-automake@gnu.org';
 our $VERSION = '1.15.1';
 our $RELEASE_YEAR = '2017';
-our $libdir = $ENV{'STAGING_DIR'} ? $ENV{'STAGING_DIR'} . '/../host/share/automake-1.15' : '/home/build/1296/rtd1296-openwrt-19.07.8/staging_dir/host/share/automake-1.15';
+our $libdir = $ENV{'STAGING_DIR'} ? $ENV{'STAGING_DIR'} . '/../host/share/automake-1.15' : '/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/share/automake-1.15';
 
 our $perl_threads = 0;
 # We need at least this version for CLONE support.

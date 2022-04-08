@@ -23,7 +23,11 @@
 #ifndef __SOUND_ASOUND_H
 #define __SOUND_ASOUND_H
 
+#if defined(__KERNEL__) || defined(__linux__)
 #include <linux/types.h>
+#else
+#include <sys/ioctl.h>
+#endif
 
 #include <stdlib.h>
 
@@ -100,9 +104,10 @@ enum {
 	SNDRV_HWDEP_IFACE_FW_OXFW,	/* Oxford OXFW970/971 based device */
 	SNDRV_HWDEP_IFACE_FW_DIGI00X,	/* Digidesign Digi 002/003 family */
 	SNDRV_HWDEP_IFACE_FW_TASCAM,	/* TASCAM FireWire series */
+	SNDRV_HWDEP_IFACE_LINE6,	/* Line6 USB processors */
 
 	/* Don't forget to change the following: */
-	SNDRV_HWDEP_IFACE_LAST = SNDRV_HWDEP_IFACE_FW_TASCAM
+	SNDRV_HWDEP_IFACE_LAST = SNDRV_HWDEP_IFACE_LINE6
 };
 
 struct snd_hwdep_info {
@@ -466,6 +471,11 @@ struct snd_pcm_mmap_control {
 	snd_pcm_uframes_t avail_min;	/* RW: min available frames for wakeup */
 };
 
+struct AUDIO_RPC_EQUALIZER_MODE {
+	int mode;
+	int gain[10];
+};
+
 #define SNDRV_PCM_SYNC_PTR_HWSYNC	(1<<0)	/* execute hwsync */
 #define SNDRV_PCM_SYNC_PTR_APPL		(1<<1)	/* get appl_ptr from driver (r/w op) */
 #define SNDRV_PCM_SYNC_PTR_AVAIL_MIN	(1<<2)	/* get avail_min from driver */
@@ -580,10 +590,14 @@ enum {
 #define SNDRV_PCM_IOCTL_READN_FRAMES	_IOR('A', 0x53, struct snd_xfern)
 #define SNDRV_PCM_IOCTL_LINK		_IOW('A', 0x60, int)
 #define SNDRV_PCM_IOCTL_UNLINK		_IO('A', 0x61)
-#define SNDRV_PCM_IOCTL_VOLUME_SET  _IOW('A', 0xE0, int)
-#define SNDRV_PCM_IOCTL_VOLUME_GET  _IOR('A', 0xE1, int)
-#define SNDRV_PCM_IOCTL_GET_LATENCY _IOR('A', 0xF0, int)
+#ifdef CONFIG_RTK_PLATFORM
+#define SNDRV_PCM_IOCTL_VOLUME_SET   _IOW('A', 0xE0, int)
+#define SNDRV_PCM_IOCTL_VOLUME_GET   _IOR('A', 0xE1, int)
+#define SNDRV_PCM_IOCTL_EQ_SET       _IOW('A', 0xE2, struct AUDIO_RPC_EQUALIZER_MODE)
+#define SNDRV_PCM_IOCTL_GET_LATENCY  _IOR('A', 0xF0, int)
 #define SNDRV_PCM_IOCTL_GET_FW_DELAY _IOR('A', 0xF1, snd_pcm_sframes_t)
+#endif /* CONFIG_RTK_PLATFORM */
+
 
 /*****************************************************************************
  *                                                                           *
@@ -670,7 +684,7 @@ enum {
 
 /* global timers (device member) */
 #define SNDRV_TIMER_GLOBAL_SYSTEM	0
-#define SNDRV_TIMER_GLOBAL_RTC		1
+#define SNDRV_TIMER_GLOBAL_RTC		1	/* unused */
 #define SNDRV_TIMER_GLOBAL_HPET		2
 #define SNDRV_TIMER_GLOBAL_HRTIMER	3
 

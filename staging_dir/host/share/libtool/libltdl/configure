@@ -2728,8 +2728,7 @@ fi
 fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_make_support_nested_variables" >&5
 $as_echo "$am_cv_make_support_nested_variables" >&6; }
-#if test $am_cv_make_support_nested_variables = yes; then
-if false; then
+if test $am_cv_make_support_nested_variables = yes; then
     AM_V='$(V)'
   AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
 else
