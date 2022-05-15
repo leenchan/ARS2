@@ -2,7 +2,7 @@
 
 get_last_file() {
 	# sdk / imagebuilder
-	__HTML=$(https://fw.koolcenter.com/iStoreOS/ars2/ | tr -d '\n' | sed -E -e 's/ +/ /g' -e 's/(<tr[^>]*>)/\n\1/g' | grep -Eo '^<tr.*</tr>' | grep "openwrt-${1}")
+	__HTML=$(curl -skL "https://fw.koolcenter.com/iStoreOS/ars2/" | tr -d '\n' | sed -E -e 's/ +/ /g' -e 's/(<tr[^>]*>)/\n\1/g' | grep -Eo '^<tr.*</tr>' | grep "openwrt-${1}")
 	__LAST_UPDATE_AT=""
 	while read LINE
 	do
