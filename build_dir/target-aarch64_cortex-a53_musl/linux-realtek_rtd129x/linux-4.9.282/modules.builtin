@@ -168,6 +168,7 @@ kernel/drivers/leds/trigger/ledtrig-timer.ko
 kernel/drivers/leds/trigger/ledtrig-oneshot.ko
 kernel/drivers/leds/trigger/ledtrig-heartbeat.ko
 kernel/drivers/leds/trigger/ledtrig-default-on.ko
+kernel/drivers/leds/trigger/ledtrig-netdev.ko
 kernel/drivers/md/linear.ko
 kernel/drivers/md/raid0.ko
 kernel/drivers/md/raid1.ko

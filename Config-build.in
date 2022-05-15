@@ -78,6 +78,10 @@ config DEFAULT_ca-certificates
 	bool
 	default y
 
+config DEFAULT_cgroupfs-mount
+	bool
+	default y
+
 config DEFAULT_curl
 	bool
 	default y
@@ -87,6 +91,10 @@ config DEFAULT_dnsmasq
 	default y
 
 config DEFAULT_docker
+	bool
+	default y
+
+config DEFAULT_dockerd
 	bool
 	default y
 
@@ -186,15 +194,7 @@ config DEFAULT_libustream-openssl
 	bool
 	default y
 
-config DEFAULT_libustream-wolfssl
-	bool
-	default y
-
 config DEFAULT_logd
-	bool
-	default y
-
-config DEFAULT_luci-app-arpbind
 	bool
 	default y
 
@@ -238,10 +238,6 @@ config DEFAULT_luci-i18n-alias
 	bool
 	default y
 
-config DEFAULT_luci-i18n-arpbind-zh-cn
-	bool
-	default y
-
 config DEFAULT_luci-i18n-base-zh-cn
 	bool
 	default y
@@ -271,10 +267,6 @@ config DEFAULT_luci-i18n-firewall-zh-cn
 	default y
 
 config DEFAULT_luci-i18n-hd-idle-zh-cn
-	bool
-	default y
-
-config DEFAULT_luci-i18n-ramfree-zh-cn
 	bool
 	default y
 
@@ -712,7 +704,7 @@ config KERNEL_SLABINFO
 
 config KERNEL_PROC_PAGE_MONITOR
 	bool
-	default n
+	default y
 
 config KERNEL_KEXEC
 	bool
@@ -1555,6 +1547,14 @@ config FEED_opp
 	default y
 
 config FEED_opl
+	bool
+	default y
+
+config FEED_oaf
+	bool
+	default y
+
+config FEED_third
 	bool
 	default y
 
@@ -8508,7 +8508,7 @@ config BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS
 
 config BUSYBOX_CONFIG_FEATURE_TOPMEM
 	bool
-	default n
+	default y
 
 config BUSYBOX_CONFIG_UPTIME
 	bool
@@ -8834,6 +8834,10 @@ config PACKAGE_getrandom
 	bool
 	default y
 
+config PACKAGE_istoreos-files
+	bool
+	default y
+
 config PACKAGE_jsonfilter
 	bool
 	default y
@@ -8990,9 +8994,13 @@ config PACKAGE_u-boot-rtd1296
 	bool
 	default y
 
-config PACKAGE_transmission-daemon-openssl
-	tristate
-	default m
+config PACKAGE_appfilter
+	bool
+	default y
+
+config PACKAGE_kmod-oaf
+	bool
+	default y
 
 config PACKAGE_libiwinfo-data
 	bool
@@ -9346,7 +9354,27 @@ config PACKAGE_kmod-leds-gpio
 	bool
 	default y
 
+config PACKAGE_kmod-leds-uleds
+	bool
+	default y
+
+config PACKAGE_kmod-ledtrig-activity
+	bool
+	default y
+
 config PACKAGE_kmod-ledtrig-gpio
+	bool
+	default y
+
+config PACKAGE_kmod-ledtrig-oneshot
+	bool
+	default y
+
+config PACKAGE_kmod-ledtrig-pattern
+	bool
+	default y
+
+config PACKAGE_kmod-ledtrig-transient
 	bool
 	default y
 
@@ -11198,10 +11226,6 @@ config PACKAGE_luci-app-aria2
 	bool
 	default y
 
-config PACKAGE_luci-app-baidupcs-web
-	tristate
-	default m
-
 config PACKAGE_luci-app-cifs-mount
 	bool
 	default y
@@ -11270,11 +11294,19 @@ config PACKAGE_luci-app-hd-idle
 	bool
 	default y
 
+config PACKAGE_luci-app-ledtrig-usbport
+	bool
+	default y
+
 config PACKAGE_luci-app-linkease
 	bool
 	default y
 
 config PACKAGE_luci-app-nfs
+	bool
+	default y
+
+config PACKAGE_luci-app-oaf
 	bool
 	default y
 
@@ -11474,6 +11506,10 @@ config PACKAGE_luci-lib-jsonc
 	bool
 	default y
 
+config PACKAGE_luci-lib-mac-vendor
+	bool
+	default y
+
 config PACKAGE_luci-lib-nixio
 	bool
 	default y
@@ -11559,6 +11595,10 @@ config PACKAGE_luci-i18n-linkease-zh-cn
 	default y
 
 config PACKAGE_luci-i18n-nfs-zh-cn
+	bool
+	default y
+
+config PACKAGE_luci-i18n-oaf-zh-cn
 	bool
 	default y
 
@@ -11918,6 +11958,10 @@ config PACKAGE_ddns-scripts_aliyun
 	bool
 	default y
 
+config PACKAGE_ddns-scripts_dnspod
+	bool
+	default y
+
 config PACKAGE_dns2socks
 	tristate
 	default m
@@ -12007,6 +12051,10 @@ config PACKAGE_vpnc-scripts
 	default y
 
 config PACKAGE_wireguard-tools
+	bool
+	default y
+
+config PACKAGE_xl2tpd
 	bool
 	default y
 
