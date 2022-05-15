@@ -1,8 +1,12 @@
 #!/bin/sh
 
+ARS2_UPDATE_HOST="https://fw.koolcenter.com"
+ARS2_UPDATE_PATH="/iStoreOS/ars2"
+ARS2_UPDATE_URL="$ARS2_UPDATE_HOST$ARS2_UPDATE_PATH"
+
 get_last_file() {
 	# sdk / imagebuilder
-	__HTML=$(curl -skL "https://fw.koolcenter.com/iStoreOS/ars2/" | tr -d '\n' | sed -E -e 's/ +/ /g' -e 's/(<tr[^>]*>)/\n\1/g' | grep -Eo '^<tr.*</tr>' | grep "openwrt-${1}")
+	__HTML=$(curl -skL "$ARS2_UPDATE_URL" | tr -d '\n' | sed -E -e 's/ +/ /g' -e 's/(<tr[^>]*>)/\n\1/g' | grep -Eo '^<tr.*</tr>' | grep "openwrt-${1}")
 	__LAST_UPDATE_AT=""
 	while read LINE
 	do
@@ -35,9 +39,9 @@ get_last_file() {
 	EOF
 	[ -z "$__FIND" ] || {
 		__FILE_NAME=$(echo "$__FIND" | grep -Eo 'href="[^"]+"' | awk '{gsub(/"/,"",$0); gsub(/^href=/,"",$0); print $0}')
-		__FILE_PATH="/binary/ars2/$__FILE_NAME"
+		__FILE_PATH="$ARS2_UPDATE_PATH/$__FILE_NAME"
 		__FILE_LINK="https://fw.koolcenter.com${__FILE_PATH}"
-		__FILE_HASH=$(curl -skL "https://fw.koolcenter.com/binary/ars2/README.md" | grep "$__FILE_NAME")
+		__FILE_HASH=$(curl -skL "$ARS2_UPDATE_URL/README.md" | grep "$__FILE_NAME")
 		__FILE_MD5=$(echo "$__FILE_HASH" | awk -F'|' '{print $4}' | tr -d ' ')
 		__FILE_SHA256=$(echo "$__FILE_HASH" | awk -F'|' '{print $3}' | tr -d ' ')
 		return 0
