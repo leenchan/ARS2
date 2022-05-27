@@ -1,4 +1,4 @@
-cmd_scripts/kconfig/mconf.o := gcc -Wp,-MD,scripts/kconfig/.mconf.o.d -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -std=gnu89   -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/mconf.o scripts/kconfig/mconf.c
+cmd_scripts/kconfig/mconf.o := gcc -Wp,-MD,scripts/kconfig/.mconf.o.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/mconf.o scripts/kconfig/mconf.c
 
 source_scripts/kconfig/mconf.o := scripts/kconfig/mconf.c
 
@@ -15,9 +15,12 @@ deps_scripts/kconfig/mconf.o := \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/endian.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/byteswap.h \
+  /usr/include/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \

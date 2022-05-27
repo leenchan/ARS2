@@ -77,6 +77,8 @@ enum {
 
 	NETIF_F_HW_TC_BIT,		/* Offload TC infrastructure */
 
+	NETIF_F_HW_PPPOE_BIT,	/* PPPOE with HW_CSUM, SG, GSO, etc */
+
 	/*
 	 * Add your fresh new feature above and remember to update
 	 * netdev_features_strings[] in net/core/ethtool.c and maybe
@@ -138,6 +140,7 @@ enum {
 #define NETIF_F_HW_L2FW_DOFFLOAD	__NETIF_F(HW_L2FW_DOFFLOAD)
 #define NETIF_F_BUSY_POLL	__NETIF_F(BUSY_POLL)
 #define NETIF_F_HW_TC		__NETIF_F(HW_TC)
+#define NETIF_F_HW_PPPOE	__NETIF_F(HW_PPPOE)
 
 /* Finds the next feature with the highest number of the range of start till 0.
  */

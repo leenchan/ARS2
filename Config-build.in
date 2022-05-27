@@ -130,6 +130,10 @@ config DEFAULT_iptables
 	bool
 	default y
 
+config DEFAULT_istoreos-files
+	bool
+	default y
+
 config DEFAULT_kmod-ata-ahci
 	bool
 	default y
@@ -151,10 +155,6 @@ config DEFAULT_kmod-input-gpio-keys
 	default y
 
 config DEFAULT_kmod-input-gpio-keys-polled
-	bool
-	default y
-
-config DEFAULT_kmod-ipt-offload
 	bool
 	default y
 
@@ -231,10 +231,6 @@ config DEFAULT_luci-app-sqm
 	default y
 
 config DEFAULT_luci-app-ttyd
-	bool
-	default y
-
-config DEFAULT_luci-i18n-alias
 	bool
 	default y
 
@@ -461,10 +457,6 @@ config TARGET_UBIFS_FREE_SPACE_FIXUP
 config TARGET_UBIFS_JOURNAL_SIZE
 	string
 	default ""
-
-config REALTEK_CUSTOMIZE_SETTINGS
-	bool
-	default y
 
 config EXPERIMENTAL
 	bool
@@ -1393,6 +1385,30 @@ config MAKE_TOOLCHAIN
 config IMAGEOPT
 	bool
 	default y
+
+config PACKAGE_istoreos-files_CUSTOMIZE_SETTINGS
+	bool
+	default y
+
+config LUCI_LANG_zh-cn
+	bool
+	default y
+
+config LUCI_LANG_zh-tw
+	bool
+	default n
+
+config LUCI_LANG_pt-br
+	bool
+	default n
+
+config LUCI_LANG_no
+	bool
+	default n
+
+config LUCI_LANG_bn
+	bool
+	default n
 
 config PREINITOPT
 	bool
@@ -9906,6 +9922,10 @@ config PACKAGE_kmod-random-core
 	tristate
 	default m
 
+config PACKAGE_kmod-regmap-core
+	bool
+	default y
+
 config PACKAGE_kmod-sdhci
 	bool
 	default y
@@ -9983,6 +10003,30 @@ config KERNEL_RTL_BR_SHORTCUT
 	default n
 
 config PACKAGE_kmod-rtk-emmc
+	bool
+	default y
+
+config PACKAGE_kmod-sound-core
+	bool
+	default y
+
+config PACKAGE_kmod-sound-dummy
+	bool
+	default y
+
+config PACKAGE_kmod-sound-hda-core
+	bool
+	default y
+
+config PACKAGE_kmod-sound-hda-codec-analog
+	bool
+	default y
+
+config PACKAGE_kmod-sound-seq
+	bool
+	default y
+
+config PACKAGE_kmod-usb-audio
 	bool
 	default y
 
@@ -11169,30 +11213,6 @@ config LUCI_LANG_zh_Hant
 config PACKAGE_luci-compat
 	bool
 	default y
-
-config PACKAGE_luci-i18n-alias
-	bool
-	default y
-
-config LUCI_LANG_zh-cn
-	bool
-	default y
-
-config LUCI_LANG_zh-tw
-	bool
-	default n
-
-config LUCI_LANG_pt-br
-	bool
-	default n
-
-config LUCI_LANG_no
-	bool
-	default n
-
-config LUCI_LANG_bn
-	bool
-	default n
 
 config PACKAGE_luci-mod-admin-full
 	bool

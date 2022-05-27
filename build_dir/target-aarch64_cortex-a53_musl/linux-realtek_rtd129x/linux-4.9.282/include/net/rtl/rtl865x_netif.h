@@ -662,9 +662,9 @@ typedef struct _rtl865x_AclRule_s
 
 //#define CONFIG_RTL_MAC_BASED_NETIF	1
 
-#ifndef CONFIG_RTL_MAC_BASED_NETIF
-#define CONFIG_RTL_VLAN_BASED_NETIF 1
-#endif
+// #ifndef CONFIG_RTL_MAC_BASED_NETIF
+// #define CONFIG_RTL_VLAN_BASED_NETIF 1
+// #endif
 
 #if defined(CONFIG_RTL_MAC_BASED_NETIF)
 #define IF_FEATURE_IS_BRIDGE	0x00000001
@@ -690,178 +690,181 @@ int32 rtl865x_netif_is_master(char *ifName);
 #endif
 
 #if defined(CONFIG_RTD_1295_HWNAT)
-#if defined(CONFIG_RTL_MULTI_LAN_DEV)
-#if defined(CONFIG_RTL_CPU_TAG)
-//#define RTL_LANPORT_MASK_0		0x01	//port 0
-#define RTL_LANPORT_MASK_1		0x02	//port 1
-#define RTL_LANPORT_MASK_2		0x04	//port 2
-//#define RTL_LANPORT_MASK_3		0x08	//port 3
+	#if defined(CONFIG_RTL_MULTI_LAN_DEV)
+		#if defined(CONFIG_RTL_CPU_TAG)
+			//#define RTL_LANPORT_MASK_0		0x01	//port 0
+			#define RTL_LANPORT_MASK_1		0x02	//port 1
+			#define RTL_LANPORT_MASK_2		0x04	//port 2
+			//#define RTL_LANPORT_MASK_3		0x08	//port 3
 
-#define RTL_WANPORT_MASK		0x20	//port 5
-#define RTL_DEF_LANPORT_MASK		0x106
+			#define RTL_WANPORT_MASK		0x20	//port 5
+			#define RTL_DEF_LANPORT_MASK		0x106
 
-#else /* CONFIG_RTL_CPU_TAG */
-#define RTL_LANPORT_MASK_1		0x01	//port 0
-#define RTL_LANPORT_MASK_5		0x20	//port 5
+		#else /* CONFIG_RTL_CPU_TAG */
+			#define RTL_LANPORT_MASK_1		0x01	//port 0
+			#define RTL_LANPORT_MASK_5		0x20	//port 5
 
-#define	RTL_WANPORT_MASK		0x10
-#if defined(CONFIG_RTL_WAN_MAC5)
-#define	RTL_DEF_LANPORT_MASK		0x120
-#else /* CONFIG_RTL_WAN_MAC5 */
-#define	RTL_DEF_LANPORT_MASK		0x121
-#endif /* CONFIG_RTL_WAN_MAC5 */
-#endif /* CONFIG_RTL_CPU_TAG */
+			#define	RTL_WANPORT_MASK		0x10
+			#if defined(CONFIG_RTL_WAN_MAC5)
+				#define	RTL_DEF_LANPORT_MASK		0x120
+			#else /* CONFIG_RTL_WAN_MAC5 */
+				#define	RTL_DEF_LANPORT_MASK		0x121
+			#endif /* CONFIG_RTL_WAN_MAC5 */
+		#endif /* CONFIG_RTL_CPU_TAG */
 
-#else /* CONFIG_RTL_MULTI_LAN_DEV */
-#if defined(CONFIG_RTL_2_RGMII_PORTS_ONLY)
-#define RTL_WANPORT_MASK		0x20	//port 5
-#define RTL_DEF_LANPORT_MASK		0x101
-#else /* CONFIG_RTL_2_RGMII_PORTS_ONLY */
-#define RTL_WANPORT_MASK		0x10
-#define RTL_DEF_LANPORT_MASK		0x121
-#endif /* CONFIG_RTL_2_RGMII_PORTS_ONLY */
-#endif /* CONFIG_RTL_MULTI_LAN_DEV */
+	#else /* CONFIG_RTL_MULTI_LAN_DEV */
+		#define RTL_LANPORT_MASK_1		0x01	//port 0
+		#define RTL_LANPORT_MASK_5		0x20	//port 5
+
+		#if defined(CONFIG_RTL_2_RGMII_PORTS_ONLY)
+			#define RTL_WANPORT_MASK		0x20	//port 5
+			#define RTL_DEF_LANPORT_MASK		0x101
+		#else /* CONFIG_RTL_2_RGMII_PORTS_ONLY */
+			#define RTL_WANPORT_MASK		0x10
+			#define RTL_DEF_LANPORT_MASK		0x121
+		#endif /* CONFIG_RTL_2_RGMII_PORTS_ONLY */
+	#endif /* CONFIG_RTL_MULTI_LAN_DEV */
 
 #else //defined(CONFIG_RTD_1295_HWNAT)
-#if defined(CONFIG_RTL8196_RTL8366)
-	#define	RTL_WANPORT_MASK		0x1C1
-	#define	RTL_LANPORT_MASK		0x1C1
-	#define	RTL8366RB_GMIIPORT		0x20
-	#define	RTL8366RB_LANPORT		0xCf
-	#define	RTL8366RB_WANPORT		0x10
-#elif defined(CONFIG_RTL_819X) && (defined(CONFIG_RTK_VLAN_SUPPORT) || defined (CONFIG_RTL_MULTI_LAN_DEV) || defined(CONFIG_RTL_EXCHANGE_PORTMASK) || defined(CONFIG_AUTO_DHCP_CHECK) || defined(CONFIG_RTK_WLAN_EVENT_INDICATE) || defined(CONFIG_RTL_LINK_AGGREGATION))
-	#if defined(CONFIG_POCKET_ROUTER_SUPPORT)
+	#if defined(CONFIG_RTL8196_RTL8366)
+		#define	RTL_WANPORT_MASK		0x1C1
+		#define	RTL_LANPORT_MASK		0x1C1
+		#define	RTL8366RB_GMIIPORT		0x20
+		#define	RTL8366RB_LANPORT		0xCf
+		#define	RTL8366RB_WANPORT		0x10
+	#elif defined(CONFIG_RTL_819X) && (defined(CONFIG_RTK_VLAN_SUPPORT) || defined (CONFIG_RTL_MULTI_LAN_DEV) || defined(CONFIG_RTL_EXCHANGE_PORTMASK) || defined(CONFIG_AUTO_DHCP_CHECK) || defined(CONFIG_RTK_WLAN_EVENT_INDICATE) || defined(CONFIG_RTL_LINK_AGGREGATION))
+		#if defined(CONFIG_POCKET_ROUTER_SUPPORT)
+			#define	RTL_WANPORT_MASK		0x10
+			#define	RTL_LANPORT_MASK		0x10
+		#elif defined(CONFIG_RTL_PUBLIC_SSID)
+			#define RTL_WANPORT_MASK		0x110     //port 4/port 8
+			#define	RTL_LANPORT_MASK		0x10f
+		#elif defined(CONFIG_8198_PORT5_RGMII)
+			#define	RTL_WANPORT_MASK		0x10
+			#define	RTL_LANPORT_MASK		0x12f
+		#else
+			#if defined(CONFIG_RTL_8196C_iNIC)
+				#define	RTL_WANPORT_MASK		0x01
+				#define	RTL_LANPORT_MASK		0x110 //mark_inic , only port4 connect to MII
+			#elif defined (CONFIG_RTK_INBAND_HOST_HACK)
+				#if defined(CONFIG_8198_PORT5_GMII)
+				#define RTL_WANPORT_MASK		0x120  //port5 ,hack port,eth1
+				#define RTL_LANPORT_MASK		0x11f // 0~4 port eth0
+				#else
+				#define RTL_WANPORT_MASK		0x110  //port4(port0 in some board) is eth1
+				#define RTL_LANPORT_MASK		0x12f // 0 1 2 3 5  port are eth0
+				#endif
+			#elif defined(CONFIG_8198_PORT5_GMII)
+				#define RTL_WANPORT_MASK		0x10  //port0
+				#define RTL_LANPORT_MASK		0x12f //all port eth0
+			#elif defined (CONFIG_RTL_89xxD)
+				#define RTL_WANPORT_MASK		0x01  //port0
+				#define RTL_LANPORT_MASK		0x11e //all port eth0
+			#elif defined(CONFIG_RTL_AP_PACKAGE)
+				#define	RTL_WANPORT_MASK		0x00
+				#define	RTL_LANPORT_MASK		0x11f
+			#elif defined(CONFIG_RTL_EXCHANGE_PORTMASK)
+				//change wan port to port0
+				#define RTL_WANPORT_MASK		0x01 //port0
+				#define RTL_LANPORT_MASK		0x11e
+			#else
+				#if defined(CONFIG_RTL_LINK_AGGREGATION)
+				#define RTL_WANPORT_MASK		0x18 //port3 and port4 for wan, testcode
+				#define RTL_LANPORT_MASK		0x107 //port0/port1/port2 for lan, testcode
+				#else
+				#define	RTL_WANPORT_MASK		0x10
+				#ifdef CONFIG_8198C_8211FS
+					#define	RTL_LANPORT_MASK	0x12f
+				#else
+					#define	RTL_LANPORT_MASK	0x10f
+				#endif
+				#endif
+			#endif
+		#endif
+
+		#if defined(CONFIG_RTL_89xxD)
+			#define		RTL_LANPORT_MASK_1		0x2	//port 1
+			#define		RTL_LANPORT_MASK_2		0x4	//port 2
+			#define		RTL_LANPORT_MASK_3		0x8	//port 3
+			#define		RTL_LANPORT_MASK_4		0x10	//port 4
+		#else
+			#if defined(CONFIG_RTL_AP_PACKAGE)
+				#define		RTL_LANPORT_MASK_0		0x10	//port 4
+			#endif
+
+			#if defined(CONFIG_RTL_EXCHANGE_PORTMASK)
+				#define		RTL_LANPORT_MASK_1		0x10	//port 4
+				#define		RTL_LANPORT_MASK_2		0x8	//port 3
+				#define		RTL_LANPORT_MASK_3		0x4	//port 2
+				#define		RTL_LANPORT_MASK_4		0x2	//port 1
+			#else
+				#if defined(CONFIG_RTL_LINK_AGGREGATION)
+				#define		RTL_LANPORT_MASK_1		0x0 	//none
+				#define		RTL_LANPORT_MASK_2		0x4 	//port 2
+				#define		RTL_LANPORT_MASK_3		0x2 	//port 1
+				#define		RTL_LANPORT_MASK_4		0x1 	//port 0
+				#else
+				#define		RTL_LANPORT_MASK_1		0x8	//port 0
+				#define		RTL_LANPORT_MASK_2		0x4	//port 1
+				#define		RTL_LANPORT_MASK_3		0x2	//port 2
+				#ifdef CONFIG_8198C_8211FS
+				#define		RTL_LANPORT_MASK_4		0x21	//port 0 / port5
+				#else
+				#define		RTL_LANPORT_MASK_4		0x1	//port 3
+				#endif
+				#endif
+			#endif
+		#endif
+		#ifdef CONFIG_8198_PORT5_GMII
+		#define	RTL_LANPORT_MASK_5		0x20	//port 5
+		#endif
+	#elif defined(CONFIG_RTL_8198_NFBI_BOARD)
+		#define	RTL_WANPORT_MASK		0x1e0	//port 5, port 6,port 7,port 8
+		#define	RTL_LANPORT_MASK		0x1df	//port 0~4 , port 6~8	 , need port4 ??
+	#elif defined(CONFIG_8198_PORT5_GMII)
+		#define	RTL_WANPORT_MASK		0x110
+		#define	RTL_LANPORT_MASK		0x1ef
+	#elif defined (CONFIG_POCKET_ROUTER_SUPPORT)
 		#define	RTL_WANPORT_MASK		0x10
 		#define	RTL_LANPORT_MASK		0x10
 	#elif defined(CONFIG_RTL_PUBLIC_SSID)
-		#define RTL_WANPORT_MASK		0x110     //port 4/port 8
-		#define	RTL_LANPORT_MASK		0x10f
-	#elif defined(CONFIG_8198_PORT5_RGMII)
-		#define	RTL_WANPORT_MASK		0x10
-		#define	RTL_LANPORT_MASK		0x12f
-	#else
-		#if defined(CONFIG_RTL_8196C_iNIC)
-			#define	RTL_WANPORT_MASK		0x01
-			#define	RTL_LANPORT_MASK		0x110 //mark_inic , only port4 connect to MII
-		#elif defined (CONFIG_RTK_INBAND_HOST_HACK)
-			#if defined(CONFIG_8198_PORT5_GMII)
-			#define RTL_WANPORT_MASK		0x120  //port5 ,hack port,eth1
-			#define RTL_LANPORT_MASK		0x11f // 0~4 port eth0
-			#else
-			#define RTL_WANPORT_MASK		0x110  //port4(port0 in some board) is eth1
-			#define RTL_LANPORT_MASK		0x12f // 0 1 2 3 5  port are eth0
-			#endif
-		#elif defined(CONFIG_8198_PORT5_GMII)
-			#define RTL_WANPORT_MASK		0x10  //port0
-			#define RTL_LANPORT_MASK		0x12f //all port eth0
-		#elif defined (CONFIG_RTL_89xxD)
-			#define RTL_WANPORT_MASK		0x01  //port0
-			#define RTL_LANPORT_MASK		0x11e //all port eth0
+		#define RTL_WANPORT_MASK		0x110	//port 4/port 8
+
+	#elif defined(CONFIG_RTL_819X)
+		#ifdef CONFIG_RTL_8196C_iNIC
+		#define RTL_WANPORT_MASK		0x01
+		#define RTL_LANPORT_MASK		0x110 //mark_inic , only port4 connect to MII
 		#elif defined(CONFIG_RTL_AP_PACKAGE)
-			#define	RTL_WANPORT_MASK		0x00
-			#define	RTL_LANPORT_MASK		0x11f
-		#elif defined(CONFIG_RTL_EXCHANGE_PORTMASK)
-			//change wan port to port0
-			#define RTL_WANPORT_MASK		0x01 //port0
-			#define RTL_LANPORT_MASK		0x11e
+		#define	RTL_WANPORT_MASK		0x00
+		#define	RTL_LANPORT_MASK		0x11f
+		#elif defined(CONFIG_RTL_8198C_8367RB) || defined(CONFIG_RTL_8198C_8211F)
+		#define	RTL_WANPORT_MASK		0x01		/* port 0 as wan port */
+		#define	RTL_LANPORT_MASK		0x13e		/* port 1/2/3/4/5/cpu port(port 8) */
 		#else
-			#if defined(CONFIG_RTL_LINK_AGGREGATION)
-			#define RTL_WANPORT_MASK		0x18 //port3 and port4 for wan, testcode
-			#define RTL_LANPORT_MASK		0x107 //port0/port1/port2 for lan, testcode
-			#else
-			#define	RTL_WANPORT_MASK		0x10
+		#define	RTL_WANPORT_MASK		0x10
 			#ifdef CONFIG_8198C_8211FS
-				#define	RTL_LANPORT_MASK	0x12f
+			#define	RTL_LANPORT_MASK			0x12f
 			#else
-				#define	RTL_LANPORT_MASK	0x10f
+		#define	RTL_LANPORT_MASK		0x10f
 			#endif
-			#endif
+		#endif
+	#else // should not happen
+		#define	RTL_WANPORT_MASK		0x01
+		#define	RTL_LANPORT_MASK		0x11e		/* port1/2/3/4/cpu port(port 8) */
+		#if defined(CONFIG_RTK_VLAN_SUPPORT) || defined (CONFIG_RTL_MULTI_LAN_DEV)
+		#define	RTL_LANPORT_MASK_1		0x2		//port 1
+		#define	RTL_LANPORT_MASK_2		0x4		//port 2
+		#define	RTL_LANPORT_MASK_3		0x8		//port 3
+		#define	RTL_LANPORT_MASK_4		0x10	//port 4
 		#endif
 	#endif
 
-	#if defined(CONFIG_RTL_89xxD)
-		#define		RTL_LANPORT_MASK_1		0x2	//port 1
-		#define		RTL_LANPORT_MASK_2		0x4	//port 2
-		#define		RTL_LANPORT_MASK_3		0x8	//port 3
-		#define		RTL_LANPORT_MASK_4		0x10	//port 4
-	#else
-		#if defined(CONFIG_RTL_AP_PACKAGE)
-			#define		RTL_LANPORT_MASK_0		0x10	//port 4
-		#endif
-
-		#if defined(CONFIG_RTL_EXCHANGE_PORTMASK)
-			#define		RTL_LANPORT_MASK_1		0x10	//port 4
-			#define		RTL_LANPORT_MASK_2		0x8	//port 3
-			#define		RTL_LANPORT_MASK_3		0x4	//port 2
-			#define		RTL_LANPORT_MASK_4		0x2	//port 1
-		#else
-			#if defined(CONFIG_RTL_LINK_AGGREGATION)
-			#define		RTL_LANPORT_MASK_1		0x0 	//none
-			#define		RTL_LANPORT_MASK_2		0x4 	//port 2
-			#define		RTL_LANPORT_MASK_3		0x2 	//port 1
-			#define		RTL_LANPORT_MASK_4		0x1 	//port 0
-			#else
-			#define		RTL_LANPORT_MASK_1		0x8	//port 0
-			#define		RTL_LANPORT_MASK_2		0x4	//port 1
-			#define		RTL_LANPORT_MASK_3		0x2	//port 2
-			#ifdef CONFIG_8198C_8211FS
-			#define		RTL_LANPORT_MASK_4		0x21	//port 0 / port5
-			#else
-			#define		RTL_LANPORT_MASK_4		0x1	//port 3
-			#endif
-			#endif
-		#endif
+	#if defined(CONFIG_RTL_8881A) && defined(CONFIG_RTL_8211F_SUPPORT)
+	#undef RTL_WANPORT_MASK
+	#undef RTL_LANPORT_MASK
+	#define	RTL_WANPORT_MASK		0x1
+	#define	RTL_LANPORT_MASK		0x110
 	#endif
-	#ifdef CONFIG_8198_PORT5_GMII
-	#define	RTL_LANPORT_MASK_5		0x20	//port 5
-	#endif
-#elif defined(CONFIG_RTL_8198_NFBI_BOARD)
-	#define	RTL_WANPORT_MASK		0x1e0	//port 5, port 6,port 7,port 8
-	#define	RTL_LANPORT_MASK		0x1df	//port 0~4 , port 6~8	 , need port4 ??
-#elif defined(CONFIG_8198_PORT5_GMII)
-	#define	RTL_WANPORT_MASK		0x110
-	#define	RTL_LANPORT_MASK		0x1ef
-#elif defined (CONFIG_POCKET_ROUTER_SUPPORT)
-	#define	RTL_WANPORT_MASK		0x10
-	#define	RTL_LANPORT_MASK		0x10
-#elif defined(CONFIG_RTL_PUBLIC_SSID)
-	#define RTL_WANPORT_MASK		0x110	//port 4/port 8
-
-#elif defined(CONFIG_RTL_819X)
-	#ifdef CONFIG_RTL_8196C_iNIC
-	#define RTL_WANPORT_MASK		0x01
-	#define RTL_LANPORT_MASK		0x110 //mark_inic , only port4 connect to MII
-	#elif defined(CONFIG_RTL_AP_PACKAGE)
-	#define	RTL_WANPORT_MASK		0x00
-	#define	RTL_LANPORT_MASK		0x11f
-	#elif defined(CONFIG_RTL_8198C_8367RB) || defined(CONFIG_RTL_8198C_8211F)
-	#define	RTL_WANPORT_MASK		0x01		/* port 0 as wan port */
-	#define	RTL_LANPORT_MASK		0x13e		/* port 1/2/3/4/5/cpu port(port 8) */
-	#else
-	#define	RTL_WANPORT_MASK		0x10
-		#ifdef CONFIG_8198C_8211FS
-		#define	RTL_LANPORT_MASK			0x12f
-		#else
-	#define	RTL_LANPORT_MASK		0x10f
-		#endif
-	#endif
-#else // should not happen
-	#define	RTL_WANPORT_MASK		0x01
-	#define	RTL_LANPORT_MASK		0x11e		/* port1/2/3/4/cpu port(port 8) */
-	#if defined(CONFIG_RTK_VLAN_SUPPORT) || defined (CONFIG_RTL_MULTI_LAN_DEV)
-	#define	RTL_LANPORT_MASK_1		0x2		//port 1
-	#define	RTL_LANPORT_MASK_2		0x4		//port 2
-	#define	RTL_LANPORT_MASK_3		0x8		//port 3
-	#define	RTL_LANPORT_MASK_4		0x10	//port 4
-	#endif
-#endif
-
-#if defined(CONFIG_RTL_8881A) && defined(CONFIG_RTL_8211F_SUPPORT)
-#undef RTL_WANPORT_MASK
-#undef RTL_LANPORT_MASK
-#define	RTL_WANPORT_MASK		0x1
-#define	RTL_LANPORT_MASK		0x110
-#endif
 #endif //defined(CONFIG_RTD_1295_HWNAT)
 
 #if defined(CONFIG_RTD_1295_HWNAT)
@@ -870,13 +873,13 @@ int32 rtl865x_netif_is_master(char *ifName);
 #define ETH_INTF_NUM	6
 #else /* CONFIG_RTL_CPU_TAG */
 #if defined(CONFIG_RTL_WAN_MAC5)
-#define ETH_INTF_NUM	4
+#define ETH_INTF_NUM	2
 #else /* CONFIG_RTL_WAN_MAC5 */
-#define ETH_INTF_NUM	6
+#define ETH_INTF_NUM	3
 #endif /* CONFIG_RTL_WAN_MAC5 */
 #endif /* CONFIG_RTL_CPU_TAG */
 #else /* CONFIG_RTL_MULTI_LAN_DEV */
-#define ETH_INTF_NUM	5
+#define ETH_INTF_NUM	2
 #endif /* CONFIG_RTL_MULTI_LAN_DEV */
 
 #else //defined(CONFIG_RTD_1295_HWNAT)

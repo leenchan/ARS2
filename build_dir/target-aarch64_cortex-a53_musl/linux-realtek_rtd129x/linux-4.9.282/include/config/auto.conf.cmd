@@ -748,6 +748,7 @@ deps_config := \
 	drivers/isdn/hisax/Kconfig \
 	drivers/isdn/i4l/Kconfig \
 	drivers/isdn/Kconfig \
+	drivers/net/wireguard/Kconfig \
 	drivers/net/hyperv/Kconfig \
 	drivers/net/ieee802154/Kconfig \
 	drivers/net/wan/Kconfig \

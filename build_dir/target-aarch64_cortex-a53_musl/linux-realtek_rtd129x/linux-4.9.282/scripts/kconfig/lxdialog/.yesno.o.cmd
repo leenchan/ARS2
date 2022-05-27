@@ -1,4 +1,4 @@
-cmd_scripts/kconfig/lxdialog/yesno.o := gcc -Wp,-MD,scripts/kconfig/lxdialog/.yesno.o.d -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -std=gnu89   -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/yesno.o scripts/kconfig/lxdialog/yesno.c
+cmd_scripts/kconfig/lxdialog/yesno.o := gcc -Wp,-MD,scripts/kconfig/lxdialog/.yesno.o.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DCURSES_LOC="<ncurses.h>" -DNCURSES_WIDECHAR=1 -DLOCALE   -c -o scripts/kconfig/lxdialog/yesno.o scripts/kconfig/lxdialog/yesno.c
 
 source_scripts/kconfig/lxdialog/yesno.o := scripts/kconfig/lxdialog/yesno.c
 
@@ -20,9 +20,12 @@ deps_scripts/kconfig/lxdialog/yesno.o := \
   /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
   /usr/lib/gcc/x86_64-linux-gnu/8/include/stddef.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/endian.h \
+  /home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include/byteswap.h \
+  /usr/include/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
