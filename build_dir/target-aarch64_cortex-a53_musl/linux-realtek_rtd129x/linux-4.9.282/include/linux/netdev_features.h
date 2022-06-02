@@ -206,7 +206,7 @@ static inline int find_next_netdev_feature(u64 feature, unsigned long start)
  * If one device doesn't support one of these features, then disable it
  * for all in netdev_increment_features.
  */
-#define NETIF_F_ALL_FOR_ALL	(NETIF_F_NOCACHE_COPY | NETIF_F_FSO)
+#define NETIF_F_ALL_FOR_ALL	(NETIF_F_NOCACHE_COPY | NETIF_F_FSO | NETIF_F_HW_PPPOE)
 
 /*
  * If upper/master device has these features disabled, they must be disabled
