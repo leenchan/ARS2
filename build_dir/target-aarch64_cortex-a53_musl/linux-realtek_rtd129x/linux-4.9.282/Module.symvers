@@ -9016,6 +9016,7 @@
 0x00000000	_raw_write_lock_irq	vmlinux	EXPORT_SYMBOL
 0x00000000	mmc_start_bkops	vmlinux	EXPORT_SYMBOL
 0x00000000	gpiod_set_value	vmlinux	EXPORT_SYMBOL_GPL
+0x00000000	rtl8152_get_version	drivers/net/usb/r8152	EXPORT_SYMBOL_GPL
 0x00000000	irda_qos_bits_to_value	vmlinux	EXPORT_SYMBOL
 0x00000000	_atomic_dec_and_lock	vmlinux	EXPORT_SYMBOL
 0x00000000	blkg_print_stat_bytes	vmlinux	EXPORT_SYMBOL_GPL
