@@ -1574,6 +1574,10 @@ config FEED_third
 	bool
 	default y
 
+config FEED_diskman
+	bool
+	default y
+
 config PACKAGE_base-files
 	bool
 	default y
@@ -11290,6 +11294,18 @@ config PACKAGE_luci-app-diskman_INCLUDE_lsblk
 	bool
 	default y
 
+config PACKAGE_luci-app-diskman_INCLUDE_mdadm
+	bool
+	default y
+
+config PACKAGE_luci-app-diskman_INCLUDE_kmod_md_raid456
+	bool
+	default y
+
+config PACKAGE_luci-app-diskman_INCLUDE_kmod_md_linear
+	bool
+	default y
+
 config PACKAGE_luci-app-dockerman
 	bool
 	default y
@@ -12109,6 +12125,10 @@ config PACKAGE_frps
 config PACKAGE_haproxy
 	bool
 	default y
+
+config PACKAGE_homebox
+	tristate
+	default m
 
 config PACKAGE_linkease
 	bool
