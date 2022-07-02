@@ -1578,6 +1578,10 @@ config FEED_diskman
 	bool
 	default y
 
+config FEED_cups
+	bool
+	default n
+
 config PACKAGE_base-files
 	bool
 	default y
@@ -10334,6 +10338,26 @@ config PACKAGE_libxtables-nft
 	bool
 	default y
 
+config PACKAGE_libcups
+	tristate
+	default m
+
+config PACKAGE_libcupscgi
+	tristate
+	default m
+
+config PACKAGE_libcupsimage
+	tristate
+	default m
+
+config PACKAGE_libcupsmime
+	tristate
+	default m
+
+config PACKAGE_libcupsppdc
+	tristate
+	default m
+
 config PACKAGE_libgnutls
 	bool
 	default y
@@ -10934,6 +10958,10 @@ config PACKAGE_libpcre
 	bool
 	default y
 
+config PACKAGE_libpng
+	tristate
+	default m
+
 config PACKAGE_libpopt
 	bool
 	default y
@@ -11007,6 +11035,10 @@ config PACKAGE_libuclient
 	default y
 
 config PACKAGE_libudns
+	tristate
+	default m
+
+config PACKAGE_libusb-1.0
 	tristate
 	default m
 
@@ -11274,6 +11306,10 @@ config PACKAGE_luci-app-cpufreq
 	bool
 	default y
 
+config PACKAGE_luci-app-cupsd
+	tristate
+	default m
+
 config PACKAGE_luci-app-ddns
 	bool
 	default y
@@ -11333,6 +11369,10 @@ config PACKAGE_luci-app-frps
 config PACKAGE_luci-app-hd-idle
 	bool
 	default y
+
+config PACKAGE_luci-app-homebox
+	tristate
+	default m
 
 config PACKAGE_luci-app-ledtrig-usbport
 	bool
@@ -11629,6 +11669,10 @@ config PACKAGE_luci-i18n-frps-zh-cn
 config PACKAGE_luci-i18n-hd-idle-zh-cn
 	bool
 	default y
+
+config PACKAGE_luci-i18n-homebox-zh-cn
+	tristate
+	default m
 
 config PACKAGE_luci-i18n-linkease-zh-cn
 	bool
@@ -12033,6 +12077,10 @@ config OPENLDAP_DB47
 config OPENLDAP_ICU
 	bool
 	default n
+
+config PACKAGE_cups
+	tristate
+	default m
 
 config PACKAGE_p910nd
 	tristate
@@ -12751,6 +12799,10 @@ config PACKAGE_shadow-vipw
 	default y
 
 config PACKAGE_shellsync
+	bool
+	default y
+
+config PACKAGE_smartd
 	bool
 	default y
 
