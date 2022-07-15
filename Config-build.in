@@ -11458,6 +11458,10 @@ config PACKAGE_luci-app-store
 	bool
 	default y
 
+config PACKAGE_luci-app-tasks
+	tristate
+	default m
+
 config PACKAGE_luci-app-timecontrol
 	bool
 	default y
@@ -11598,6 +11602,14 @@ config PACKAGE_luci-lib-nixio_notls
 	bool
 	default y
 
+config PACKAGE_luci-lib-taskd
+	tristate
+	default m
+
+config PACKAGE_luci-lib-xterm
+	tristate
+	default m
+
 config PACKAGE_luci-i18n-adblock-zh-cn
 	tristate
 	default m
@@ -11713,6 +11725,10 @@ config PACKAGE_luci-i18n-smartdns-zh-cn
 config PACKAGE_luci-i18n-sqm-zh-cn
 	bool
 	default y
+
+config PACKAGE_luci-i18n-tasks-zh-cn
+	tristate
+	default m
 
 config PACKAGE_luci-i18n-timecontrol-zh-cn
 	bool
@@ -12542,6 +12558,10 @@ config PACKAGE_bash
 	bool
 	default y
 
+config PACKAGE_script-utils
+	tristate
+	default m
+
 config PACKAGE_ttyd
 	bool
 	default y
@@ -12577,6 +12597,10 @@ config PACKAGE_coreutils-sort
 config PACKAGE_coreutils-stat
 	bool
 	default y
+
+config PACKAGE_coreutils-stty
+	tristate
+	default m
 
 config PACKAGE_dbus
 	bool
@@ -12841,6 +12865,10 @@ config PACKAGE_TAR_XZ
 config PACKAGE_TAR_ZSTD
 	bool
 	default y
+
+config PACKAGE_taskd
+	tristate
+	default m
 
 config PACKAGE_tini
 	bool
