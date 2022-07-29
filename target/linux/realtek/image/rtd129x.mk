@@ -62,5 +62,4 @@ TARGET_DEVICES += bpi-w2
 
 include rescue.mk
 
-
 endif
