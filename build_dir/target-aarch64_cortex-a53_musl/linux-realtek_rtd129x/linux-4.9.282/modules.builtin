@@ -267,6 +267,7 @@ kernel/drivers/usb/core/usbcore.ko
 kernel/drivers/usb/dwc3/dwc3.ko
 kernel/drivers/usb/dwc3/dwc3-rtk.ko
 kernel/drivers/usb/dwc3/dwc3-rtk-type_c.ko
+kernel/drivers/usb/dwc3/dwc3-rtk-drd.ko
 kernel/drivers/usb/gadget/libcomposite.ko
 kernel/drivers/usb/gadget/function/u_ether.ko
 kernel/drivers/usb/gadget/function/usb_f_ncm.ko

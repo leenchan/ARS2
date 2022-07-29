@@ -230,6 +230,10 @@ config DEFAULT_luci-app-sqm
 	bool
 	default y
 
+config DEFAULT_luci-app-store
+	bool
+	default y
+
 config DEFAULT_luci-app-ttyd
 	bool
 	default y
@@ -1468,7 +1472,7 @@ config VERSION_DIST
 
 config VERSION_NUMBER
 	string
-	default "21.02.2"
+	default "21.02.3"
 
 config VERSION_CODE
 	string
@@ -1476,7 +1480,7 @@ config VERSION_CODE
 
 config VERSION_REPO
 	string
-	default "https://downloads.openwrt.org/releases/21.02.2"
+	default "https://downloads.openwrt.org/releases/21.02.3"
 
 config VERSION_HOME_URL
 	string
@@ -11108,11 +11112,11 @@ config LUCI_SRCDIET
 
 config LUCI_JSMIN
 	bool
-	default n
+	default y
 
 config LUCI_CSSTIDY
 	bool
-	default n
+	default y
 
 config LUCI_LANG_ar
 	bool
@@ -11603,12 +11607,12 @@ config PACKAGE_luci-lib-nixio_notls
 	default y
 
 config PACKAGE_luci-lib-taskd
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_luci-lib-xterm
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_luci-i18n-adblock-zh-cn
 	tristate
@@ -12559,8 +12563,8 @@ config PACKAGE_bash
 	default y
 
 config PACKAGE_script-utils
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_ttyd
 	bool
@@ -12599,8 +12603,8 @@ config PACKAGE_coreutils-stat
 	default y
 
 config PACKAGE_coreutils-stty
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_dbus
 	bool
@@ -12867,8 +12871,8 @@ config PACKAGE_TAR_ZSTD
 	default y
 
 config PACKAGE_taskd
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_tini
 	bool
