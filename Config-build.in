@@ -1586,6 +1586,10 @@ config FEED_cups
 	bool
 	default n
 
+config FEED_rclone
+	bool
+	default y
+
 config PACKAGE_base-files
 	bool
 	default y
@@ -10147,8 +10151,8 @@ config PACKAGE_kmod-usb-net-rtl8150
 	default y
 
 config PACKAGE_kmod-usb-net-rtl8152
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-usb-net-sierrawireless
 	bool
@@ -11446,6 +11450,22 @@ config PACKAGE_luci-app-quickstart
 	bool
 	default y
 
+config PACKAGE_luci-app-rclone
+	tristate
+	default m
+
+config PACKAGE_luci-app-rclone_INCLUDE_rclone-webui
+	bool
+	default y
+
+config PACKAGE_luci-app-rclone_INCLUDE_rclone-ng
+	bool
+	default y
+
+config PACKAGE_luci-app-rclone_INCLUDE_fuse-utils
+	bool
+	default y
+
 config PACKAGE_luci-app-samba4
 	bool
 	default y
@@ -11718,6 +11738,10 @@ config PACKAGE_luci-i18n-quickstart-zh-cn
 	bool
 	default y
 
+config PACKAGE_luci-i18n-rclone-zh-cn
+	tristate
+	default m
+
 config PACKAGE_luci-i18n-samba4-zh-cn
 	bool
 	default y
@@ -11822,6 +11846,14 @@ config PACKAGE_transmission-daemon
 	tristate
 	default m
 
+config PACKAGE_rclone-ng
+	tristate
+	default m
+
+config PACKAGE_rclone-webui-react
+	tristate
+	default m
+
 config PACKAGE_aria2
 	bool
 	default y
@@ -11873,6 +11905,14 @@ config ARIA2_WEBSOCKET
 config PACKAGE_curl
 	bool
 	default y
+
+config PACKAGE_rclone
+	tristate
+	default m
+
+config PACKAGE_rclone-config
+	tristate
+	default m
 
 config PACKAGE_wget-ssl
 	bool
@@ -12527,6 +12567,10 @@ config PACKAGE_exfat-fsck
 	default m
 
 config PACKAGE_exfat-mkfs
+	tristate
+	default m
+
+config PACKAGE_fuse-utils
 	tristate
 	default m
 
