@@ -10542,6 +10542,10 @@ config PACKAGE_libopenssl-conf
 	bool
 	default y
 
+config PACKAGE_alsa-lib
+	tristate
+	default m
+
 config PACKAGE_bind-libs
 	bool
 	default y
@@ -10814,6 +10818,10 @@ config PACKAGE_libdevmapper
 	bool
 	default y
 
+config PACKAGE_libdrm
+	tristate
+	default m
+
 config PACKAGE_libelf
 	bool
 	default y
@@ -10841,6 +10849,10 @@ config PACKAGE_libext2fs
 config PACKAGE_libf2fs
 	bool
 	default y
+
+config PACKAGE_libffmpeg-mpp
+	tristate
+	default m
 
 config PACKAGE_libgcrypt
 	bool
@@ -10962,6 +10974,14 @@ config PACKAGE_libnl-tiny
 	bool
 	default y
 
+config PACKAGE_libopus
+	tristate
+	default m
+
+config PACKAGE_libpciaccess
+	tristate
+	default m
+
 config PACKAGE_libpcre
 	bool
 	default y
@@ -11069,6 +11089,10 @@ config PACKAGE_libwebsockets-full
 config PACKAGE_libwrap
 	bool
 	default y
+
+config PACKAGE_libx264
+	tristate
+	default m
 
 config PACKAGE_libxml2
 	bool
@@ -11474,6 +11498,10 @@ config PACKAGE_luci-app-smartdns
 	tristate
 	default m
 
+config PACKAGE_luci-app-socat
+	tristate
+	default m
+
 config PACKAGE_luci-app-sqm
 	bool
 	default y
@@ -11750,6 +11778,10 @@ config PACKAGE_luci-i18n-smartdns-zh-cn
 	tristate
 	default m
 
+config PACKAGE_luci-i18n-socat-zh-cn
+	tristate
+	default m
+
 config PACKAGE_luci-i18n-sqm-zh-cn
 	bool
 	default y
@@ -11841,6 +11873,34 @@ config PACKAGE_openmax
 config PACKAGE_rtk-supplicant
 	bool
 	default y
+
+config PACKAGE_ffmpeg-mpp
+	tristate
+	default m
+
+config PACKAGE_ffmpeg-remux
+	bool
+	default y
+
+config PACKAGE_ffprobe-mpp
+	tristate
+	default m
+
+config PACKAGE_rkmpp
+	tristate
+	default m
+
+config PACKAGE_rkmpp-demo
+	tristate
+	default m
+
+config PACKAGE_rkrga
+	tristate
+	default m
+
+config PACKAGE_rkrga-demo
+	tristate
+	default m
 
 config PACKAGE_transmission-daemon
 	tristate
@@ -12458,6 +12518,14 @@ config PACKAGE_smartdns
 	tristate
 	default m
 
+config PACKAGE_socat
+	tristate
+	default m
+
+config SOCAT_SSL
+	bool
+	default n
+
 config PACKAGE_tcping
 	tristate
 	default m
@@ -12491,6 +12559,26 @@ config PACKAGE_vxlan
 	default y
 
 config PACKAGE_xray-core
+	tristate
+	default m
+
+config PACKAGE_fdk-aac
+	tristate
+	default m
+
+config FDK-AAC_OPTIMIZE_SPEED
+	bool
+	default n
+
+config PACKAGE_lame-lib
+	tristate
+	default m
+
+config LAME-LIB_OPTIMIZE_SPEED
+	bool
+	default n
+
+config PACKAGE_shine
 	tristate
 	default m
 
@@ -12722,139 +12810,11 @@ config PACKAGE_runc
 	bool
 	default y
 
-config PACKAGE_shadow
-	bool
-	default y
-
-config PACKAGE_shadow-chage
-	bool
-	default y
-
-config PACKAGE_shadow-chfn
-	bool
-	default y
-
-config PACKAGE_shadow-chgpasswd
-	bool
-	default y
-
-config PACKAGE_shadow-chpasswd
-	bool
-	default y
-
-config PACKAGE_shadow-chsh
-	bool
-	default y
-
 config PACKAGE_shadow-common
 	bool
 	default y
 
-config PACKAGE_shadow-expiry
-	bool
-	default y
-
-config PACKAGE_shadow-faillog
-	bool
-	default y
-
-config PACKAGE_shadow-gpasswd
-	bool
-	default y
-
-config PACKAGE_shadow-groupadd
-	bool
-	default y
-
-config PACKAGE_shadow-groupdel
-	bool
-	default y
-
-config PACKAGE_shadow-groupmems
-	bool
-	default y
-
-config PACKAGE_shadow-groupmod
-	bool
-	default y
-
-config PACKAGE_shadow-groups
-	bool
-	default y
-
-config PACKAGE_shadow-grpck
-	bool
-	default y
-
-config PACKAGE_shadow-grpconv
-	bool
-	default y
-
-config PACKAGE_shadow-grpunconv
-	bool
-	default y
-
-config PACKAGE_shadow-lastlog
-	bool
-	default y
-
-config PACKAGE_shadow-login
-	bool
-	default y
-
-config PACKAGE_shadow-logoutd
-	bool
-	default y
-
-config PACKAGE_shadow-newgidmap
-	bool
-	default y
-
-config PACKAGE_shadow-newgrp
-	bool
-	default y
-
-config PACKAGE_shadow-newuidmap
-	bool
-	default y
-
-config PACKAGE_shadow-newusers
-	bool
-	default y
-
-config PACKAGE_shadow-nologin
-	bool
-	default y
-
-config PACKAGE_shadow-passwd
-	bool
-	default y
-
-config PACKAGE_shadow-pwck
-	bool
-	default y
-
-config PACKAGE_shadow-pwconv
-	bool
-	default y
-
-config PACKAGE_shadow-pwunconv
-	bool
-	default y
-
-config PACKAGE_shadow-su
-	bool
-	default y
-
 config PACKAGE_shadow-useradd
-	bool
-	default y
-
-config PACKAGE_shadow-userdel
-	bool
-	default y
-
-config PACKAGE_shadow-usermod
 	bool
 	default y
 
@@ -12864,11 +12824,7 @@ config PACKAGE_shadow-utils
 
 config shadow-all
 	bool
-	default y
-
-config PACKAGE_shadow-vipw
-	bool
-	default y
+	default n
 
 config PACKAGE_shellsync
 	bool
