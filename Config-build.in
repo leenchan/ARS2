@@ -11446,23 +11446,11 @@ config PACKAGE_luci-app-passwall_INCLUDE_Haproxy
 	bool
 	default y
 
-config PACKAGE_luci-app-passwall_INCLUDE_PDNSD
-	bool
-	default y
-
 config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client
 	bool
 	default y
 
 config PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client
-	bool
-	default y
-
-config PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus
-	bool
-	default y
-
-config PACKAGE_luci-app-passwall_INCLUDE_V2ray
 	bool
 	default y
 
@@ -12170,6 +12158,10 @@ config PACKAGE_dns2socks
 	tristate
 	default m
 
+config PACKAGE_dns2tcp
+	tristate
+	default m
+
 config PACKAGE_pdnsd-alt
 	tristate
 	default m
@@ -12266,14 +12258,6 @@ config PACKAGE_xl2tpd
 	bool
 	default y
 
-config BROOK_COMPRESS_GOPROXY
-	bool
-	default n
-
-config BROOK_COMPRESS_UPX
-	bool
-	default n
-
 config PACKAGE_cgi-io
 	bool
 	default y
@@ -12310,22 +12294,6 @@ config PACKAGE_quickstart
 	bool
 	default y
 
-config PACKAGE_shadowsocks-libev-config
-	tristate
-	default m
-
-config PACKAGE_shadowsocks-libev-ss-local
-	tristate
-	default m
-
-config PACKAGE_shadowsocks-libev-ss-redir
-	tristate
-	default m
-
-config PACKAGE_shadowsocks-libev-ss-server
-	tristate
-	default m
-
 config PACKAGE_shadowsocks-rust-sslocal
 	tristate
 	default m
@@ -12338,14 +12306,6 @@ config PACKAGE_shadowsocksr-libev-ssr-redir
 	tristate
 	default m
 
-config TROJAN_GO_COMPRESS_GOPROXY
-	bool
-	default n
-
-config TROJAN_GO_COMPRESS_UPX
-	bool
-	default n
-
 config PACKAGE_uhttpd
 	bool
 	default y
@@ -12353,22 +12313,6 @@ config PACKAGE_uhttpd
 config PACKAGE_uhttpd-mod-ubus
 	bool
 	default y
-
-config V2RAY_PLUGIN_INCLUDE_GOPROXY
-	bool
-	default n
-
-config V2RAY_PLUGIN_COMPRESS_UPX
-	bool
-	default n
-
-config XRAY_PLUGIN_COMPRESS_GOPROXY
-	bool
-	default n
-
-config XRAY_PLUGIN_COMPRESS_UPX
-	bool
-	default n
 
 config WPA_WOLFSSL
 	bool
@@ -12407,14 +12351,6 @@ config PACKAGE_ethtool
 	default y
 
 config ETHTOOL_PRETTY_DUMP
-	bool
-	default n
-
-config HYSTERIA_COMPRESS_GOPROXY
-	bool
-	default n
-
-config HYSTERIA_COMPRESS_UPX
 	bool
 	default n
 
@@ -12524,31 +12460,15 @@ config PACKAGE_socat
 
 config SOCAT_SSL
 	bool
-	default n
+	default y
 
 config PACKAGE_tcping
-	tristate
-	default m
-
-config PACKAGE_trojan-plus
 	tristate
 	default m
 
 config PACKAGE_uclient-fetch
 	bool
 	default y
-
-config PACKAGE_v2ray-core
-	tristate
-	default m
-
-config V2RAY_CORE_COMPRESS_GOPROXY
-	bool
-	default n
-
-config V2RAY_CORE_COMPRESS_UPX
-	bool
-	default n
 
 config PACKAGE_vlmcsd
 	bool

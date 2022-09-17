@@ -1,7 +1,7 @@
 /* This file is auto generated, version 0 */
 /* SMP */
 #define UTS_MACHINE "aarch64"
-#define UTS_VERSION "#0 SMP Wed Aug 24 10:41:16 2022"
+#define UTS_VERSION "#0 SMP Fri Sep 16 11:05:42 2022"
 #define LINUX_COMPILE_BY "build"
 #define LINUX_COMPILE_HOST "buildserver"
 #define LINUX_COMPILER "gcc version 7.5.0 (OpenWrt GCC 7.5.0 r16747-8cfec6b49c) "
