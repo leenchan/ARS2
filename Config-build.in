@@ -11514,6 +11514,10 @@ config PACKAGE_luci-app-ttyd
 	bool
 	default y
 
+config PACKAGE_luci-app-unishare
+	bool
+	default y
+
 config PACKAGE_luci-app-upnp
 	bool
 	default y
@@ -11790,6 +11794,10 @@ config PACKAGE_luci-i18n-ttyd-zh-cn
 	bool
 	default y
 
+config PACKAGE_luci-i18n-unishare-zh-cn
+	bool
+	default y
+
 config PACKAGE_luci-i18n-upnp-zh-cn
 	bool
 	default y
@@ -11961,6 +11969,14 @@ config PACKAGE_rclone
 config PACKAGE_rclone-config
 	tristate
 	default m
+
+config PACKAGE_unishare
+	bool
+	default y
+
+config PACKAGE_webdav2
+	bool
+	default y
 
 config PACKAGE_wget-ssl
 	bool
