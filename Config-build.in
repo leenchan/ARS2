@@ -22,6 +22,10 @@ config TARGET_DEVICE_realtek_rtd129x_DEVICE_ars2
 	bool
 	default y
 
+config TARGET_DEVICE_realtek_rtd129x_DEVICE_gb081
+	bool
+	default y
+
 config HAS_SUBTARGETS
 	bool
 	default y
@@ -10022,6 +10026,14 @@ config PACKAGE_kmod-rtk-emmc
 	bool
 	default y
 
+config PACKAGE_kmod-rtk-sdmmc
+	bool
+	default y
+
+config PACKAGE_kmod-rtl8169soc
+	bool
+	default y
+
 config PACKAGE_kmod-sound-core
 	bool
 	default y
@@ -12291,8 +12303,8 @@ config PACKAGE_frps
 	default m
 
 config PACKAGE_haproxy
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_homebox
 	tristate
