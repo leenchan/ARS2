@@ -494,6 +494,10 @@ config SIGNATURE_CHECK
 	bool
 	default y
 
+config DOWNLOAD_CHECK_CERTIFICATE
+	bool
+	default y
+
 config DISPLAY_SUPPORT
 	bool
 	default n
@@ -11889,10 +11893,6 @@ config PACKAGE_ffmpeg-mpp
 config PACKAGE_ffmpeg-remux
 	bool
 	default y
-
-config PACKAGE_ffprobe-mpp
-	tristate
-	default m
 
 config PACKAGE_rkmpp
 	tristate

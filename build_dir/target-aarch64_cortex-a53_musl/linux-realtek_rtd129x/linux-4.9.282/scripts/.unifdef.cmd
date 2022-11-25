@@ -1,4 +1,4 @@
-cmd_scripts/unifdef := gcc -Wp,-MD,scripts/.unifdef.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include     -I./tools/include  -o scripts/unifdef scripts/unifdef.c -L/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib 
+cmd_scripts/unifdef := gcc -Wp,-MD,scripts/.unifdef.d -O2 -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/include -I./tools/include  -o scripts/unifdef scripts/unifdef.c -L/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/lib 
 
 source_scripts/unifdef := scripts/unifdef.c
 
