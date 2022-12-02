@@ -22,10 +22,6 @@ config TARGET_DEVICE_realtek_rtd129x_DEVICE_ars2
 	bool
 	default y
 
-config TARGET_DEVICE_realtek_rtd129x_DEVICE_gb081
-	bool
-	default y
-
 config HAS_SUBTARGETS
 	bool
 	default y
@@ -10557,6 +10553,82 @@ config OPENSSL_WITH_GOST
 config PACKAGE_libopenssl-conf
 	bool
 	default y
+
+config PACKAGE_libwolfssl
+	tristate
+	default m
+
+config WOLFSSL_HAS_AES_CCM
+	bool
+	default y
+
+config WOLFSSL_HAS_CHACHA_POLY
+	bool
+	default y
+
+config WOLFSSL_HAS_DH
+	bool
+	default y
+
+config WOLFSSL_HAS_ARC4
+	bool
+	default y
+
+config WOLFSSL_HAS_CERTGEN
+	bool
+	default y
+
+config WOLFSSL_HAS_TLSV10
+	bool
+	default y
+
+config WOLFSSL_HAS_TLSV13
+	bool
+	default y
+
+config WOLFSSL_HAS_SESSION_TICKET
+	bool
+	default y
+
+config WOLFSSL_HAS_DTLS
+	bool
+	default n
+
+config WOLFSSL_HAS_OCSP
+	bool
+	default y
+
+config WOLFSSL_HAS_WPAS
+	bool
+	default y
+
+config WOLFSSL_HAS_ECC25519
+	bool
+	default y
+
+config WOLFSSL_ALT_NAMES
+	bool
+	default y
+
+config WOLFSSL_HAS_NO_HW
+	bool
+	default y
+
+config WOLFSSL_HAS_AFALG
+	bool
+	default n
+
+config WOLFSSL_HAS_DEVCRYPTO_CBC
+	bool
+	default n
+
+config WOLFSSL_HAS_DEVCRYPTO_AES
+	bool
+	default n
+
+config WOLFSSL_HAS_DEVCRYPTO_FULL
+	bool
+	default n
 
 config PACKAGE_alsa-lib
 	tristate
