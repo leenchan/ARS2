@@ -12566,6 +12566,10 @@ config PACKAGE_uclient-fetch
 	bool
 	default y
 
+config PACKAGE_uugamebooster
+	tristate
+	default m
+
 config PACKAGE_vlmcsd
 	bool
 	default y
@@ -12776,15 +12780,19 @@ config DOCKER_OPTIONAL_FEATURES
 
 config DOCKER_NET_OVERLAY
 	bool
-	default n
+	default y
+
+config DOCKER_NET_ENCRYPT
+	bool
+	default y
 
 config DOCKER_NET_MACVLAN
 	bool
-	default n
+	default y
 
 config DOCKER_NET_TFTP
 	bool
-	default n
+	default y
 
 config DOCKER_STO_EXT4
 	bool
