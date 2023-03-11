@@ -22,6 +22,14 @@ config TARGET_DEVICE_realtek_rtd129x_DEVICE_ars2
 	bool
 	default y
 
+config TARGET_DEVICE_realtek_rtd129x_DEVICE_hsa-bh1
+	bool
+	default y
+
+config TARGET_DEVICE_realtek_rtd129x_DEVICE_gb081
+	bool
+	default y
+
 config HAS_SUBTARGETS
 	bool
 	default y
@@ -1591,6 +1599,10 @@ config FEED_cups
 	default n
 
 config FEED_rclone
+	bool
+	default y
+
+config FEED_compat
 	bool
 	default y
 
@@ -9037,6 +9049,10 @@ config PACKAGE_appfilter
 config PACKAGE_kmod-oaf
 	bool
 	default y
+
+config PACKAGE_iptables-mod-socket
+	tristate
+	default m
 
 config PACKAGE_libiwinfo-data
 	bool
