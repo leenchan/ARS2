@@ -1,4 +1,4 @@
-. "$IPKG_INSTROOT/lib/functions.sh"
+. /lib/functions.sh
 
 asrock_bootconfig_mangle() {
 	local mtdnum="$( find_mtd_index 0:BOOTCONFIG )"

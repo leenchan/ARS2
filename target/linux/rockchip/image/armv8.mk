@@ -8,7 +8,7 @@ define Device/friendlyarm_nanopi-r2s
   SOC := rk3328
   UBOOT_DEVICE_NAME := nanopi-r2s-rk3328
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r2s | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-usb-net-rtl8152 ethtool
+  DEVICE_PACKAGES := kmod-usb-net-rtl8152
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r2s
 
@@ -18,19 +18,9 @@ define Device/friendlyarm_nanopi-r4s
   SOC := rk3399
   UBOOT_DEVICE_NAME := nanopi-r4s-rk3399
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 kmod-hwmon-pwmfan
+  DEVICE_PACKAGES := kmod-r8169
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r4s
-
-define Device/friendlyarm_nanopi-r4se
-  DEVICE_VENDOR := FriendlyARM
-  DEVICE_MODEL := NanoPi R4SE
-  SOC := rk3399
-  UBOOT_DEVICE_NAME := nanopi-r4se-rk3399
-  IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 kmod-hwmon-pwmfan
-endef
-TARGET_DEVICES += friendlyarm_nanopi-r4se
 
 define Device/pine64_rockpro64
   DEVICE_VENDOR := Pine64

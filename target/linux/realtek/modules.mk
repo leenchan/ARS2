@@ -132,11 +132,12 @@ define KernelPackage/rtl8169soc
   DEFAULT:=y
   KCONFIG:= \
 	CONFIG_R8169SOC=y \
-	CONFIG_RTL_RX_NO_COPY=n \
+	CONFIG_RTL_RX_NO_COPY=y \
 	CONFIG_NET_VENDOR_REALTEK=y
   FILES:=
   AUTOLOAD:=
   DEPENDS:=@TARGET_realtek
+  CONFLICTS:=kmod-rtd1295hwnat
 endef
 
 define KernelPackage/rtl8169soc/description
@@ -407,7 +408,7 @@ define KernelPackage/openmax
 	CONFIG_CMA_ALIGNMENT=4 \
 	CONFIG_ADF=n \
 
-  DEPENDS:=@TARGET_realtek
+  DEPENDS:=
   FILES:=
 endef
 

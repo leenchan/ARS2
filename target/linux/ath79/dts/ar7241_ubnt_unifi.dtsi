@@ -7,7 +7,7 @@
 
 / {
 	aliases {
-		label-mac-device = &eth0;
+		label-mac-device = &wifi;
 	};
 
 	extosc: ref {
