@@ -24,8 +24,6 @@ my $scriptdir = dirname($0);
 my @mirrors;
 my $ok;
 
-my $check_certificate = $ENV{DOWNLOAD_CHECK_CERTIFICATE} eq "y";
-
 $url_filename or $url_filename = $filename;
 
 sub localmirrors {
@@ -76,7 +74,7 @@ sub download_cmd($) {
 	my $url = shift;
 	my $have_curl = 0;
 
-	if (open CURL, "curl --version 2>/dev/null |") {
+	if (open CURL, '-|', 'curl', '--version') {
 		if (defined(my $line = readline CURL)) {
 			$have_curl = 1 if $line =~ /^curl /;
 		}
@@ -84,14 +82,8 @@ sub download_cmd($) {
 	}
 
 	return $have_curl
-		? (qw(curl -f --connect-timeout 20 --retry 5 --location),
-			$check_certificate ? () : '--insecure',
-			shellwords($ENV{CURL_OPTIONS} || ''),
-			$url)
-		: (qw(wget --tries=5 --timeout=20 --output-document=-),
-			$check_certificate ? () : '--no-check-certificate',
-			shellwords($ENV{WGET_OPTIONS} || ''),
-			$url)
+		? (qw(curl -f --connect-timeout 20 --retry 5 --location --insecure), shellwords($ENV{CURL_OPTIONS} || ''), $url)
+		: (qw(wget --tries=5 --timeout=20 --no-check-certificate --output-document=-), shellwords($ENV{WGET_OPTIONS} || ''), $url)
 	;
 }
 
@@ -299,3 +291,4 @@ while (!-f "$target/$filename") {
 }
 
 $SIG{INT} = \&cleanup;
+

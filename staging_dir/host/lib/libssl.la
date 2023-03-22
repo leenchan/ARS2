@@ -23,9 +23,9 @@ dependency_libs=' -L/home/build/1296/rtd1296-openwrt-21.02.2/staging_dir/host/li
 weak_library_names=''
 
 # Version information for libssl.
-current=50
+current=48
 age=0
-revision=0
+revision=1
 
 # Is this an already installed library?
 installed=yes

@@ -210,7 +210,6 @@ kernel/drivers/mmc/core/mmc_core.ko
 kernel/drivers/mmc/core/pwrseq_simple.ko
 kernel/drivers/mmc/core/pwrseq_emmc.ko
 kernel/drivers/mmc/host/rtkemmc.ko
-kernel/drivers/mmc/host/rtk-sdmmc.ko
 kernel/drivers/mtd/mtd.ko
 kernel/drivers/mtd/ofpart.ko
 kernel/drivers/mtd/mtd_blkdevs.ko
@@ -227,10 +226,8 @@ kernel/drivers/mtd/maps/physmap_of.ko
 kernel/drivers/mtd/nand/nand_ids.ko
 kernel/drivers/net/macvlan.ko
 kernel/drivers/net/macvtap.ko
-kernel/drivers/net/mii.ko
 kernel/drivers/net/tun.ko
 kernel/drivers/net/veth.ko
-kernel/drivers/net/ethernet/realtek/r8169soc.ko
 kernel/drivers/net/irda/realtek/rtk_irda.ko
 kernel/drivers/net/irda/realtek/xmp_decoder.ko
 kernel/drivers/net/irda/realtek/rc6_decoder.ko
@@ -270,7 +267,6 @@ kernel/drivers/usb/core/usbcore.ko
 kernel/drivers/usb/dwc3/dwc3.ko
 kernel/drivers/usb/dwc3/dwc3-rtk.ko
 kernel/drivers/usb/dwc3/dwc3-rtk-type_c.ko
-kernel/drivers/usb/dwc3/dwc3-rtk-drd.ko
 kernel/drivers/usb/gadget/libcomposite.ko
 kernel/drivers/usb/gadget/function/u_ether.ko
 kernel/drivers/usb/gadget/function/usb_f_ncm.ko
@@ -296,7 +292,6 @@ kernel/drivers/usb/storage/uas.ko
 kernel/drivers/usb/storage/usb-storage.ko
 kernel/drivers/usb/storage/ums-realtek.ko
 kernel/drivers/watchdog/rtk_wdt.ko
-kernel/drivers/watchdog/gpio_wdt.ko
 kernel/net/802/p8022.ko
 kernel/net/802/psnap.ko
 kernel/net/802/stp.ko

@@ -28,7 +28,6 @@ define Device/rtd129x
 	DEVICE_PACKAGES += libustream-openssl ca-bundle ca-certificates
 	DEVICE_PACKAGES += luci-lib-ipkg ipset
 	UBOOT_DTS := ars2
-	STORAGE_LAYOUT := emmc_8gb
 endef
 
 define Device/ars2
@@ -61,23 +60,7 @@ define Device/bpi-w2
 endef
 TARGET_DEVICES += bpi-w2
 
-define Device/gb081
-	$(call Device/ars2)
-	DEVICE_TITLE := GB081
-	DEVICE_DTS := gb081
-	UBOOT_DTS := gb081
-	STORAGE_LAYOUT := emmc_32gb
-endef
-TARGET_DEVICES += gb081
-
-define Device/hsa-bh1
-	$(call Device/ars2)
-	DEVICE_TITLE := BH1
-	DEVICE_DTS := bh1
-	UBOOT_DTS := bh1
-endef
-TARGET_DEVICES += hsa-bh1
-
 include rescue.mk
+
 
 endif

@@ -7,7 +7,9 @@ includedir=${prefix}/include
 
 Name: LibreSSL-libtls
 Description: Secure communications using the TLS socket protocol.
-Version: 3.4.2
+Version: 3.3.1
+Requires:
+Conflicts:
 Libs: -L${libdir} -ltls
 Libs.private: -lresolv -lpthread  
 Cflags: -I${includedir}

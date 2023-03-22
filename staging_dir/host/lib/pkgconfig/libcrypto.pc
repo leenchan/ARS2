@@ -7,7 +7,9 @@ includedir=${prefix}/include
 
 Name: LibreSSL-libcrypto
 Description: LibreSSL cryptography library
-Version: 3.4.2
+Version: 3.3.1
+Requires:
+Conflicts:
 Libs: -L${libdir} -lcrypto
 Libs.private: -lresolv -lpthread  
 Cflags: -I${includedir}
