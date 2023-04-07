@@ -21,11 +21,10 @@ GRUB_SERIAL:=$(call qstrip,$(CONFIG_GRUB_SERIAL))
 ifneq ($(GRUB_SERIAL),)
   GRUB_CONSOLE_CMDLINE += console=$(GRUB_SERIAL),$(CONFIG_GRUB_BAUDRATE)n8$(if $(CONFIG_GRUB_FLOWCONTROL),r,)
   GRUB_SERIAL_CONFIG := serial --unit=0 --speed=$(CONFIG_GRUB_BAUDRATE) --word=8 --parity=no --stop=1 --rtscts=$(if $(CONFIG_GRUB_FLOWCONTROL),on,off)
-  GRUB_TERMINALS += serial
 endif
 
 ifneq ($(GRUB_TERMINALS),)
-  GRUB_TERMINAL_CONFIG := terminal_input $(GRUB_TERMINALS); terminal_output $(GRUB_TERMINALS)
+  GRUB_TERMINAL_CONFIG := terminal_input $(GRUB_TERMINALS); terminal_output $(GRUB_TERMINALS) $(if $(GRUB_SERIAL),serial,)
 endif
 
 ROOTPART:=$(call qstrip,$(CONFIG_TARGET_ROOTFS_PARTNAME))
@@ -65,6 +64,7 @@ define Build/grub-config
 		-e 's#@TERMINAL_CONFIG@#$(strip $(GRUB_TERMINAL_CONFIG))#g' \
 		-e 's#@ROOTPART@#root=$(ROOTPART) rootwait#g' \
 		-e 's#@GPT_ROOTPART@#root=$(GPT_ROOTPART) rootwait#g' \
+		-e 's#@BOOTOPTS@#$(BOOTOPTS)#g' \
 		-e 's#@CMDLINE@#$(BOOTOPTS) $(GRUB_CONSOLE_CMDLINE)#g' \
 		-e 's#@TIMEOUT@#$(GRUB_TIMEOUT)#g' \
 		-e 's#@TITLE@#$(GRUB_TITLE)#g' \

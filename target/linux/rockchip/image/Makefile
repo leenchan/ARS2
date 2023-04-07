@@ -16,7 +16,7 @@ define Build/boot-common
 	rm -fR $@.boot
 	mkdir -p $@.boot
 
-	$(CP) $(DTS_DIR)/$(DEVICE_DTS).dtb $@.boot/rockchip.dtb
+	$(CP) $(KDIR)/image-$(firstword $(DEVICE_DTS)).dtb $@.boot/rockchip.dtb
 	$(CP) $(IMAGE_KERNEL) $@.boot/kernel.img
 endef
 
@@ -53,7 +53,7 @@ define Build/pine64-bin
 	# Generate a new partition table in $@ with 32 MiB of alignment
 	# padding for the idbloader, uboot and trust image to fit:
 	# http://opensource.rock-chips.com/wiki_Boot_option#Boot_flow
-	PADDING=1 $(SCRIPT_DIR)/gen_image_generic.sh \
+	$(SCRIPT_DIR)/gen_image_generic.sh \
 		$@ \
 		$(CONFIG_TARGET_KERNEL_PARTSIZE) $@.boot \
 		$(CONFIG_TARGET_ROOTFS_PARTSIZE) $(IMAGE_ROOTFS) \
@@ -70,7 +70,8 @@ define Device/Default
   PROFILES := Default
   KERNEL := kernel-bin
   IMAGES := sysupgrade.img.gz
-  DEVICE_DTS = rockchip/$$(SOC)-$(lastword $(subst _, ,$(1)))
+  DEVICE_DTS_DIR := $(DTS_DIR)/rockchip
+  DEVICE_DTS = $$(SOC)-$(lastword $(subst _, ,$(1)))
 endef
 
 include $(SUBTARGET).mk
