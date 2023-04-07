@@ -230,6 +230,10 @@ config DEFAULT_luci-app-sqm
 	bool
 	default y
 
+config DEFAULT_luci-app-store
+	bool
+	default y
+
 config DEFAULT_luci-app-ttyd
 	bool
 	default y
@@ -483,6 +487,10 @@ config BUILDBOT
 	default n
 
 config SIGNATURE_CHECK
+	bool
+	default y
+
+config DOWNLOAD_CHECK_CERTIFICATE
 	bool
 	default y
 
@@ -1468,7 +1476,7 @@ config VERSION_DIST
 
 config VERSION_NUMBER
 	string
-	default "21.02.2"
+	default "21.02.3"
 
 config VERSION_CODE
 	string
@@ -1476,7 +1484,7 @@ config VERSION_CODE
 
 config VERSION_REPO
 	string
-	default "https://downloads.openwrt.org/releases/21.02.2"
+	default "https://downloads.openwrt.org/releases/21.02.3"
 
 config VERSION_HOME_URL
 	string
@@ -1581,6 +1589,14 @@ config FEED_diskman
 config FEED_cups
 	bool
 	default n
+
+config FEED_rclone
+	bool
+	default y
+
+config FEED_compat
+	bool
+	default y
 
 config PACKAGE_base-files
 	bool
@@ -9026,6 +9042,10 @@ config PACKAGE_kmod-oaf
 	bool
 	default y
 
+config PACKAGE_iptables-mod-socket
+	tristate
+	default m
+
 config PACKAGE_libiwinfo-data
 	bool
 	default y
@@ -10014,6 +10034,14 @@ config PACKAGE_kmod-rtk-emmc
 	bool
 	default y
 
+config PACKAGE_kmod-rtk-sdmmc
+	bool
+	default y
+
+config PACKAGE_kmod-rtl8169soc
+	bool
+	default y
+
 config PACKAGE_kmod-sound-core
 	bool
 	default y
@@ -10143,8 +10171,8 @@ config PACKAGE_kmod-usb-net-rtl8150
 	default y
 
 config PACKAGE_kmod-usb-net-rtl8152
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-usb-net-sierrawireless
 	bool
@@ -10534,6 +10562,86 @@ config PACKAGE_libopenssl-conf
 	bool
 	default y
 
+config PACKAGE_libwolfssl
+	tristate
+	default m
+
+config WOLFSSL_HAS_AES_CCM
+	bool
+	default y
+
+config WOLFSSL_HAS_CHACHA_POLY
+	bool
+	default y
+
+config WOLFSSL_HAS_DH
+	bool
+	default y
+
+config WOLFSSL_HAS_ARC4
+	bool
+	default y
+
+config WOLFSSL_HAS_CERTGEN
+	bool
+	default y
+
+config WOLFSSL_HAS_TLSV10
+	bool
+	default y
+
+config WOLFSSL_HAS_TLSV13
+	bool
+	default y
+
+config WOLFSSL_HAS_SESSION_TICKET
+	bool
+	default y
+
+config WOLFSSL_HAS_DTLS
+	bool
+	default n
+
+config WOLFSSL_HAS_OCSP
+	bool
+	default y
+
+config WOLFSSL_HAS_WPAS
+	bool
+	default y
+
+config WOLFSSL_HAS_ECC25519
+	bool
+	default y
+
+config WOLFSSL_ALT_NAMES
+	bool
+	default y
+
+config WOLFSSL_HAS_NO_HW
+	bool
+	default y
+
+config WOLFSSL_HAS_AFALG
+	bool
+	default n
+
+config WOLFSSL_HAS_DEVCRYPTO_CBC
+	bool
+	default n
+
+config WOLFSSL_HAS_DEVCRYPTO_AES
+	bool
+	default n
+
+config WOLFSSL_HAS_DEVCRYPTO_FULL
+	bool
+	default n
+
+config PACKAGE_alsa-lib
+	tristate
+	default m
+
 config PACKAGE_bind-libs
 	bool
 	default y
@@ -10806,6 +10914,10 @@ config PACKAGE_libdevmapper
 	bool
 	default y
 
+config PACKAGE_libdrm
+	tristate
+	default m
+
 config PACKAGE_libelf
 	bool
 	default y
@@ -10833,6 +10945,10 @@ config PACKAGE_libext2fs
 config PACKAGE_libf2fs
 	bool
 	default y
+
+config PACKAGE_libffmpeg-mpp
+	tristate
+	default m
 
 config PACKAGE_libgcrypt
 	bool
@@ -10954,6 +11070,14 @@ config PACKAGE_libnl-tiny
 	bool
 	default y
 
+config PACKAGE_libopus
+	tristate
+	default m
+
+config PACKAGE_libpciaccess
+	tristate
+	default m
+
 config PACKAGE_libpcre
 	bool
 	default y
@@ -11062,6 +11186,10 @@ config PACKAGE_libwrap
 	bool
 	default y
 
+config PACKAGE_libx264
+	tristate
+	default m
+
 config PACKAGE_libxml2
 	bool
 	default y
@@ -11108,11 +11236,11 @@ config LUCI_SRCDIET
 
 config LUCI_JSMIN
 	bool
-	default n
+	default y
 
 config LUCI_CSSTIDY
 	bool
-	default n
+	default y
 
 config LUCI_LANG_ar
 	bool
@@ -11322,23 +11450,7 @@ config PACKAGE_luci-app-diskman
 	bool
 	default y
 
-config PACKAGE_luci-app-diskman_INCLUDE_btrfs_progs
-	bool
-	default y
-
 config PACKAGE_luci-app-diskman_INCLUDE_lsblk
-	bool
-	default y
-
-config PACKAGE_luci-app-diskman_INCLUDE_mdadm
-	bool
-	default y
-
-config PACKAGE_luci-app-diskman_INCLUDE_kmod_md_raid456
-	bool
-	default y
-
-config PACKAGE_luci-app-diskman_INCLUDE_kmod_md_linear
 	bool
 	default y
 
@@ -11402,7 +11514,7 @@ config PACKAGE_luci-app-passwall
 	tristate
 	default m
 
-config PACKAGE_luci-app-passwall_Transparent_Proxy
+config PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy
 	bool
 	default y
 
@@ -11414,23 +11526,11 @@ config PACKAGE_luci-app-passwall_INCLUDE_Haproxy
 	bool
 	default y
 
-config PACKAGE_luci-app-passwall_INCLUDE_PDNSD
-	bool
-	default y
-
 config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client
 	bool
 	default y
 
 config PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client
-	bool
-	default y
-
-config PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus
-	bool
-	default y
-
-config PACKAGE_luci-app-passwall_INCLUDE_V2ray
 	bool
 	default y
 
@@ -11442,11 +11542,31 @@ config PACKAGE_luci-app-quickstart
 	bool
 	default y
 
+config PACKAGE_luci-app-rclone
+	tristate
+	default m
+
+config PACKAGE_luci-app-rclone_INCLUDE_rclone-webui
+	bool
+	default y
+
+config PACKAGE_luci-app-rclone_INCLUDE_rclone-ng
+	bool
+	default y
+
+config PACKAGE_luci-app-rclone_INCLUDE_fuse-utils
+	bool
+	default y
+
 config PACKAGE_luci-app-samba4
 	bool
 	default y
 
 config PACKAGE_luci-app-smartdns
+	tristate
+	default m
+
+config PACKAGE_luci-app-socat
 	tristate
 	default m
 
@@ -11471,6 +11591,10 @@ config PACKAGE_luci-app-tn-netports
 	default y
 
 config PACKAGE_luci-app-ttyd
+	bool
+	default y
+
+config PACKAGE_luci-app-unishare
 	bool
 	default y
 
@@ -11603,18 +11727,22 @@ config PACKAGE_luci-lib-nixio_notls
 	default y
 
 config PACKAGE_luci-lib-taskd
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_luci-lib-xterm
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_luci-i18n-adblock-zh-cn
 	tristate
 	default m
 
 config PACKAGE_luci-i18n-argon-config-zh-cn
+	bool
+	default y
+
+config PACKAGE_luci-i18n-argon-zh-cn
 	bool
 	default y
 
@@ -11714,11 +11842,19 @@ config PACKAGE_luci-i18n-quickstart-zh-cn
 	bool
 	default y
 
+config PACKAGE_luci-i18n-rclone-zh-cn
+	tristate
+	default m
+
 config PACKAGE_luci-i18n-samba4-zh-cn
 	bool
 	default y
 
 config PACKAGE_luci-i18n-smartdns-zh-cn
+	tristate
+	default m
+
+config PACKAGE_luci-i18n-socat-zh-cn
 	tristate
 	default m
 
@@ -11739,6 +11875,10 @@ config PACKAGE_luci-i18n-tn-netports-zh-cn
 	default y
 
 config PACKAGE_luci-i18n-ttyd-zh-cn
+	bool
+	default y
+
+config PACKAGE_luci-i18n-unishare-zh-cn
 	bool
 	default y
 
@@ -11814,7 +11954,39 @@ config PACKAGE_rtk-supplicant
 	bool
 	default y
 
+config PACKAGE_ffmpeg-mpp
+	tristate
+	default m
+
+config PACKAGE_ffmpeg-remux
+	bool
+	default y
+
+config PACKAGE_rkmpp
+	tristate
+	default m
+
+config PACKAGE_rkmpp-demo
+	tristate
+	default m
+
+config PACKAGE_rkrga
+	tristate
+	default m
+
+config PACKAGE_rkrga-demo
+	tristate
+	default m
+
 config PACKAGE_transmission-daemon
+	tristate
+	default m
+
+config PACKAGE_rclone-ng
+	tristate
+	default m
+
+config PACKAGE_rclone-webui-react
 	tristate
 	default m
 
@@ -11867,6 +12039,22 @@ config ARIA2_WEBSOCKET
 	default y
 
 config PACKAGE_curl
+	bool
+	default y
+
+config PACKAGE_rclone
+	tristate
+	default m
+
+config PACKAGE_rclone-config
+	tristate
+	default m
+
+config PACKAGE_unishare
+	bool
+	default y
+
+config PACKAGE_webdav2
 	bool
 	default y
 
@@ -12066,6 +12254,10 @@ config PACKAGE_dns2socks
 	tristate
 	default m
 
+config PACKAGE_dns2tcp
+	tristate
+	default m
+
 config PACKAGE_pdnsd-alt
 	tristate
 	default m
@@ -12162,14 +12354,6 @@ config PACKAGE_xl2tpd
 	bool
 	default y
 
-config BROOK_COMPRESS_GOPROXY
-	bool
-	default n
-
-config BROOK_COMPRESS_UPX
-	bool
-	default n
-
 config PACKAGE_cgi-io
 	bool
 	default y
@@ -12187,8 +12371,8 @@ config PACKAGE_frps
 	default m
 
 config PACKAGE_haproxy
-	bool
-	default y
+	tristate
+	default m
 
 config PACKAGE_homebox
 	tristate
@@ -12206,22 +12390,6 @@ config PACKAGE_quickstart
 	bool
 	default y
 
-config PACKAGE_shadowsocks-libev-config
-	tristate
-	default m
-
-config PACKAGE_shadowsocks-libev-ss-local
-	tristate
-	default m
-
-config PACKAGE_shadowsocks-libev-ss-redir
-	tristate
-	default m
-
-config PACKAGE_shadowsocks-libev-ss-server
-	tristate
-	default m
-
 config PACKAGE_shadowsocks-rust-sslocal
 	tristate
 	default m
@@ -12234,14 +12402,6 @@ config PACKAGE_shadowsocksr-libev-ssr-redir
 	tristate
 	default m
 
-config TROJAN_GO_COMPRESS_GOPROXY
-	bool
-	default n
-
-config TROJAN_GO_COMPRESS_UPX
-	bool
-	default n
-
 config PACKAGE_uhttpd
 	bool
 	default y
@@ -12249,22 +12409,6 @@ config PACKAGE_uhttpd
 config PACKAGE_uhttpd-mod-ubus
 	bool
 	default y
-
-config V2RAY_PLUGIN_INCLUDE_GOPROXY
-	bool
-	default n
-
-config V2RAY_PLUGIN_COMPRESS_UPX
-	bool
-	default n
-
-config XRAY_PLUGIN_COMPRESS_GOPROXY
-	bool
-	default n
-
-config XRAY_PLUGIN_COMPRESS_UPX
-	bool
-	default n
 
 config WPA_WOLFSSL
 	bool
@@ -12294,6 +12438,18 @@ config PACKAGE_adblock
 	tristate
 	default m
 
+config PACKAGE_baidupcs-web
+	tristate
+	default m
+
+config BAIDUPCS_WEB_COMPRESS_GOPROXY
+	bool
+	default n
+
+config BAIDUPCS_WEB_COMPRESS_UPX
+	bool
+	default y
+
 config PACKAGE_etherwake
 	bool
 	default y
@@ -12303,14 +12459,6 @@ config PACKAGE_ethtool
 	default y
 
 config ETHTOOL_PRETTY_DUMP
-	bool
-	default n
-
-config HYSTERIA_COMPRESS_GOPROXY
-	bool
-	default n
-
-config HYSTERIA_COMPRESS_UPX
 	bool
 	default n
 
@@ -12414,11 +12562,15 @@ config PACKAGE_smartdns
 	tristate
 	default m
 
-config PACKAGE_tcping
+config PACKAGE_socat
 	tristate
 	default m
 
-config PACKAGE_trojan-plus
+config SOCAT_SSL
+	bool
+	default y
+
+config PACKAGE_tcping
 	tristate
 	default m
 
@@ -12426,17 +12578,9 @@ config PACKAGE_uclient-fetch
 	bool
 	default y
 
-config PACKAGE_v2ray-core
+config PACKAGE_uugamebooster
 	tristate
 	default m
-
-config V2RAY_CORE_COMPRESS_GOPROXY
-	bool
-	default n
-
-config V2RAY_CORE_COMPRESS_UPX
-	bool
-	default n
 
 config PACKAGE_vlmcsd
 	bool
@@ -12447,6 +12591,26 @@ config PACKAGE_vxlan
 	default y
 
 config PACKAGE_xray-core
+	tristate
+	default m
+
+config PACKAGE_fdk-aac
+	tristate
+	default m
+
+config FDK-AAC_OPTIMIZE_SPEED
+	bool
+	default n
+
+config PACKAGE_lame-lib
+	tristate
+	default m
+
+config LAME-LIB_OPTIMIZE_SPEED
+	bool
+	default n
+
+config PACKAGE_shine
 	tristate
 	default m
 
@@ -12526,6 +12690,10 @@ config PACKAGE_exfat-mkfs
 	tristate
 	default m
 
+config PACKAGE_fuse-utils
+	tristate
+	default m
+
 config PACKAGE_mkf2fs
 	bool
 	default y
@@ -12559,8 +12727,8 @@ config PACKAGE_bash
 	default y
 
 config PACKAGE_script-utils
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_ttyd
 	bool
@@ -12599,8 +12767,8 @@ config PACKAGE_coreutils-stat
 	default y
 
 config PACKAGE_coreutils-stty
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_dbus
 	bool
@@ -12624,15 +12792,19 @@ config DOCKER_OPTIONAL_FEATURES
 
 config DOCKER_NET_OVERLAY
 	bool
-	default n
+	default y
+
+config DOCKER_NET_ENCRYPT
+	bool
+	default y
 
 config DOCKER_NET_MACVLAN
 	bool
-	default n
+	default y
 
 config DOCKER_NET_TFTP
 	bool
-	default n
+	default y
 
 config DOCKER_STO_EXT4
 	bool
@@ -12674,139 +12846,11 @@ config PACKAGE_runc
 	bool
 	default y
 
-config PACKAGE_shadow
-	bool
-	default y
-
-config PACKAGE_shadow-chage
-	bool
-	default y
-
-config PACKAGE_shadow-chfn
-	bool
-	default y
-
-config PACKAGE_shadow-chgpasswd
-	bool
-	default y
-
-config PACKAGE_shadow-chpasswd
-	bool
-	default y
-
-config PACKAGE_shadow-chsh
-	bool
-	default y
-
 config PACKAGE_shadow-common
 	bool
 	default y
 
-config PACKAGE_shadow-expiry
-	bool
-	default y
-
-config PACKAGE_shadow-faillog
-	bool
-	default y
-
-config PACKAGE_shadow-gpasswd
-	bool
-	default y
-
-config PACKAGE_shadow-groupadd
-	bool
-	default y
-
-config PACKAGE_shadow-groupdel
-	bool
-	default y
-
-config PACKAGE_shadow-groupmems
-	bool
-	default y
-
-config PACKAGE_shadow-groupmod
-	bool
-	default y
-
-config PACKAGE_shadow-groups
-	bool
-	default y
-
-config PACKAGE_shadow-grpck
-	bool
-	default y
-
-config PACKAGE_shadow-grpconv
-	bool
-	default y
-
-config PACKAGE_shadow-grpunconv
-	bool
-	default y
-
-config PACKAGE_shadow-lastlog
-	bool
-	default y
-
-config PACKAGE_shadow-login
-	bool
-	default y
-
-config PACKAGE_shadow-logoutd
-	bool
-	default y
-
-config PACKAGE_shadow-newgidmap
-	bool
-	default y
-
-config PACKAGE_shadow-newgrp
-	bool
-	default y
-
-config PACKAGE_shadow-newuidmap
-	bool
-	default y
-
-config PACKAGE_shadow-newusers
-	bool
-	default y
-
-config PACKAGE_shadow-nologin
-	bool
-	default y
-
-config PACKAGE_shadow-passwd
-	bool
-	default y
-
-config PACKAGE_shadow-pwck
-	bool
-	default y
-
-config PACKAGE_shadow-pwconv
-	bool
-	default y
-
-config PACKAGE_shadow-pwunconv
-	bool
-	default y
-
-config PACKAGE_shadow-su
-	bool
-	default y
-
 config PACKAGE_shadow-useradd
-	bool
-	default y
-
-config PACKAGE_shadow-userdel
-	bool
-	default y
-
-config PACKAGE_shadow-usermod
 	bool
 	default y
 
@@ -12816,11 +12860,7 @@ config PACKAGE_shadow-utils
 
 config shadow-all
 	bool
-	default y
-
-config PACKAGE_shadow-vipw
-	bool
-	default y
+	default n
 
 config PACKAGE_shellsync
 	bool
@@ -12867,8 +12907,8 @@ config PACKAGE_TAR_ZSTD
 	default y
 
 config PACKAGE_taskd
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_tini
 	bool
