@@ -434,6 +434,10 @@ config ARCH_64BIT
 	bool
 	default y
 
+config USES_ROOTFS_PART
+	bool
+	default y
+
 config aarch64
 	bool
 	default y
@@ -461,6 +465,10 @@ config TARGET_UBIFS_FREE_SPACE_FIXUP
 config TARGET_UBIFS_JOURNAL_SIZE
 	string
 	default ""
+
+config TARGET_ROOTFS_PARTSIZE
+	int
+	default 128
 
 config EXPERIMENTAL
 	bool
