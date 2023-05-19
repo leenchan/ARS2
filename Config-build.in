@@ -11526,10 +11526,6 @@ config PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy
 	bool
 	default y
 
-config PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG
-	bool
-	default y
-
 config PACKAGE_luci-app-passwall_INCLUDE_Haproxy
 	bool
 	default y
@@ -11543,6 +11539,14 @@ config PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client
 	default y
 
 config PACKAGE_luci-app-passwall_INCLUDE_Xray
+	bool
+	default y
+
+config PACKAGE_luci-app-qbittorrent
+	tristate
+	default m
+
+config PACKAGE_luci-app-qbittorrent_static
 	bool
 	default y
 
@@ -11843,6 +11847,10 @@ config PACKAGE_luci-i18n-ota-zh-cn
 	default y
 
 config PACKAGE_luci-i18n-passwall-zh-cn
+	tristate
+	default m
+
+config PACKAGE_luci-i18n-qbittorrent-zh-cn
 	tristate
 	default m
 

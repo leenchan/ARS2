@@ -147,6 +147,7 @@ kernel/drivers/cpufreq/cpufreq_ondemand.ko
 kernel/drivers/cpufreq/cpufreq_conservative.ko
 kernel/drivers/cpufreq/cpufreq_interactive.ko
 kernel/drivers/cpufreq/cpufreq-dt.ko
+kernel/drivers/dax/dax.ko
 kernel/drivers/devfreq/governor_simpleondemand.ko
 kernel/drivers/devfreq/governor_performance.ko
 kernel/drivers/devfreq/governor_powersave.ko
