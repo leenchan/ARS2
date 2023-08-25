@@ -4,12 +4,14 @@ type 'board_name' >/dev/null 2>/dev/null || . /lib/functions.sh
 export_ota_url() {
 	local board="$(board_name)"
 	case "$board" in
+	lyt,t68m|\
 	fastrhino,r66s|\
 	fastrhino,r68s)
 		export -n OTA_URL_BASE="https://fw0.koolcenter.com/iStoreOS/${board##*,}"
 		;;
+	friendlyelec,nanopi-r5c|\
 	friendlyelec,nanopi-r5s)
-		export -n OTA_URL_BASE="https://fw0.koolcenter.com/iStoreOS/${board##*-}"
+		export -n OTA_URL_BASE="https://fw0.koolcenter.com/iStoreOS/r5s"
 		;;
 	firefly,rk3568-roc-pc)
 		export -n OTA_URL_BASE="https://fw0.koolcenter.com/iStoreOS/station-p2"

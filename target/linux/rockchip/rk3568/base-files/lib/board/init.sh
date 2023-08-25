@@ -5,6 +5,7 @@
 
 NPROCS="$(grep -c "^processor.*:" /proc/cpuinfo)"
 PROC_MASK="$(( (1 << $NPROCS) - 1 ))"
+PROC_MASK="$(printf %x "$PROC_MASK")"
 
 rename_iface() {
     ip link set $1 down && ip link set $1 name $2
@@ -21,8 +22,10 @@ set_iface_cpumask() {
     local irq
     local seconds
     local mq
-    local queue_mask=$(( $PROC_MASK ^ 0x${core_mask} ))
+    local q
+    local queue_mask=$(( 0x${PROC_MASK} ^ 0x${core_mask} ))
     queue_mask="$(printf %x "$queue_mask")"
+    local mq_mask="$4"
 
     [[ -d "/sys/class/net/${interface}" ]] || return 1
 
@@ -36,8 +39,18 @@ set_iface_cpumask() {
         irq=$(grep -m1 " ${device}\$" /proc/interrupts | sed -n -e 's/^ *\([^ :]\+\):.*$/\1/p')
         if [ -n "${irq}" ]; then
             echo "${core_mask}" > /proc/irq/${irq}/smp_affinity
-            [[ -z "${mq}" ]] && echo "${queue_mask}" > /sys/class/net/$interface/queues/rx-0/rps_cpus
-            [[ -z "${mq}" ]] && echo "${queue_mask}" > /sys/class/net/$interface/queues/tx-0/xps_cpus
+            if [[ -z "${mq}" ]]; then
+                echo "${queue_mask}" > /sys/class/net/$interface/queues/rx-0/rps_cpus
+                echo "${queue_mask}" > /sys/class/net/$interface/queues/tx-0/xps_cpus
+            elif [[ "${device}" = "${interface}-0" ]]; then
+                [[ -n "$mq_mask" ]] || mq_mask="${queue_mask}"
+                for q in /sys/class/net/$interface/queues/rx-*; do
+                    echo "$mq_mask" > "$q/rps_cpus"
+                done
+                # for q in /sys/class/net/$interface/queues/tx-*; do
+                #     echo "$mq_mask" > "$q/xps_cpus"
+                # done
+            fi
             return 0
         fi
         sleep 1
@@ -48,6 +61,7 @@ set_iface_cpumask() {
 board_fixup_iface_name() {
     local device
     case $(board_name) in
+    friendlyelec,nanopi-r5c|\
     fastrhino,r66s)
         device="$(get_iface_device eth0)"
         if [[ "$device" = "0001:11:00.0" ]]; then
@@ -79,6 +93,7 @@ board_fixup_iface_name() {
             rename_iface lan3 eth3
         fi
         ;;
+    hinlink,unibox|\
     firefly,rk3568-roc-pc)
         device="$(get_iface_device eth0)"
         if [[ "$device" = "fe010000.ethernet" ]]; then
@@ -110,15 +125,25 @@ board_fixup_iface_name() {
             rename_iface lan3 eth3
         fi
         ;;
+    hinlink,opc-h69k)
+        device="$(get_iface_device eth2)"
+        if [[ "$device" = "0001:11:00.0" ]]; then
+            rename_iface eth1 lan2
+            rename_iface eth2 eth1
+            rename_iface lan2 eth2
+        fi
+        ;;
     esac
 }
 
 board_set_iface_smp_affinity() {
     case $(board_name) in
+    hinlink,unibox|\
     firefly,rk3568-roc-pc)
         set_iface_cpumask 2 eth0
         set_iface_cpumask 4 eth1
         ;;
+    hinlink,opc-h69k|\
     friendlyelec,nanopi-r5s)
         set_iface_cpumask 2 eth0
         if ethtool -i eth1 | grep -Fq 'driver: r8169'; then
@@ -150,19 +175,24 @@ board_set_iface_smp_affinity() {
             set_iface_cpumask 1 "eth3" "eth3-16"
         fi
         ;;
+    friendlyelec,nanopi-r5c|\
     fastrhino,r66s|\
     hinlink,opc-h66k)
         if ethtool -i eth0 | grep -Fq 'driver: r8169'; then
             set_iface_cpumask 4 "eth0"
             set_iface_cpumask 8 "eth1"
         else
-            set_iface_cpumask 4 "eth0" "eth0-0" && \
-            set_iface_cpumask 4 "eth0" "eth0-16" && \
-            set_iface_cpumask 2 "eth0" "eth0-18" && \
-            set_iface_cpumask 8 "eth1" "eth1-0" && \
-            set_iface_cpumask 8 "eth1" "eth1-18" && \
+            set_iface_cpumask 2 "eth0" "eth0-0" && \
+            set_iface_cpumask 2 "eth0" "eth0-16" && \
+            set_iface_cpumask 8 "eth0" "eth0-18" && \
+            set_iface_cpumask 4 "eth1" "eth1-0" && \
+            set_iface_cpumask 4 "eth1" "eth1-18" && \
             set_iface_cpumask 1 "eth1" "eth1-16"
         fi
+        ;;
+    ynn,nas|\
+    hsa,bh2)
+        set_iface_cpumask 2 "eth0"
         ;;
     esac
 }
