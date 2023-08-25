@@ -22,6 +22,10 @@ config TARGET_DEVICE_realtek_rtd129x_DEVICE_ars2
 	bool
 	default y
 
+config TARGET_DEVICE_realtek_rtd129x_DEVICE_pl-sgr1
+	bool
+	default y
+
 config HAS_SUBTARGETS
 	bool
 	default y
@@ -10954,10 +10958,6 @@ config PACKAGE_libf2fs
 	bool
 	default y
 
-config PACKAGE_libffmpeg-mpp
-	tristate
-	default m
-
 config PACKAGE_libgcrypt
 	bool
 	default y
@@ -11466,6 +11466,10 @@ config PACKAGE_luci-app-dockerman
 	bool
 	default y
 
+config PACKAGE_luci-app-fan
+	bool
+	default y
+
 config PACKAGE_luci-app-fileassistant
 	bool
 	default y
@@ -11802,6 +11806,10 @@ config PACKAGE_luci-i18n-dockerman-zh-cn
 	bool
 	default y
 
+config PACKAGE_luci-i18n-fan-zh-cn
+	bool
+	default y
+
 config PACKAGE_luci-i18n-filetransfer-zh-cn
 	bool
 	default y
@@ -11970,29 +11978,9 @@ config PACKAGE_rtk-supplicant
 	bool
 	default y
 
-config PACKAGE_ffmpeg-mpp
-	tristate
-	default m
-
 config PACKAGE_ffmpeg-remux
 	bool
 	default y
-
-config PACKAGE_rkmpp
-	tristate
-	default m
-
-config PACKAGE_rkmpp-demo
-	tristate
-	default m
-
-config PACKAGE_rkrga
-	tristate
-	default m
-
-config PACKAGE_rkrga-demo
-	tristate
-	default m
 
 config PACKAGE_transmission-daemon
 	tristate
