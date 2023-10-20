@@ -1,5 +1,5 @@
 FILE_NAME="openwrt-sdk-21.02.3-realtek-rtd129x_gcc-7.5.0_musl.Linux-x86_64.tar.xz"
 LINK="https://fw.koolcenter.com/iStoreOS/ars2/openwrt-sdk-21.02.3-realtek-rtd129x_gcc-7.5.0_musl.Linux-x86_64.tar.xz"
-UPDATE_AT="2023-08-24 19:52"
-MD5="cb2c7bf08b39b360a554b8eb3d78f40b"
-SHA256="3e699a3fd646790f601e8a6c232071490802635a2ce48555681bd23eb7353b5a"
+UPDATE_AT="2023-10-19 21:29"
+MD5="fcef76c8c94e94c73eb8d179e6d86010"
+SHA256="340f7ba9e9cadc8a527439de5a86742684bd17eb52363f30d7b1301df2470050"

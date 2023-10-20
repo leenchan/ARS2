@@ -9055,8 +9055,12 @@ config PACKAGE_kmod-oaf
 	default y
 
 config PACKAGE_iptables-mod-socket
-	tristate
-	default m
+	bool
+	default y
+
+config PACKAGE_kmod-ipt-socket
+	bool
+	default y
 
 config PACKAGE_libiwinfo-data
 	bool
@@ -9291,6 +9295,10 @@ config PACKAGE_kmod-crypto-xts
 	default y
 
 config PACKAGE_kmod-cryptodev
+	bool
+	default y
+
+config PACKAGE_kmod-fs-binfmt-misc
 	bool
 	default y
 
@@ -9543,8 +9551,8 @@ config PACKAGE_kmod-ipt-core
 	default y
 
 config PACKAGE_kmod-ipt-debug
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-ipt-extra
 	bool
@@ -9651,8 +9659,8 @@ config PACKAGE_kmod-ipt-raw
 	default y
 
 config PACKAGE_kmod-ipt-raw6
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_kmod-ipt-rpfilter
 	tristate
@@ -12179,8 +12187,8 @@ config PACKAGE_iptables-mod-tproxy
 	default y
 
 config PACKAGE_iptables-mod-trace
-	tristate
-	default m
+	bool
+	default y
 
 config PACKAGE_miniupnpd
 	bool
