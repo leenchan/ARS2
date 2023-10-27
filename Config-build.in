@@ -22,10 +22,6 @@ config TARGET_DEVICE_realtek_rtd129x_DEVICE_ars2
 	bool
 	default y
 
-config TARGET_DEVICE_realtek_rtd129x_DEVICE_pl-sgr1
-	bool
-	default y
-
 config HAS_SUBTARGETS
 	bool
 	default y
