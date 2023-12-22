@@ -104,12 +104,3 @@
 		};
 	};
 };
-
-&hwnat {
-	rgmii0_tx_delay = <2>; /* 0 to 7: 0.5ns per step */
-	rgmii0_rx_delay = <2>; /* 0 to 7: 0.5ns per step */
-	rgmii1_tx_delay = <2>; /* 0 to 7: 0.5ns per step */
-	rgmii1_rx_delay = <2>; /* 0 to 7: 0.5ns per step */
-};
-
-

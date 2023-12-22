@@ -10086,6 +10086,10 @@ config PACKAGE_kmod-chaoskey
 	tristate
 	default m
 
+config PACKAGE_kmod-usb-acm
+	bool
+	default y
+
 config PACKAGE_kmod-usb-core
 	bool
 	default y
@@ -10222,11 +10226,19 @@ config PACKAGE_kmod-usb-serial-cp210x
 	bool
 	default y
 
+config PACKAGE_kmod-usb-serial-ftdi
+	bool
+	default y
+
 config PACKAGE_kmod-usb-serial-garmin
 	bool
 	default y
 
 config PACKAGE_kmod-usb-serial-pl2303
+	bool
+	default y
+
+config PACKAGE_kmod-usb-serial-xr_usb_serial_common
 	bool
 	default y
 
@@ -11538,6 +11550,14 @@ config PACKAGE_luci-app-passwall_INCLUDE_Haproxy
 	bool
 	default y
 
+config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client
+	bool
+	default y
+
+config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server
+	bool
+	default y
+
 config PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client
 	bool
 	default y
@@ -11546,15 +11566,19 @@ config PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client
 	bool
 	default y
 
-config PACKAGE_luci-app-passwall_INCLUDE_Xray
+config PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs
 	bool
 	default y
 
-config PACKAGE_luci-app-qbittorrent
-	tristate
-	default m
+config PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus
+	bool
+	default y
 
-config PACKAGE_luci-app-qbittorrent_static
+config PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata
+	bool
+	default y
+
+config PACKAGE_luci-app-passwall_INCLUDE_Xray
 	bool
 	default y
 
@@ -11859,10 +11883,6 @@ config PACKAGE_luci-i18n-ota-zh-cn
 	default y
 
 config PACKAGE_luci-i18n-passwall-zh-cn
-	tristate
-	default m
-
-config PACKAGE_luci-i18n-qbittorrent-zh-cn
 	tristate
 	default m
 
@@ -12266,7 +12286,11 @@ config PACKAGE_dns2tcp
 	tristate
 	default m
 
-config PACKAGE_pdnsd-alt
+config PACKAGE_v2ray-geoip
+	tristate
+	default m
+
+config PACKAGE_v2ray-geosite
 	tristate
 	default m
 
@@ -12397,6 +12421,22 @@ config PACKAGE_microsocks
 config PACKAGE_quickstart
 	bool
 	default y
+
+config PACKAGE_shadowsocks-libev-config
+	tristate
+	default m
+
+config PACKAGE_shadowsocks-libev-ss-local
+	tristate
+	default m
+
+config PACKAGE_shadowsocks-libev-ss-redir
+	tristate
+	default m
+
+config PACKAGE_shadowsocks-libev-ss-server
+	tristate
+	default m
 
 config PACKAGE_shadowsocks-rust-sslocal
 	tristate
@@ -12566,6 +12606,14 @@ config SAMBA4_SERVER_AD_DC
 	bool
 	default n
 
+config PACKAGE_simple-obfs
+	tristate
+	default m
+
+config SIMPLE_OBFS_STATIC_LINK
+	bool
+	default n
+
 config PACKAGE_smartdns
 	tristate
 	default m
@@ -12582,13 +12630,13 @@ config PACKAGE_tcping
 	tristate
 	default m
 
+config PACKAGE_trojan-plus
+	tristate
+	default m
+
 config PACKAGE_uclient-fetch
 	bool
 	default y
-
-config PACKAGE_uugamebooster
-	tristate
-	default m
 
 config PACKAGE_vlmcsd
 	bool
