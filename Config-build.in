@@ -1594,10 +1594,6 @@ config FEED_diskman
 	bool
 	default y
 
-config FEED_cups
-	bool
-	default n
-
 config FEED_rclone
 	bool
 	default y
@@ -11458,10 +11454,6 @@ config PACKAGE_luci-app-cpufreq
 	bool
 	default y
 
-config PACKAGE_luci-app-cupsd
-	tristate
-	default m
-
 config PACKAGE_luci-app-ddns
 	bool
 	default y
@@ -12771,6 +12763,10 @@ config PACKAGE_ntfsprogs
 	default y
 
 config PACKAGE_resize2fs
+	bool
+	default y
+
+config PACKAGE_swap-utils
 	bool
 	default y
 
