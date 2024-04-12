@@ -11590,10 +11590,6 @@ config PACKAGE_luci-app-rclone_INCLUDE_rclone-ng
 	bool
 	default y
 
-config PACKAGE_luci-app-rclone_INCLUDE_fuse-utils
-	bool
-	default y
-
 config PACKAGE_luci-app-samba4
 	bool
 	default y
