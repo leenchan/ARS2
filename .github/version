@@ -1,5 +1,5 @@
 FILE_NAME="openwrt-imagebuilder-21.02.3-realtek-rtd129x.Linux-x86_64.tar.xz"
 LINK="https://fw.koolcenter.com/iStoreOS/ars2/openwrt-imagebuilder-21.02.3-realtek-rtd129x.Linux-x86_64.tar.xz"
-UPDATE_AT="2024-03-18 15:05"
-MD5="3964daa3d9b2d7cd630df4eb440057d5"
-SHA256="69e58c55b16dd5c2e45123905d9d23f549409b5b9055cbec3a37cded4e17dc9b"
+UPDATE_AT="2024-04-12 15:35"
+MD5="a8c253d6cba8ee02b7a10b5c25fbfe84"
+SHA256="adb7314eead1061ad6eed206e59e2640c45f442488e88b22e5dd95f0a9c50d88"
