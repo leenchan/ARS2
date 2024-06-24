@@ -12402,6 +12402,10 @@ config PACKAGE_linkease
 	bool
 	default y
 
+config PACKAGE_linkmount
+	bool
+	default y
+
 config PACKAGE_microsocks
 	tristate
 	default m
